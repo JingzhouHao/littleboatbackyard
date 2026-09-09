@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="摄影合集" />
+  <title>摄影合集</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="album-page">
+  <nav class="album-nav">
+    <a href="index.html#collections" class="back-link">← 返回合集</a>
+    <a href="index.html" class="brand-link" id="album-brand">小船的后院</a>
+  </nav>
+
+  <main id="album-root">
+    <section class="album-hero">
+      <img id="album-cover" src="assets/images/cover.jpeg" alt="合集封面" />
+      <div class="album-hero-shade" aria-hidden="true"></div>
+      <div class="album-hero-copy">
+        <p class="album-meta" id="album-meta"></p>
+        <h1 id="album-title">合集标题</h1>
+      </div>
+    </section>
+
+    <section class="album-story">
+      <div>
+        <p class="section-kicker">ABOUT THIS SERIES</p>
+        <h2>关于这个合集</h2>
+      </div>
+      <div class="album-text">
+        <p id="album-intro"></p>
+        <p id="album-reflection" class="reflection"></p>
+      </div>
+    </section>
+
+    <section class="photo-grid" id="photo-grid" aria-label="照片画廊"></section>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="关闭">×</button>
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="上一张">‹</button>
+    <figure>
+      <img id="lightbox-image" alt="放大照片" />
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+    <button class="lightbox-next" id="lightbox-next" aria-label="下一张">›</button>
+  </div>
+
+  <footer class="site-footer album-footer">
+    <span id="album-footer-name">YOUR NAME</span>
+    <span>© <span id="album-year"></span></span>
+  </footer>
+
+  <script src="assets/js/site-data.js"></script>
+  <script src="assets/js/album.js"></script>
+</body>
+</html>
