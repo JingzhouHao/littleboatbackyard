@@ -160,6 +160,26 @@ button { font: inherit; }
   height: 100%;
   object-fit: cover;
 }
+
+/* Album cover: preserve the photograph's natural aspect ratio instead of cropping it into a banner. */
+.album-hero {
+  width: min(1100px, calc(100% - 48px));
+  height: auto;
+  max-height: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--deep);
+}
+
+.album-hero > img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 78svh;
+  object-fit: contain;
+  object-position: center;
+}
 .page-hero-shade {
   position: absolute;
   inset: 0;
@@ -276,28 +296,41 @@ button { font: inherit; }
   color: #53605c;
 }
 .photo-stories {
-  width: min(1220px, calc(100% - 48px));
+  width: min(1080px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 104px 0 132px;
+  padding: 96px 0 128px;
 }
 .photo-story {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(240px, 0.55fr);
-  gap: clamp(40px, 7vw, 96px);
-  align-items: center;
-  margin-bottom: clamp(96px, 13vw, 180px);
+  grid-template-columns: minmax(0, 680px) minmax(220px, 300px);
+  gap: clamp(38px, 5vw, 62px);
+  justify-content: start;
+  align-items: start;
+  margin-bottom: clamp(88px, 11vw, 150px);
 }
-.photo-story--reverse .photo-story-figure { order: 2; }
-.photo-story--reverse .photo-note { order: 1; }
+
+/* Keep the photograph on the left and the optional note on the right.
+   album.js may still add --reverse to alternate rows; these rules intentionally neutralize it. */
+.photo-story--reverse .photo-story-figure { order: initial; }
+.photo-story--reverse .photo-note { order: initial; }
+
+/* When a photo has no note, keep the same left-hand image column and leave breathing room on the right. */
 .photo-story--no-note {
-  display: block;
-  width: min(980px, 88%);
-  margin-left: auto;
-  margin-right: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 680px) minmax(220px, 300px);
+  gap: clamp(38px, 5vw, 62px);
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
+.photo-story--no-note .photo-story-figure {
+  grid-column: 1;
+}
+
 .photo-story-figure { margin: 0; min-width: 0; }
 .photo-open {
-  display: block;
+  display: flex;
+  justify-content: flex-start;
   width: 100%;
   padding: 0;
   border: 0;
@@ -305,9 +338,10 @@ button { font: inherit; }
   cursor: zoom-in;
 }
 .photo-open img {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
-  max-height: 82svh;
+  max-height: 72svh;
   object-fit: contain;
   object-position: left center;
   transition: opacity 250ms ease;
@@ -479,9 +513,10 @@ button { font: inherit; }
   .collections-heading { grid-template-columns: 1fr; gap: 26px; align-items: start; }
   .collections-note { max-width: 680px; }
 
-  .photo-story {
-    grid-template-columns: minmax(0, 1.3fr) minmax(210px, 0.7fr);
-    gap: 42px;
+  .photo-story,
+  .photo-story--no-note {
+    grid-template-columns: minmax(0, 1fr) minmax(190px, 0.42fr);
+    gap: 34px;
   }
   .bio-intro-section { gap: 48px; }
 }
@@ -514,6 +549,19 @@ button { font: inherit; }
     min-height: 390px;
     max-height: 580px;
   }
+
+  .album-hero {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+  }
+  .album-hero > img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 72svh;
+  }
+
   .page-hero-title h1 { font-size: clamp(3rem, 15vw, 5rem); }
 
   .collections-wrap {
@@ -536,14 +584,17 @@ button { font: inherit; }
     padding: 72px 0 92px;
   }
   .photo-story,
-  .photo-story--reverse {
+  .photo-story--reverse,
+  .photo-story--no-note {
     grid-template-columns: 1fr;
     gap: 24px;
     margin-bottom: 78px;
   }
   .photo-story--reverse .photo-story-figure,
   .photo-story--reverse .photo-note { order: initial; }
-  .photo-story--no-note { width: 100%; }
+  .photo-story--no-note {
+    width: 100%;
+  }
   .photo-note { max-width: 92%; padding: 0 6px; }
   .photo-open img { max-height: none; }
 
