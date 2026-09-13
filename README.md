@@ -1,145 +1,79 @@
-# Little Boat's Backyard — GitHub Pages v2
+# Little Boat's Backyard — v3
 
-This version follows the new three-page sketch:
+This version uses a true landing page. The homepage contains **only** the cover image, site title, one-line introduction, two choices — **Photography** and **Bio** — plus the footer. There is no collection grid below the homepage and the homepage is intentionally non-scrollable.
 
-- **Home:** one large image + “Little Boat's Backyard” + one-line introduction + Photography / Bio.
-- **Photography:** large cover + collection index, **3 collections per row on desktop**, 2 on tablet, 1 on mobile.
-- **Collection page:** large collection cover + short overall introduction + photographs with optional notes beside them.
-- **Bio:** large cover + portrait next to bio + downloadable PDF CV.
-- **Footer:** Instagram / LinkedIn links (when supplied) + copyright notice.
+## Page structure
 
-The site is plain HTML/CSS/JavaScript, so it works directly on GitHub Pages without a build step.
+- `index.html` — landing page only: cover + title + tagline + Photography / Bio
+- `photography.html` — photography index with 3 collections per row on desktop, 2 on tablet, 1 on mobile
+- `album.html` — one collection, overall introduction, photos and optional notes
+- `bio.html` — portrait + bio + downloadable PDF CV
+- `assets/js/site-data.js` — main content file you edit
 
-## 1. Replace your current repository files
+## Important: replace the old GitHub version completely
 
-Upload everything in this folder to the **root** of `JingzhouHao/littleboatbackyard`, replacing the old site files.
+Your repository must contain all four HTML files at the repository root:
 
-Keep the structure exactly like this:
-
-```text
+```
 index.html
 photography.html
 album.html
 bio.html
-.nojekyll
-assets/
-  css/styles.css
-  js/site-data.js
-  js/shared.js
-  js/home.js
-  js/photography.js
-  js/album.js
-  js/bio.js
-  images/cover.jpeg
-  cv/
 ```
 
-After committing, GitHub Pages should redeploy automatically. Your URL remains:
+If the repository still contains the older site's `index.html`, GitHub Pages will keep showing the old scrolling collection page. The easiest update is:
 
-`https://jingzhouhao.github.io/littleboatbackyard/`
+1. Delete the old root files/folders from the repo (or replace them).
+2. Upload **the contents of this folder**, not the zip itself.
+3. Confirm `photography.html` and `bio.html` appear next to `index.html` in GitHub.
+4. Commit the change and wait for Pages to redeploy.
+5. Hard-refresh the site (`Cmd + Shift + R` on Mac / `Ctrl + Shift + R` on Windows) if the browser still shows the old cached page.
 
-## 2. The one file you normally edit
+## Main content edits
 
-Open:
+Edit `assets/js/site-data.js` for:
 
-`assets/js/site-data.js`
-
-That file controls:
-
-- site title
-- your name
-- one-sentence homepage introduction
+- site title and one-line tagline
 - homepage / Photography / Bio cover images
-- portrait
-- bio text
-- CV path
-- Instagram and LinkedIn links
-- collection titles, covers, introductions, photographs and comments
+- social links
+- portrait and bio paragraphs
+- CV PDF path
+- collection titles, covers, introductions, photos and optional notes
 
-## 3. Add Instagram and LinkedIn
+## CV
 
-In `site-data.js`:
+Place the PDF somewhere such as:
 
-```js
-social: {
-  instagram: "https://www.instagram.com/YOUR_HANDLE/",
-  linkedin: "https://www.linkedin.com/in/YOUR_PROFILE/"
-}
+```
+assets/cv/Jingzhou_Hao_CV.pdf
 ```
 
-If either field is empty, that footer link is automatically hidden.
-
-## 4. Add your portrait
-
-Put the image somewhere like:
-
-`assets/images/bio/portrait.jpg`
-
-Then change:
-
-```js
-portrait: "assets/images/bio/portrait.jpg"
-```
-
-## 5. Add your CV
-
-Put the PDF at, for example:
-
-`assets/cv/Jingzhou_Hao_CV.pdf`
-
-Then change:
+and set:
 
 ```js
 cvFile: "assets/cv/Jingzhou_Hao_CV.pdf"
 ```
 
-Until a path is supplied, the Download CV button stays hidden so the live site never contains a broken link.
+## Photo notes
 
-## 6. Add a collection
-
-Copy one collection object inside `collections`:
+A photo with a note:
 
 ```js
 {
-  id: "maine-2026",
-  title: "Maine",
-  meta: "2026 · Maine",
-  cover: "assets/images/maine/cover.jpg",
-  coverPosition: "50% 50%",
-  intro: "A short introduction to the collection.",
-  reflection: "Optional second paragraph.",
-  photos: [
-    {
-      src: "assets/images/maine/001.jpg",
-      alt: "A descriptive accessibility caption",
-      caption: "Old Orchard Beach, 2026",
-      note: "A short comment beside this photograph."
-    },
-    {
-      src: "assets/images/maine/002.jpg",
-      alt: "Street in morning light",
-      caption: "",
-      note: ""
-    }
-  ]
+  src: "assets/images/maine/001.jpg",
+  caption: "Old Orchard Beach, 2026",
+  note: "A short comment beside the photograph."
 }
 ```
 
-If `note` is empty, that photograph automatically becomes a larger centered image instead of reserving an empty text column.
+A photo without a note:
 
-## 7. Recommended web image sizes
+```js
+{
+  src: "assets/images/maine/002.jpg",
+  caption: "",
+  note: ""
+}
+```
 
-For full-size portfolio images, a good starting point is:
-
-- long edge: roughly 3000–3500 px
-- JPEG quality: roughly 88–92, or comparable WebP quality
-- sRGB
-- do not force every photograph under the same file-size limit
-
-Collection thumbnails can be smaller (roughly 1600–2200 px long edge) if you want the Photography page to load faster.
-
-## Responsive behavior
-
-- Desktop: 3 collection cards per row; photo comments sit beside images.
-- Tablet: 2 collection cards per row.
-- Phone: 1 collection per row; photo comments move below images; navigation and footer compress cleanly.
+Photos without notes automatically use a wider centered layout.
