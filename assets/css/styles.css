@@ -71,29 +71,29 @@ button { font: inherit; }
     linear-gradient(to bottom, rgba(2, 14, 16, 0.25), rgba(2, 14, 16, 0.05) 46%, rgba(2, 14, 16, 0.45));
 }
 .home-copy {
-  width: min(820px, calc(100% - 42px));
+  width: min(900px, calc(100% - 48px));
   text-align: center;
   color: var(--cream);
   text-shadow: 0 2px 22px rgba(0,0,0,0.35);
-  padding: 34px 28px 96px;
+  padding: 18px 28px 72px;
 }
 .home-copy h1 {
   margin: 0;
-  font: 400 clamp(2.1rem, 4.5vw, 4.2rem)/1.05 var(--serif);
+  font: 400 clamp(2.15rem, 4.2vw, 4.05rem)/1.08 var(--serif);
   letter-spacing: 0.005em;
 }
 .tagline {
-  max-width: 620px;
-  margin: 20px auto 0;
-  font: italic 400 clamp(0.95rem, 1.4vw, 1.15rem)/1.7 var(--serif);
+  max-width: 650px;
+  margin: 32px auto 0;
+  font: italic 400 clamp(0.96rem, 1.35vw, 1.14rem)/1.8 var(--serif);
 }
 .home-nav {
   display: flex;
   justify-content: center;
-  gap: 42px;
-  margin-top: 34px;
+  gap: 58px;
+  margin-top: 58px;
   font-family: var(--serif);
-  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  font-size: clamp(1rem, 1.55vw, 1.16rem);
 }
 .home-nav a {
   padding: 4px 2px;
@@ -161,24 +161,29 @@ button { font: inherit; }
   object-fit: cover;
 }
 
-/* Album cover: preserve the photograph's natural aspect ratio instead of cropping it into a banner. */
+/* Album hero: wide, but only mildly cropped. A 3:2 photo loses much less than in a cinematic banner. */
 .album-hero {
-  width: min(1100px, calc(100% - 48px));
+  width: min(1180px, calc(100% - 48px));
   height: auto;
+  aspect-ratio: 5 / 3;
   max-height: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--deep);
+  background: var(--paper-soft);
 }
-
 .album-hero > img {
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: 78svh;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
+}
+/* Hide the year/meta line above the collection title. */
+.album-hero .kicker {
+  display: none;
+}
+.album-hero .page-hero-title {
+  bottom: clamp(24px, 4vw, 52px);
+}
+.album-hero .page-hero-title h1 {
+  font-size: clamp(2.8rem, 6.6vw, 5.6rem);
 }
 .page-hero-shade {
   position: absolute;
@@ -298,36 +303,51 @@ button { font: inherit; }
 .photo-stories {
   width: min(1080px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 96px 0 128px;
+  padding: 92px 0 128px;
 }
+
+/* Default / landscape layout: photo first, note underneath. */
 .photo-story {
-  display: grid;
-  grid-template-columns: minmax(0, 680px) minmax(220px, 300px);
-  gap: clamp(38px, 5vw, 62px);
-  justify-content: start;
-  align-items: start;
-  margin-bottom: clamp(88px, 11vw, 150px);
+  display: block;
+  width: 100%;
+  max-width: 840px;
+  margin: 0 0 clamp(86px, 10vw, 138px);
+}
+.photo-story--landscape {
+  max-width: 860px;
 }
 
-/* Keep the photograph on the left and the optional note on the right.
-   album.js may still add --reverse to alternate rows; these rules intentionally neutralize it. */
-.photo-story--reverse .photo-story-figure { order: initial; }
-.photo-story--reverse .photo-note { order: initial; }
-
-/* When a photo has no note, keep the same left-hand image column and leave breathing room on the right. */
-.photo-story--no-note {
+/* Portrait layout on desktop: photo at left, note at right. */
+.photo-story--portrait {
   display: grid;
-  grid-template-columns: minmax(0, 680px) minmax(220px, 300px);
-  gap: clamp(38px, 5vw, 62px);
-  width: 100%;
+  grid-template-columns: minmax(0, 520px) minmax(210px, 300px);
+  gap: clamp(38px, 5vw, 66px);
+  align-items: center;
+  max-width: 920px;
+}
+
+/* Neutralize the old alternating left/right layout from album.js. */
+.photo-story--reverse .photo-story-figure,
+.photo-story--reverse .photo-note {
+  order: initial;
+}
+
+.photo-story--no-note {
   margin-left: 0;
   margin-right: 0;
 }
-.photo-story--no-note .photo-story-figure {
-  grid-column: 1;
+.photo-story--portrait.photo-story--no-note {
+  display: block;
+  max-width: 520px;
+}
+.photo-story--landscape.photo-story--no-note {
+  max-width: 860px;
 }
 
-.photo-story-figure { margin: 0; min-width: 0; }
+.photo-story-figure {
+  margin: 0;
+  min-width: 0;
+}
 .photo-open {
   display: flex;
   justify-content: flex-start;
@@ -338,13 +358,21 @@ button { font: inherit; }
   cursor: zoom-in;
 }
 .photo-open img {
+  display: block;
   width: auto;
   max-width: 100%;
   height: auto;
-  max-height: 72svh;
   object-fit: contain;
   object-position: left center;
   transition: opacity 250ms ease;
+}
+.photo-story--landscape .photo-open img {
+  width: 100%;
+  max-height: none;
+}
+.photo-story--portrait .photo-open img {
+  width: auto;
+  max-height: 74svh;
 }
 .photo-open:hover img { opacity: 0.94; }
 .photo-story-figure figcaption {
@@ -353,13 +381,21 @@ button { font: inherit; }
   font-size: 0.77rem;
   line-height: 1.5;
 }
+
+/* Landscape: note below. Portrait: this same block moves to the right through the grid above. */
 .photo-note {
-  max-width: 360px;
-  font: 400 clamp(1rem, 1.55vw, 1.22rem)/1.8 var(--serif);
+  max-width: 720px;
+  margin-top: 18px;
+  font: 400 clamp(0.98rem, 1.35vw, 1.13rem)/1.82 var(--serif);
+}
+.photo-story--portrait .photo-note {
+  max-width: 300px;
+  margin-top: 0;
+  align-self: center;
 }
 .photo-number {
   display: block;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   color: var(--muted);
   font: 500 0.67rem/1 var(--sans);
   letter-spacing: 0.18em;
@@ -513,9 +549,8 @@ button { font: inherit; }
   .collections-heading { grid-template-columns: 1fr; gap: 26px; align-items: start; }
   .collections-note { max-width: 680px; }
 
-  .photo-story,
-  .photo-story--no-note {
-    grid-template-columns: minmax(0, 1fr) minmax(190px, 0.42fr);
+  .photo-story--portrait {
+    grid-template-columns: minmax(0, 470px) minmax(190px, 250px);
     gap: 34px;
   }
   .bio-intro-section { gap: 48px; }
@@ -525,11 +560,18 @@ button { font: inherit; }
 @media (max-width: 680px) {
   .home-copy {
     width: calc(100% - 24px);
-    padding: 26px 16px 118px;
+    padding: 10px 16px 108px;
   }
-  .home-copy h1 { font-size: clamp(2.15rem, 10vw, 3.6rem); }
-  .tagline { font-size: 0.95rem; line-height: 1.6; }
-  .home-nav { margin-top: 28px; gap: 32px; }
+  .home-copy h1 { font-size: clamp(2.05rem, 9.5vw, 3.35rem); }
+  .tagline {
+    margin-top: 25px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .home-nav {
+    margin-top: 44px;
+    gap: 36px;
+  }
   .home-nav a { min-width: 0; padding: 4px 2px; }
   .home-image { object-fit: cover; object-position: 50% 50%; }
   .home-backdrop { display: none; }
@@ -549,19 +591,21 @@ button { font: inherit; }
     min-height: 390px;
     max-height: 580px;
   }
-
   .album-hero {
+    width: calc(100% - 24px);
     height: auto;
     min-height: 0;
     max-height: none;
+    aspect-ratio: 4 / 3;
   }
-  .album-hero > img {
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    max-height: 72svh;
+  .album-hero .page-hero-title {
+    left: 22px;
+    right: 22px;
+    bottom: 22px;
   }
-
+  .album-hero .page-hero-title h1 {
+    font-size: clamp(2.55rem, 12vw, 4.2rem);
+  }
   .page-hero-title h1 { font-size: clamp(3rem, 15vw, 5rem); }
 
   .collections-wrap {
@@ -580,23 +624,36 @@ button { font: inherit; }
     padding: 62px 0 70px;
   }
   .photo-stories {
-    width: calc(100% - 24px);
-    padding: 72px 0 92px;
+    width: calc(100% - 30px);
+    padding: 68px 0 92px;
   }
   .photo-story,
+  .photo-story--landscape,
+  .photo-story--portrait,
   .photo-story--reverse,
-  .photo-story--no-note {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    margin-bottom: 78px;
-  }
-  .photo-story--reverse .photo-story-figure,
-  .photo-story--reverse .photo-note { order: initial; }
-  .photo-story--no-note {
+  .photo-story--no-note,
+  .photo-story--portrait.photo-story--no-note {
+    display: block;
     width: 100%;
+    max-width: none;
+    margin: 0 0 74px;
   }
-  .photo-note { max-width: 92%; padding: 0 6px; }
-  .photo-open img { max-height: none; }
+  .photo-story--portrait .photo-story-figure {
+    width: min(88%, 520px);
+  }
+  .photo-note,
+  .photo-story--portrait .photo-note {
+    width: min(92%, 720px);
+    max-width: none;
+    margin: 16px 0 0;
+    padding: 0;
+  }
+  .photo-open img,
+  .photo-story--portrait .photo-open img,
+  .photo-story--landscape .photo-open img {
+    width: 100%;
+    max-height: none;
+  }
 
   .bio-intro-section {
     width: calc(100% - 30px);
