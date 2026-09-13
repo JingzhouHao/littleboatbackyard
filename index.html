@@ -1,40 +1,36 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="个人摄影作品集" />
-  <title>小船的后院</title>
+  <meta name="description" content="Little Boat's Backyard — a personal photography archive." />
+  <meta name="theme-color" content="#10292b" />
+  <title>Little Boat's Backyard</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
-<body>
-  <header class="hero" id="top">
-    <img class="hero-image" src="assets/images/cover.jpeg" alt="网站封面" />
-    <div class="hero-shade" aria-hidden="true"></div>
-    <div class="hero-copy">
-      <p class="eyebrow" id="site-title">小船的后院</p>
-      <h1 id="display-name">YOUR NAME</h1>
-      <p class="hero-intro" id="hero-intro">在这里写一句很短的自我介绍。</p>
-    </div>
-    <a class="scroll-cue" href="#collections" aria-label="查看摄影合集">↓</a>
-  </header>
+<body class="home-page">
+  <main class="home-hero" id="top">
+    <img class="home-backdrop" id="home-backdrop" src="assets/images/cover.jpeg" alt="" aria-hidden="true" />
+    <img class="home-image" id="home-image" src="assets/images/cover.jpeg" alt="Website cover" />
+    <div class="home-shade" aria-hidden="true"></div>
 
-  <main>
-    <section class="collections-section" id="collections">
-      <div class="section-heading">
-        <p class="section-kicker">COLLECTIONS</p>
-        <h2>摄影合集</h2>
-      </div>
-      <div class="collection-grid" id="collection-grid"></div>
+    <section class="home-copy" aria-label="Introduction">
+      <h1 id="site-title">Little Boat's Backyard</h1>
+      <p id="tagline" class="tagline">A personal archive of photographs, walks, and things I wanted to keep.</p>
+      <nav class="home-nav" aria-label="Main navigation">
+        <a href="photography.html">Photography</a>
+        <a href="bio.html">Bio</a>
+      </nav>
     </section>
+
+    <footer class="home-footer site-footer site-footer--overlay">
+      <div class="social-links" id="home-social-links" aria-label="Social links"></div>
+      <p class="copyright" id="home-copyright"></p>
+    </footer>
   </main>
 
-  <footer class="site-footer">
-    <span id="footer-name">YOUR NAME</span>
-    <span>© <span id="year"></span></span>
-  </footer>
-
   <script src="assets/js/site-data.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/shared.js"></script>
+  <script src="assets/js/home.js"></script>
 </body>
 </html>

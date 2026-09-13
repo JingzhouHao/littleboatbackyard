@@ -1,56 +1,103 @@
 /*
-  以后你主要只需要改这个文件。
+  This is the main file you edit when you update the site.
+  Most text, links, covers, collections, photo comments, and bio content live here.
 
-  1) 把 assets/images/ 里的示例图片换成自己的照片；
-  2) 修改下面 name / intro；
-  3) 每增加一个合集，就复制 collections 里的一个 {...}。
-
-  photos 可以写成：
-    "assets/images/your-album/photo01.jpg"
-  或者带说明：
-    { src: "assets/images/your-album/photo01.jpg", caption: "Old Orchard Beach, 2026" }
+  Paths are relative to the repository root, for example:
+    assets/images/maine/001.jpg
+    assets/cv/Jingzhou_Hao_CV.pdf
 */
 
 window.SITE = {
-  siteTitle: "小船的后院",
-  name: "YOUR NAME",
-  intro: "在这里写一句很短的自我介绍。",
+  siteTitle: "Little Boat's Backyard",
+  ownerName: "Jingzhou Hao",
+  tagline: "A personal archive of photographs, walks, and things I wanted to keep.",
+
+  // Homepage. The same file is used as a blurred backdrop and a sharp foreground image,
+  // which preserves a vertical image on wide desktop screens without awkward cropping.
+  homeCover: "assets/images/cover.jpeg",
+  homeCoverAlt: "Website cover",
+
+  photography: {
+    cover: "assets/images/cover.jpeg",
+    coverPosition: "50% 48%",
+    intro: "A growing set of small photo stories. Some are organized by place, some by time, and some simply by the feeling that made them belong together."
+  },
+
+  bio: {
+    cover: "assets/images/cover.jpeg",
+    coverPosition: "50% 48%",
+
+    // Replace with your own portrait when ready, e.g. assets/images/bio/portrait.jpg
+    portrait: "assets/images/cover.jpeg",
+    portraitAlt: "Portrait of Jingzhou Hao",
+    portraitPosition: "50% 46%",
+
+    // Each string becomes its own paragraph.
+    paragraphs: [
+      "Write a short self-introduction here: who you are, what you photograph, and what you want this site to hold together.",
+      "A second paragraph is optional. You can use it for a little more context about your photography, work, or anything else you want visitors to know."
+    ],
+
+    // Leave cvFile empty until you upload a PDF. Example:
+    // cvFile: "assets/cv/Jingzhou_Hao_CV.pdf",
+    cvFile: "",
+    cvDescription: "A PDF copy of my CV is available here."
+  },
+
+  social: {
+    // Paste the full URLs when ready. Empty links are automatically hidden.
+    instagram: "",
+    linkedin: ""
+  },
+
+  copyright: "All rights reserved.",
 
   collections: [
     {
-      id: "seaside",
-      title: "海边",
-      meta: "2026 · Maine",
+      id: "chronicle",
+      title: "Chronicle",
+      meta: "2026",
       cover: "assets/images/cover.jpeg",
-      coverPosition: "50% 50%",
-      intro: "这里写这个摄影合集的背景：在哪里拍、为什么开始拍、你当时在关注什么。",
-      reflection: "这里可以写更私人的感想。不需要像艺术家 statement，可以只是拍完这一卷之后你真正记住的东西。",
+      coverPosition: "50% 42%",
+      intro: "A short overall introduction to this collection goes here. It can explain where the photographs came from, what held the series together, or simply what you were paying attention to at the time.",
+      reflection: "This second paragraph is optional. Use it for a more personal afterthought, or delete it if the photographs do not need one.",
       photos: [
-        { src: "assets/images/cover.jpeg", caption: "示例照片 · 请替换成你的照片" }
+        {
+          src: "assets/images/cover.jpeg",
+          alt: "Example photograph",
+          caption: "Example photograph",
+          note: "A short comment can sit beside a photograph. It can be factual, personal, or left completely blank."
+        },
+        {
+          src: "assets/images/cover.jpeg",
+          alt: "Example photograph",
+          caption: "",
+          note: ""
+        }
       ]
     },
     {
-      id: "streets",
-      title: "街上",
-      meta: "2026 · Walks",
+      id: "back-to-human",
+      title: "Back to Human",
+      meta: "2026",
       cover: "assets/images/cover.jpeg",
-      coverPosition: "50% 34%",
-      intro: "每个合集都可以有自己的简介。首页只显示代表照片，点进来以后再看完整系列。",
-      reflection: "你也可以把这一段删掉，只留下几句话，让照片本身说话。",
+      coverPosition: "50% 58%",
+      intro: "Replace this with the introduction to your second collection.",
+      reflection: "",
       photos: [
-        { src: "assets/images/cover.jpeg", caption: "示例照片 · 请替换成你的照片" }
+        { src: "assets/images/cover.jpeg", alt: "Example photograph", caption: "", note: "" }
       ]
     },
     {
-      id: "after-dark",
-      title: "夜里",
-      meta: "2026 · After dark",
+      id: "moment-of-summer",
+      title: "Moment of Summer",
+      meta: "2026",
       cover: "assets/images/cover.jpeg",
-      coverPosition: "50% 68%",
-      intro: "这里可以放一个夜景、人物、双重曝光或任何你想长期积累的系列。",
-      reflection: "合集不必按照地点分类，也可以按照一种光线、一卷胶片或某段时间来分。",
+      coverPosition: "50% 72%",
+      intro: "Replace this with the introduction to your third collection.",
+      reflection: "",
       photos: [
-        { src: "assets/images/cover.jpeg", caption: "示例照片 · 请替换成你的照片" }
+        { src: "assets/images/cover.jpeg", alt: "Example photograph", caption: "", note: "" }
       ]
     }
   ]

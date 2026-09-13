@@ -1,45 +1,69 @@
 (() => {
   const site = window.SITE;
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-  const collection = site?.collections?.find(item => item.id === id) || site?.collections?.[0];
+  if (!site) return;
 
-  if (!site || !collection) return;
+  const params = new URLSearchParams(window.location.search);
+  const requestedId = params.get("id");
+  const collection = site.collections?.find(item => item.id === requestedId) || site.collections?.[0];
+  if (!collection) return;
 
   document.title = `${collection.title} — ${site.siteTitle}`;
   document.getElementById("album-brand").textContent = site.siteTitle;
-  document.getElementById("album-footer-name").textContent = site.name || site.siteTitle;
-  document.getElementById("album-year").textContent = new Date().getFullYear();
+  document.getElementById("album-title").textContent = collection.title;
+  document.getElementById("album-meta").textContent = collection.meta || "Photography collection";
+  document.getElementById("album-intro").textContent = collection.intro || "";
+
+  const reflection = document.getElementById("album-reflection");
+  reflection.textContent = collection.reflection || "";
+  reflection.hidden = !collection.reflection;
 
   const cover = document.getElementById("album-cover");
   cover.src = collection.cover;
-  cover.alt = `${collection.title} 合集封面`;
+  cover.alt = `${collection.title} collection cover`;
   cover.style.objectPosition = collection.coverPosition || "50% 50%";
 
-  document.getElementById("album-title").textContent = collection.title;
-  document.getElementById("album-meta").textContent = collection.meta || "";
-  document.getElementById("album-intro").textContent = collection.intro || "";
-  document.getElementById("album-reflection").textContent = collection.reflection || "";
-
   const photos = (collection.photos || []).map(photo =>
-    typeof photo === "string" ? { src: photo, caption: "" } : photo
+    typeof photo === "string" ? { src: photo, caption: "", note: "", alt: "" } : photo
   );
 
-  const grid = document.getElementById("photo-grid");
+  const stories = document.getElementById("photo-stories");
   photos.forEach((photo, index) => {
+    const article = document.createElement("article");
+    const hasNote = Boolean(photo.note?.trim());
+    article.className = `photo-story${hasNote ? "" : " photo-story--no-note"}${index % 2 ? " photo-story--reverse" : ""}`;
+
+    const figure = document.createElement("figure");
+    figure.className = "photo-story-figure";
+
     const button = document.createElement("button");
-    button.className = "photo-item";
+    button.className = "photo-open";
     button.type = "button";
-    button.setAttribute("aria-label", `打开第 ${index + 1} 张照片`);
+    button.setAttribute("aria-label", `Open photograph ${index + 1}`);
 
     const img = document.createElement("img");
     img.src = photo.src;
-    img.alt = photo.caption || `${collection.title} 照片 ${index + 1}`;
-    img.loading = "lazy";
-
+    img.alt = photo.alt || photo.caption || `${collection.title} photograph ${index + 1}`;
+    img.loading = index < 2 ? "eager" : "lazy";
     button.appendChild(img);
     button.addEventListener("click", () => openLightbox(index));
-    grid.appendChild(button);
+    figure.appendChild(button);
+
+    if (photo.caption) {
+      const figcaption = document.createElement("figcaption");
+      figcaption.textContent = photo.caption;
+      figure.appendChild(figcaption);
+    }
+
+    article.appendChild(figure);
+
+    if (hasNote) {
+      const note = document.createElement("div");
+      note.className = "photo-note";
+      note.innerHTML = `<span class="photo-number">${String(index + 1).padStart(2, "0")}</span><p>${window.escapeHTML(photo.note)}</p>`;
+      article.appendChild(note);
+    }
+
+    stories.appendChild(article);
   });
 
   const lightbox = document.getElementById("lightbox");
@@ -71,8 +95,8 @@
     const photo = photos[currentIndex];
     if (!photo) return;
     lightboxImage.src = photo.src;
-    lightboxImage.alt = photo.caption || `${collection.title} 照片 ${currentIndex + 1}`;
-    lightboxCaption.textContent = photo.caption || "";
+    lightboxImage.alt = photo.alt || photo.caption || `${collection.title} photograph ${currentIndex + 1}`;
+    lightboxCaption.textContent = photo.caption || photo.note || "";
   }
 
   document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
@@ -89,4 +113,6 @@
     if (event.key === "ArrowLeft") move(-1);
     if (event.key === "ArrowRight") move(1);
   });
+
+  window.renderFooter("album-social-links", "album-copyright");
 })();
