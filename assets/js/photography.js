@@ -29,8 +29,13 @@
     const copy = document.createElement("div");
     copy.className = "collection-card-copy";
     copy.innerHTML = `
-    <h3>${window.escapeHTML(collection.title)}</h3>
-    ${collection.meta ? `<p>${window.escapeHTML(collection.meta)}</p>` : ""}
+      ${
+        collection.titleZh
+          ? `<div class="collection-title-zh">${window.escapeHTML(collection.titleZh)}</div>`
+          : ""
+      }
+
+      <h3>${window.escapeHTML(collection.title)}</h3>
     `;
 
     imageWrap.appendChild(img);
