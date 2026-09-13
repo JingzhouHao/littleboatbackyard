@@ -54,22 +54,22 @@ window.SITE = {
 
   collections: [
     {
-      id: "chronicle",
-      title: "Chronicle",
+      id: "Back to human",
+      title: "Back to human",
       meta: "2026",
-      cover: "assets/images/cover.jpeg",
+      cover: "assets/images/Back_to_human/000020.jpg",
       coverPosition: "50% 42%",
       intro: "A short overall introduction to this collection goes here. It can explain where the photographs came from, what held the series together, or simply what you were paying attention to at the time.",
       reflection: "This second paragraph is optional. Use it for a more personal afterthought, or delete it if the photographs do not need one.",
       photos: [
         {
-          src: "assets/images/cover.jpeg",
+          src: "assets/images/Back_to_human/000020.jpeg",
           alt: "Example photograph",
           caption: "Example photograph",
           note: "A short comment can sit beside a photograph. It can be factual, personal, or left completely blank."
         },
         {
-          src: "assets/images/cover.jpeg",
+          src: "assets/images/Back_to_human/000017-2.jpg",
           alt: "Example photograph",
           caption: "",
           note: ""
