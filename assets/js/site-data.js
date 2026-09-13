@@ -1,12 +1,9 @@
-/*
-  This is the main file you edit when you update the site.
-  Most text, links, covers, collections, photo comments, and bio content live here.
-*/
-
 window.SITE = {
   siteTitle: "Little Boat's Backyard",
   ownerName: "Jingzhou Hao",
-  tagline: "A personal archive of photographs, walks, and things I wanted to keep.",
+
+  tagline:
+    "A personal archive of photographs, walks, and things I wanted to keep.",
 
   homeCover: "assets/images/cover.jpeg",
   homeCoverAlt: "Website cover",
@@ -14,7 +11,8 @@ window.SITE = {
   photography: {
     cover: "assets/images/cover.jpeg",
     coverPosition: "50% 48%",
-    intro: "A growing set of small photo stories. Some are organized by place, some by time, and some simply by the feeling that made them belong together."
+    intro:
+      "A growing set of small photo stories. Some are organized by place, some by time, and some simply by the feeling that made them belong together."
   },
 
   bio: {
@@ -42,10 +40,17 @@ window.SITE = {
   copyright: "All rights reserved.",
 
   collections: [
+
+    /* =========================================================
+       BACK TO HUMAN
+       ========================================================= */
     {
       id: "back-to-human",
+
+      titleZh: "回到人类",
       title: "Back to Human",
-      meta: "2026",
+
+      meta: "",
 
       cover: "assets/images/Back_to_human/000020.jpg",
       coverPosition: "50% 50%",
@@ -56,49 +61,157 @@ window.SITE = {
       photos: [
         {
           src: "assets/images/Back_to_human/000020.jpg",
-          alt: "Back to Human photograph",
           caption: "",
           note: ""
         },
         {
           src: "assets/images/Back_to_human/000017-2.jpg",
-          alt: "Back to Human photograph",
           caption: "",
           note: ""
         },
         {
           src: "assets/images/Back_to_human/000020140009-1.jpg",
-          alt: "Back to Human photograph",
           caption: "",
           note: ""
         },
         {
           src: "assets/images/Back_to_human/000020140020-1.jpg",
-          alt: "Back to Human photograph",
           caption: "",
           note: ""
         },
         {
           src: "assets/images/Back_to_human/000020140061-1.jpg",
-          alt: "Back to Human photograph",
           caption: "",
           note: ""
         },
         {
           src: "assets/images/Back_to_human/000020140063-1-4.jpg",
-          alt: "Back to Human photograph",
           caption: "",
           note: ""
         },
         {
           src: "assets/images/Back_to_human/Hao_004.jpg",
-          alt: "Back to Human photograph",
           caption: "",
           note: ""
         },
         {
           src: "assets/images/Back_to_human/cover.jpeg",
-          alt: "Back to Human photograph",
+          caption: "",
+          note: ""
+        }
+      ]
+    },
+
+    /* =========================================================
+       CARNIVAL
+       ========================================================= */
+    {
+      id: "carnival",
+
+      titleZh: "嘉年华",
+      title: "Carnival",
+
+      meta: "",
+
+      cover: "assets/images/Carnival/000407460027-2.jpg",
+      coverPosition: "50% 50%",
+
+      intro: "",
+      reflection: "",
+
+      photos: [
+        {
+          src: "assets/images/Carnival/000018.jpg",
+          caption: "",
+          note: ""
+        },
+        {
+          src: "assets/images/Carnival/000407460027-2.jpg",
+          caption: "",
+          note: ""
+        }
+      ]
+    },
+
+    /* =========================================================
+       MOMENTS OF SUMMER
+       ========================================================= */
+    {
+      id: "moments-of-summer",
+
+      titleZh: "夏天还没过去，我已经开始怀念它了",
+      title: "Moments of Summer",
+
+      meta: "",
+
+      cover: "assets/images/Moments_of_summer/Hao024-1.jpg",
+      coverPosition: "50% 50%",
+
+      intro: "",
+      reflection: "",
+
+      photos: [
+        {
+          src: "assets/images/Moments_of_summer/000020140008-1.jpg",
+          caption: "",
+          note: ""
+        },
+        {
+          src: "assets/images/Moments_of_summer/000020140055-1.jpg",
+          caption: "",
+          note: ""
+        },
+        {
+          src: "assets/images/Moments_of_summer/000020140072.jpg",
+          caption: "",
+          note: ""
+        },
+        {
+          src: "assets/images/Moments_of_summer/000024.jpg",
+          caption: "",
+          note: ""
+        },
+        {
+          src: "assets/images/Moments_of_summer/Hao024-1.jpg",
+          caption: "",
+          note: ""
+        },
+        {
+          src: "assets/images/Moments_of_summer/Hao_009.jpg",
+          caption: "",
+          note: ""
+        }
+      ]
+    },
+
+    /* =========================================================
+       SECRET TRAIN STATION
+       ========================================================= */
+    {
+      id: "secret-train-station",
+
+      titleZh: "秘境车站",
+      title: "Secret Train Station",
+
+      meta: "",
+
+      cover:
+        "assets/images/secret_train_station/000407460024-1.jpg",
+      coverPosition: "50% 50%",
+
+      intro: "",
+      reflection: "",
+
+      photos: [
+        {
+          src:
+            "assets/images/secret_train_station/000407460024-1.jpg",
+          caption: "",
+          note: ""
+        },
+        {
+          src:
+            "assets/images/secret_train_station/000407470024-1.jpg",
           caption: "",
           note: ""
         }
