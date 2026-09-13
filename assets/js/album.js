@@ -19,7 +19,7 @@
   // Meta such as "2026" can stay in site-data.js,
   // but CSS now hides it from the album hero.
   document.getElementById("album-meta").textContent =
-    collection.meta || "";
+  collection.titleZh || "";
 
   document.getElementById("album-intro").textContent =
     collection.intro || "";
