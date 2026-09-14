@@ -61,38 +61,38 @@ window.SITE = {
       photos: [
         {
           src: "assets/images/Back_to_human/000020.jpg",
-          caption: "",
-          note: ""
+          caption: "在查尔斯河畔促膝长谈",
+          note: "Shot with Kodak Funsaver"
         },
         {
           src: "assets/images/Back_to_human/000017-2.jpg",
-          caption: "",
-          note: ""
+          caption: "抓拍骑自行车的人，这一刻的光影很妙",
+          note: "Shot with Kodak Funsaver"
         },
         {
           src: "assets/images/Back_to_human/000020140009-1.jpg",
-          caption: "",
-          note: ""
+          caption: "公园阶梯上沉思的人和揾食的鹅",
+          note: "Shot with Kodak h35, film is gold 200"
         },
         {
           src: "assets/images/Back_to_human/000020140020-1.jpg",
-          caption: "",
-          note: ""
+          caption: "坐greenlineC线，地铁从林中穿过",
+          note: "Shot with kodak h35, film is gold 200"
         },
         {
           src: "assets/images/Back_to_human/000020140061-1.jpg",
-          caption: "",
-          note: ""
+          caption: "荡秋千的孩子们和他们的父母",
+          note: "Shot with kodak h35, film is gold 200"
         },
         {
           src: "assets/images/Back_to_human/000020140063-1-4.jpg",
-          caption: "",
-          note: ""
+          caption: "捉迷藏的视角",
+          note: "Shot with kodak h35, film is gold 200"
         },
         {
           src: "assets/images/Back_to_human/Hao_004.jpg",
-          caption: "",
-          note: ""
+          caption: "怀旧核",
+          note: "Shot with kodak daylight single use camera"
         },
         {
           src: "assets/images/Back_to_human/cover.jpeg",
@@ -108,8 +108,8 @@ window.SITE = {
     {
       id: "carnival",
 
-      titleZh: "嘉年华",
-      title: "Carnival",
+      titleZh: "那一天",
+      title: "Ce jour-là",
 
       meta: "",
 
@@ -140,7 +140,7 @@ window.SITE = {
       id: "moments-of-summer",
 
       titleZh: "夏天还没过去，我已经开始怀念它了",
-      title: "Moments of Summer",
+      title: "Moments of Summer 2026",
 
       meta: "",
 
