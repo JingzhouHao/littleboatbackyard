@@ -490,7 +490,7 @@ window.SITE = {
             "",
 
           note:
-            ""
+            "Shot with Kodak h35, film is gold 200"
         },
 
 
@@ -502,10 +502,10 @@ window.SITE = {
             "assets/images/Moments_of_summer/000020140072.jpg",
 
           caption:
-            "",
+            "so good......so good!!",
 
           note:
-            ""
+            "Shot with Kodak h35, film is gold 200"
         },
 
 
@@ -517,10 +517,10 @@ window.SITE = {
             "assets/images/Moments_of_summer/000024.jpg",
 
           caption:
-            "",
+            "Street art at Golden Hour",
 
           note:
-            ""
+            "Shot with Kodak Funsaver"
         },
 
 
@@ -532,10 +532,10 @@ window.SITE = {
             "assets/images/Moments_of_summer/Hao024-1.jpg",
 
           caption:
-            "",
+            "无尽夏",
 
           note:
-            ""
+            "Shot with Kodak Daylight single use camera"
         },
 
 
@@ -547,10 +547,10 @@ window.SITE = {
             "assets/images/Moments_of_summer/Hao_009.jpg",
 
           caption:
-            "",
+            "水光潋滟",
 
           note:
-            ""
+            "Shot with Kodak Daylight single use camera"
         }
 
       ]
