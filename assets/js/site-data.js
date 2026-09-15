@@ -599,7 +599,7 @@ window.SITE = {
         "秘境车站",
 
       title:
-        "Secret Train Station",
+        "Hikyō station",
 
       meta:
         "",
