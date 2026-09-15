@@ -365,7 +365,7 @@ window.SITE = {
     {
 
       id:
-        "carnival",
+        "Ce jour-là",
 
       titleZh:
         "那一天",
@@ -390,7 +390,7 @@ window.SITE = {
           "",
 
         zh:
-          ""
+          "《Ce jour-là》是法国摄影师Willy Ronis的摄影集，中文译名叫《那一天》。这本书集和Ronis人文摄影的佳作，他的照片捕捉了了生活中的人情味和俏皮，透露出一种伏尔泰式的对世俗生活的热爱。他说过，“如果我等待的话，一切都将消失无踪”。摄影的灵魂在于定格某个瞬间，从而让我们永远记住那一天，和每一天都不一样。"
       },
 
 
@@ -415,10 +415,10 @@ window.SITE = {
             "assets/images/Carnival/000018.jpg",
 
           caption:
-            "",
+            "街头集市上的陶艺摊子，本来想偷拍结果被摊主发现了。心虚的我有点想跑掉，但是她说我可以随便拍。她笑地真美，她看着真健康",
 
           note:
-            ""
+            "Shot with Pentax espio 928, Film is ektar100"
         },
 
 
@@ -430,10 +430,10 @@ window.SITE = {
             "assets/images/Carnival/000407460027-2.jpg",
 
           caption:
-            "",
+            "Newbury st上演奏的音乐家，他们那么年轻，看起来是Berklee的学生",
 
           note:
-            ""
+            "Shot with Kodak Funsaver"
         }
 
       ]
