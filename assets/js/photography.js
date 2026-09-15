@@ -3,16 +3,36 @@
   const site =
     window.SITE;
 
-  if (!site) return;
+
+  if (!site) {
+    return;
+  }
 
 
-  function titles(
-    collection
-  ) {
+
+  /* =========================================================
+     COLLECTION TITLES
+     ========================================================= */
+
+  function titles(collection) {
 
     const lang =
-      window.getLang();
+      typeof window.getLang === "function"
+        ? window.getLang()
+        : "en";
 
+
+    /*
+      Chinese mode:
+
+      Ce jour-là        small
+      那一天             large
+
+      English mode:
+
+      那一天             small
+      Ce jour-là        large
+    */
 
     if (lang === "zh") {
 
@@ -20,7 +40,8 @@
 
         primary:
           collection.titleZh ||
-          collection.title,
+          collection.title ||
+          "",
 
         secondary:
           collection.title ||
@@ -33,7 +54,8 @@
 
       primary:
         collection.title ||
-        collection.titleZh,
+        collection.titleZh ||
+        "",
 
       secondary:
         collection.titleZh ||
@@ -42,60 +64,75 @@
   }
 
 
+
+  /* =========================================================
+     RENDER PAGE
+     ========================================================= */
+
   function render() {
 
     const lang =
-      window.getLang();
+      typeof window.getLang === "function"
+        ? window.getLang()
+        : "en";
+
+
+    const siteTitle =
+      typeof window.siteTitle === "function"
+        ? window.siteTitle()
+        : "Little Boat's Backyard";
+
+
+    const pageTitle =
+      typeof window.uiText === "function"
+        ? window.uiText("photography")
+        : "Photography";
 
 
     document.title =
-      `${window.uiText("photography")} — ` +
-      `${window.siteTitle()}`;
+      `${pageTitle} — ${siteTitle}`;
 
 
-    document.getElementById(
-      "photo-brand"
-    ).textContent =
-      window.siteTitle();
 
+    /* ---------------------------------------------------------
+       Brand
+       --------------------------------------------------------- */
 
-    document.querySelector(
-      ".page-hero--photography .kicker"
-    ).textContent =
-      window.siteTitle();
-
-
-    document.querySelector(
-      ".page-hero--photography h1"
-    ).textContent =
-      window.uiText(
-        "photography"
+    const brand =
+      document.getElementById(
+        "photo-brand"
       );
 
 
-    document.querySelector(
-      ".collections-heading .kicker"
-    ).textContent =
-      window.uiText(
-        "collections"
+    if (brand) {
+
+      brand.textContent =
+        siteTitle;
+    }
+
+
+
+    /* ---------------------------------------------------------
+       Hero title
+       --------------------------------------------------------- */
+
+    const heroTitle =
+      document.querySelector(
+        ".page-hero--photography h1"
       );
 
 
-    document.getElementById(
-      "collections-heading"
-    ).textContent =
-      window.localized(
-        site.photography?.heading
-      );
+    if (heroTitle) {
+
+      heroTitle.textContent =
+        pageTitle;
+    }
 
 
-    document.getElementById(
-      "photography-intro"
-    ).textContent =
-      window.localized(
-        site.photography?.intro
-      );
 
+    /* ---------------------------------------------------------
+       Hero image
+       --------------------------------------------------------- */
 
     const cover =
       document.getElementById(
@@ -103,17 +140,25 @@
       );
 
 
-    cover.src =
-      site.photography?.cover ||
-      site.homeCoverDesktop ||
-      "assets/images/cover.jpeg";
+    if (cover) {
+
+      cover.src =
+        site.photography?.cover ||
+        site.homeCoverDesktop ||
+        "assets/images/cover.jpeg";
 
 
-    cover.style.objectPosition =
-      site.photography
-        ?.coverPosition ||
-      "50% 50%";
+      cover.style.objectPosition =
+        site.photography
+          ?.coverPosition ||
+        "50% 50%";
+    }
 
+
+
+    /* =========================================================
+       COLLECTION GRID
+       ========================================================= */
 
     const grid =
       document.getElementById(
@@ -121,13 +166,14 @@
       );
 
 
-    /*
-      Important when changing
-      languages:
-      clear cards and rebuild.
-    */
+    if (!grid) {
+      return;
+    }
 
-    grid.innerHTML = "";
+
+    grid.innerHTML =
+      "";
+
 
 
     (
@@ -158,6 +204,11 @@
         );
 
 
+
+        /* -----------------------------------------------------
+           Image
+           ----------------------------------------------------- */
+
         const imageWrap =
           document.createElement(
             "div"
@@ -184,19 +235,34 @@
             : "lazy";
 
 
+        img.decoding =
+          "async";
+
+
         img.style.objectPosition =
-          collection
-            .coverPosition ||
+          collection.coverPosition ||
           "50% 50%";
 
 
         const t =
-          titles(collection);
+          titles(
+            collection
+          );
 
 
         img.alt =
           `${t.primary} collection cover`;
 
+
+        imageWrap.appendChild(
+          img
+        );
+
+
+
+        /* -----------------------------------------------------
+           Titles
+           ----------------------------------------------------- */
 
         const copy =
           document.createElement(
@@ -208,21 +274,21 @@
           "collection-card-copy";
 
 
-        /*
-          Current language:
-          large title.
-
-          Other language:
-          smaller title above.
-        */
-
         copy.innerHTML = `
 
-          <div
-            class="collection-secondary-title"
-          >
-            ${window.escapeHTML(t.secondary)}
-          </div>
+          ${
+            t.secondary
+
+              ? `
+                <div
+                  class="collection-secondary-title"
+                >
+                  ${window.escapeHTML(t.secondary)}
+                </div>
+              `
+
+              : ""
+          }
 
           <h3>
             ${window.escapeHTML(t.primary)}
@@ -230,10 +296,6 @@
 
         `;
 
-
-        imageWrap.appendChild(
-          img
-        );
 
 
         card.append(
@@ -249,6 +311,11 @@
     );
 
 
+
+    /* ---------------------------------------------------------
+       Language class
+       --------------------------------------------------------- */
+
     document.body
       .classList.toggle(
         "lang-zh",
@@ -256,18 +323,39 @@
       );
 
 
-    window.renderFooter(
-      "photo-social-links",
-      "photo-copyright"
-    );
+
+    /* ---------------------------------------------------------
+       Footer
+       --------------------------------------------------------- */
+
+    if (
+      typeof window.renderFooter ===
+      "function"
+    ) {
+
+      window.renderFooter(
+        "photo-social-links",
+        "photo-copyright"
+      );
+    }
   }
 
+
+
+  /* =========================================================
+     LANGUAGE SWITCH
+     ========================================================= */
 
   window.addEventListener(
     "languagechange",
     render
   );
 
+
+
+  /* =========================================================
+     START
+     ========================================================= */
 
   render();
 
