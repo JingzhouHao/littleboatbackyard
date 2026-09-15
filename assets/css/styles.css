@@ -2080,3 +2080,165 @@ h3 {
 .bio-hero .kicker {
   display: none;
 }
+/* =========================================================
+   PHOTOGRAPHY + BIO
+   unified post-hero layout
+   ========================================================= */
+
+
+/*
+  Desktop / tablet hero width follows
+  the same content width as the top navigation.
+
+  This prevents the hero from being
+  wider than the line above it.
+*/
+
+@media (min-width: 681px) {
+
+  .page-hero--photography,
+  .bio-hero {
+
+    width:
+      min(
+        var(--content),
+        calc(100% - 48px)
+      );
+  }
+
+}
+
+
+
+/* =========================================================
+   PHOTOGRAPHY
+   ========================================================= */
+
+
+/*
+  No headline / intro section.
+
+  The horizontal rule directly separates
+  the hero from the collection grid.
+*/
+
+.collections-wrap--minimal {
+
+  width:
+    min(
+      var(--content),
+      calc(100% - 48px)
+    );
+
+  margin:
+    64px auto 0;
+
+  padding:
+    56px 0 124px;
+
+  border-top:
+    1px solid
+    var(--line);
+}
+
+
+
+/*
+  The old duplicated site-title kicker
+  inside the hero should never appear.
+*/
+
+.page-hero--photography
+.kicker {
+
+  display: none;
+}
+
+
+
+/* =========================================================
+   BIO
+   ========================================================= */
+
+
+/*
+  Make Bio start exactly like Photography:
+
+      hero
+      spacing
+      horizontal rule
+      content
+*/
+
+.bio-intro-section {
+
+  width:
+    min(
+      var(--content),
+      calc(100% - 48px)
+    );
+
+  margin:
+    64px auto 0;
+
+  padding:
+    56px 0 106px;
+
+  border-top:
+    1px solid
+    var(--line);
+}
+
+
+
+/*
+  Same rule:
+  don't repeat the website name
+  inside the hero.
+*/
+
+.bio-hero
+.kicker {
+
+  display: none;
+}
+
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 680px) {
+
+
+  /*
+    Keep the existing mobile hero behavior.
+  */
+
+  .collections-wrap--minimal {
+
+    width:
+      calc(100% - 30px);
+
+    margin:
+      44px auto 0;
+
+    padding:
+      42px 0 84px;
+  }
+
+
+  .bio-intro-section {
+
+    width:
+      calc(100% - 30px);
+
+    margin:
+      44px auto 0;
+
+    padding:
+      42px 0 76px;
+  }
+
+}
