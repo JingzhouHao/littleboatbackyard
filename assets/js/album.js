@@ -1,18 +1,200 @@
 (() => {
+
   const site = window.SITE;
 
-  if (!site || !Array.isArray(site.collections)) {
-    console.error("SITE data or collections are missing.");
+
+  if (
+    !site ||
+    !Array.isArray(site.collections)
+  ) {
+
+    console.error(
+      "SITE data or collections are missing."
+    );
+
     return;
   }
 
 
+
   /* =========================================================
-     BASIC HELPERS
+     HELPERS
      ========================================================= */
 
-  const get = (id) => document.getElementById(id);
+  const get = (id) =>
+    document.getElementById(id);
 
+
+
+  function currentLanguage() {
+
+    if (
+      typeof window.getLang === "function"
+    ) {
+
+      return window.getLang();
+    }
+
+
+    return (
+      site.defaultLang === "zh"
+        ? "zh"
+        : "en"
+    );
+  }
+
+
+
+  function localizedNonEmpty(value) {
+
+    /*
+      This version intentionally treats
+      an empty translation as missing.
+
+      Example:
+
+      intro: {
+        en: "",
+        zh: "中文介绍"
+      }
+
+      Even if the page happens to be in
+      English mode, the Chinese intro is
+      still shown instead of disappearing.
+    */
+
+
+    if (value == null) {
+
+      return "";
+    }
+
+
+    if (
+      typeof value === "string"
+    ) {
+
+      return value.trim()
+        ? value
+        : "";
+    }
+
+
+    const lang =
+      currentLanguage();
+
+
+    const preferred =
+      value[lang];
+
+
+    if (
+      typeof preferred === "string" &&
+      preferred.trim()
+    ) {
+
+      return preferred;
+    }
+
+
+    /*
+      Try English next.
+    */
+
+    if (
+      typeof value.en === "string" &&
+      value.en.trim()
+    ) {
+
+      return value.en;
+    }
+
+
+    /*
+      Then Chinese.
+    */
+
+    if (
+      typeof value.zh === "string" &&
+      value.zh.trim()
+    ) {
+
+      return value.zh;
+    }
+
+
+    return "";
+  }
+
+
+
+  function safeSiteTitle() {
+
+    if (
+      typeof window.siteTitle === "function"
+    ) {
+
+      return window.siteTitle();
+    }
+
+
+    return (
+      localizedNonEmpty(
+        site.siteTitle
+      )
+      ||
+      "Little Boat's Backyard"
+    );
+  }
+
+
+
+  function uiText(
+    key,
+    fallback
+  ) {
+
+    if (
+      typeof window.uiText === "function"
+    ) {
+
+      return window.uiText(key);
+    }
+
+
+    return fallback;
+  }
+
+
+
+  function escapeHTML(value) {
+
+    if (
+      typeof window.escapeHTML === "function"
+    ) {
+
+      return window.escapeHTML(
+        value
+      );
+    }
+
+
+    const div =
+      document.createElement("div");
+
+
+    div.textContent =
+      value ?? "";
+
+
+    return div.innerHTML;
+  }
+
+
+
+  /* =========================================================
+     FIND CURRENT COLLECTION
+     ========================================================= */
 
   const params =
     new URLSearchParams(
@@ -29,43 +211,60 @@
       (item) =>
         item.id === requestedId
     )
+
     ||
+
     site.collections[0];
 
 
   if (!collection) {
-    console.error("No collection found.");
+
+    console.error(
+      "No collection was found."
+    );
+
     return;
   }
 
 
+
   /* =========================================================
-     NORMALIZE PHOTO DATA
+     NORMALIZE PHOTOS
      ========================================================= */
 
   const photos =
     (collection.photos || []).map(
       (photo) => {
 
+
         if (
           typeof photo === "string"
         ) {
 
           return {
+
             src: photo,
+
             caption: "",
+
             note: "",
+
             alt: ""
           };
         }
 
 
         return {
-          src: photo.src || "",
+
+          src:
+            photo.src || "",
+
           caption:
             photo.caption || "",
+
           note:
             photo.note || "",
+
           alt:
             photo.alt || ""
         };
@@ -73,162 +272,38 @@
     );
 
 
-  /*
-    Keep track of genuinely broken
-    image paths.
 
-    A broken path is skipped in the
-    lightbox, but valid photos are
-    never hidden.
+  /*
+    Only actual failed image URLs
+    enter this Set.
+
+    Nothing is hidden merely because
+    it hasn't loaded yet.
   */
 
   const failedPhotoIndices =
     new Set();
 
 
-  let currentIndex = 0;
-
-
 
   /* =========================================================
-     SAFE SHARED FUNCTIONS
-     ========================================================= */
-
-  function safeLocalized(value) {
-
-    if (
-      typeof window.localized ===
-      "function"
-    ) {
-
-      return window.localized(
-        value
-      );
-    }
-
-
-    if (
-      typeof value === "string"
-    ) {
-
-      return value;
-    }
-
-
-    if (
-      value &&
-      typeof value === "object"
-    ) {
-
-      return (
-        value.en ||
-        value.zh ||
-        ""
-      );
-    }
-
-
-    return "";
-  }
-
-
-
-  function safeSiteTitle() {
-
-    if (
-      typeof window.siteTitle ===
-      "function"
-    ) {
-
-      return window.siteTitle();
-    }
-
-
-    return (
-      safeLocalized(
-        site.siteTitle
-      )
-      ||
-      "Little Boat's Backyard"
-    );
-  }
-
-
-
-  function safeUIText(
-    key,
-    fallback
-  ) {
-
-    if (
-      typeof window.uiText ===
-      "function"
-    ) {
-
-      return window.uiText(
-        key
-      );
-    }
-
-
-    return fallback;
-  }
-
-
-
-  function safeEscapeHTML(value) {
-
-    if (
-      typeof window.escapeHTML ===
-      "function"
-    ) {
-
-      return window.escapeHTML(
-        value
-      );
-    }
-
-
-    const div =
-      document.createElement(
-        "div"
-      );
-
-
-    div.textContent =
-      value ?? "";
-
-
-    return div.innerHTML;
-  }
-
-
-
-  function currentLanguage() {
-
-    if (
-      typeof window.getLang ===
-      "function"
-    ) {
-
-      return window.getLang();
-    }
-
-
-    return (
-      site.defaultLang === "zh"
-        ? "zh"
-        : "en"
-    );
-  }
-
-
-
-  /* =========================================================
-     BILINGUAL COLLECTION TITLES
+     BILINGUAL TITLES
      ========================================================= */
 
   function collectionTitles() {
+
+    /*
+      Chinese mode:
+
+      Back to Human      <- secondary
+      回到人类            <- primary
+
+      English mode:
+
+      回到人类            <- secondary
+      Back to Human      <- primary
+    */
+
 
     if (
       currentLanguage() === "zh"
@@ -240,6 +315,7 @@
           collection.titleZh ||
           collection.title ||
           "",
+
 
         secondary:
           collection.title ||
@@ -255,11 +331,32 @@
         collection.titleZh ||
         "",
 
+
       secondary:
         collection.titleZh ||
         ""
     };
   }
+
+
+
+  /* =========================================================
+     LIGHTBOX REFERENCES
+     ========================================================= */
+
+  const lightbox =
+    get("lightbox");
+
+
+  const lightboxImage =
+    get("lightbox-image");
+
+
+  const lightboxCaption =
+    get("lightbox-caption");
+
+
+  let currentIndex = 0;
 
 
 
@@ -273,13 +370,19 @@
       collectionTitles();
 
 
+
+    /* ---------------------------------------------------------
+       Browser title
+       --------------------------------------------------------- */
+
     document.title =
       `${titles.primary} — ${safeSiteTitle()}`;
 
 
-    /*
-      Header brand
-    */
+
+    /* ---------------------------------------------------------
+       Header brand
+       --------------------------------------------------------- */
 
     const brand =
       get("album-brand");
@@ -293,12 +396,16 @@
 
 
 
-    /*
-      Main collection title
-    */
+    /* ---------------------------------------------------------
+       Collection titles
+       --------------------------------------------------------- */
 
     const albumTitle =
       get("album-title");
+
+
+    const albumMeta =
+      get("album-meta");
 
 
     if (albumTitle) {
@@ -306,15 +413,6 @@
       albumTitle.textContent =
         titles.primary;
     }
-
-
-
-    /*
-      Secondary language title
-    */
-
-    const albumMeta =
-      get("album-meta");
 
 
     if (albumMeta) {
@@ -329,9 +427,9 @@
 
 
 
-    /* =====================================================
-       COLLECTION COVER
-       ===================================================== */
+    /* ---------------------------------------------------------
+       Cover
+       --------------------------------------------------------- */
 
     const cover =
       get("album-cover");
@@ -340,8 +438,7 @@
     if (cover) {
 
       cover.src =
-        collection.cover ||
-        "";
+        collection.cover || "";
 
 
       cover.alt =
@@ -359,9 +456,9 @@
 
 
 
-    /* =====================================================
-       INTRO
-       ===================================================== */
+    /* ---------------------------------------------------------
+       INTRO ONLY
+       --------------------------------------------------------- */
 
     const intro =
       get("album-intro");
@@ -370,7 +467,7 @@
     if (intro) {
 
       intro.textContent =
-        safeLocalized(
+        localizedNonEmpty(
           collection.intro
         );
 
@@ -381,31 +478,9 @@
 
 
 
-    /* =====================================================
-       REFLECTION
-       ===================================================== */
-
-    const reflection =
-      get("album-reflection");
-
-
-    if (reflection) {
-
-      reflection.textContent =
-        safeLocalized(
-          collection.reflection
-        );
-
-
-      reflection.hidden =
-        !reflection.textContent.trim();
-    }
-
-
-
-    /* =====================================================
-       BACK LINK
-       ===================================================== */
+    /* ---------------------------------------------------------
+       Back link
+       --------------------------------------------------------- */
 
     const backLink =
       document.querySelector(
@@ -416,7 +491,7 @@
     if (backLink) {
 
       backLink.textContent =
-        safeUIText(
+        uiText(
           "allCollections",
           "← All collections"
         );
@@ -424,38 +499,17 @@
 
 
 
-    /* =====================================================
-       ABOUT COLLECTION LABEL
-       ===================================================== */
-
-    const introKicker =
-      document.querySelector(
-        ".album-intro-copy .kicker"
-      );
-
-
-    if (introKicker) {
-
-      introKicker.textContent =
-        safeUIText(
-          "aboutCollection",
-          "About this collection"
-        );
-    }
-
-
-
-    /* =====================================================
-       PHOTOS
-       ===================================================== */
+    /* ---------------------------------------------------------
+       Photos
+       --------------------------------------------------------- */
 
     renderPhotos();
 
 
 
-    /* =====================================================
-       FOOTER
-       ===================================================== */
+    /* ---------------------------------------------------------
+       Footer
+       --------------------------------------------------------- */
 
     if (
       typeof window.renderFooter ===
@@ -472,7 +526,13 @@
 
 
   /* =========================================================
-     RENDER EVERY PHOTO
+     RENDER ALL PHOTOS
+
+     IMPORTANT:
+
+     No hidden state.
+     No lazy-loading dependency.
+     No "first two only" behavior.
      ========================================================= */
 
   function renderPhotos() {
@@ -492,7 +552,8 @@
 
 
     /*
-      Rebuild the collection cleanly.
+      Language switching rebuilds
+      the photo text cleanly.
     */
 
     stories.innerHTML = "";
@@ -506,11 +567,6 @@
       (photo, index) => {
 
 
-        /*
-          Missing src:
-          genuinely invalid entry.
-        */
-
         if (!photo.src) {
 
           failedPhotoIndices.add(
@@ -523,42 +579,34 @@
 
 
         const caption =
-          safeLocalized(
-            photo.caption || ""
+          localizedNonEmpty(
+            photo.caption
           );
 
 
         const note =
-          safeLocalized(
-            photo.note || ""
+          localizedNonEmpty(
+            photo.note
           );
 
 
 
-        /* =================================================
+        /* -----------------------------------------------------
            ARTICLE
-           ================================================= */
+
+           Default to landscape initially.
+
+           If the image loads and is
+           portrait, we swap the class.
+
+           The article itself is NEVER hidden.
+           ----------------------------------------------------- */
 
         const article =
           document.createElement(
             "article"
           );
 
-
-        /*
-          IMPORTANT:
-
-          The article is NEVER hidden.
-
-          We give it a landscape layout
-          initially, then switch it to
-          portrait after the image loads
-          if necessary.
-
-          Therefore no browser can get
-          stuck waiting for a hidden
-          lazy-loaded element.
-        */
 
         article.className =
           "photo-story photo-story--landscape";
@@ -581,9 +629,9 @@
 
 
 
-        /* =================================================
+        /* -----------------------------------------------------
            FIGURE
-           ================================================= */
+           ----------------------------------------------------- */
 
         const figure =
           document.createElement(
@@ -596,9 +644,9 @@
 
 
 
-        /* =================================================
-           IMAGE BUTTON
-           ================================================= */
+        /* -----------------------------------------------------
+           BUTTON
+           ----------------------------------------------------- */
 
         const button =
           document.createElement(
@@ -621,9 +669,9 @@
 
 
 
-        /* =================================================
+        /* -----------------------------------------------------
            IMAGE
-           ================================================= */
+           ----------------------------------------------------- */
 
         const img =
           document.createElement(
@@ -632,13 +680,15 @@
 
 
         /*
-          THIS IS THE MAIN BUG FIX.
+          Critical bug fix:
 
-          Do NOT lazy-load photo 3 onward.
+          ALL photographs are loaded.
 
-          Every photo is explicitly
-          requested on desktop, tablet
-          and mobile.
+          We do not use browser lazy-loading
+          for the collection body because
+          different desktop/mobile browsers
+          handled the previous hidden/lazy
+          combination differently.
         */
 
         img.loading =
@@ -646,9 +696,8 @@
 
 
         /*
-          Decode asynchronously so loading
-          all images doesn't block layout
-          more than necessary.
+          Browser may decode asynchronously,
+          which keeps the page responsive.
         */
 
         img.decoding =
@@ -657,32 +706,37 @@
 
 
         img.alt =
-          safeLocalized(
-            photo.alt || ""
+
+          localizedNonEmpty(
+            photo.alt
           )
+
           ||
+
           caption
+
           ||
+
           `${collectionTitles().primary} photograph ${index + 1}`;
 
 
 
-        /* =================================================
-           DETECT LANDSCAPE / PORTRAIT
-           ================================================= */
+        /* -----------------------------------------------------
+           ORIENTATION DETECTION
+           ----------------------------------------------------- */
 
         img.addEventListener(
           "load",
+
           () => {
 
             const isPortrait =
+
               img.naturalHeight >
+
               img.naturalWidth;
 
 
-            /*
-              Remove provisional class.
-            */
 
             article.classList.remove(
               "photo-story--portrait",
@@ -690,9 +744,6 @@
             );
 
 
-            /*
-              Add real orientation.
-            */
 
             article.classList.add(
 
@@ -712,20 +763,20 @@
 
 
 
-        /* =================================================
-           BROKEN IMAGE
-           ================================================= */
+        /* -----------------------------------------------------
+           REAL IMAGE ERROR
+
+           Only a genuinely invalid path
+           removes a photo.
+
+           Failure of one photo does not
+           affect later photographs.
+           ----------------------------------------------------- */
 
         img.addEventListener(
           "error",
+
           () => {
-
-            /*
-              Only remove this entry if
-              the actual URL failed.
-
-              Valid photos are unaffected.
-            */
 
             failedPhotoIndices.add(
               index
@@ -736,7 +787,8 @@
 
 
             console.warn(
-              `Could not load photograph: ${photo.src}`
+              "Could not load photograph:",
+              photo.src
             );
 
           },
@@ -749,7 +801,8 @@
 
 
         /*
-          Set src AFTER event handlers.
+          Event handlers are registered
+          BEFORE setting src.
         */
 
         img.src =
@@ -765,6 +818,7 @@
 
         button.addEventListener(
           "click",
+
           () => {
 
             openLightbox(
@@ -786,9 +840,18 @@
 
 
 
-        /* =================================================
-           CAPTION / SHORT COMMENT
-           ================================================= */
+        /* -----------------------------------------------------
+           PHOTO COMMENT
+
+           Landscape:
+           displayed below photo by CSS.
+
+           Portrait desktop:
+           displayed right of photo by CSS.
+
+           Portrait mobile:
+           displayed below photo by CSS.
+           ----------------------------------------------------- */
 
         if (
           caption ||
@@ -812,7 +875,7 @@
 
                 ? `
                   <p class="photo-caption">
-                    ${safeEscapeHTML(caption)}
+                    ${escapeHTML(caption)}
                   </p>
                 `
 
@@ -825,7 +888,7 @@
 
                 ? `
                   <p class="photo-tech">
-                    ${safeEscapeHTML(note)}
+                    ${escapeHTML(note)}
                   </p>
                 `
 
@@ -843,10 +906,11 @@
 
 
         /*
-          Add immediately.
+          Append immediately.
 
-          We DO NOT wait for img.load
-          before adding it to the page.
+          We do NOT wait for the image
+          load event before putting the
+          photograph into the document.
         */
 
         stories.appendChild(
@@ -860,21 +924,8 @@
 
 
   /* =========================================================
-     LIGHTBOX
+     VALID LIGHTBOX PHOTOS
      ========================================================= */
-
-  const lightbox =
-    get("lightbox");
-
-
-  const lightboxImage =
-    get("lightbox-image");
-
-
-  const lightboxCaption =
-    get("lightbox-caption");
-
-
 
   function validPhotoIndices() {
 
@@ -887,10 +938,13 @@
 
       .filter(
         (index) =>
+
           !failedPhotoIndices.has(
             index
           )
+
           &&
+
           Boolean(
             photos[index]?.src
           )
@@ -898,6 +952,10 @@
   }
 
 
+
+  /* =========================================================
+     OPEN LIGHTBOX
+     ========================================================= */
 
   function openLightbox(index) {
 
@@ -935,9 +993,14 @@
 
 
 
+  /* =========================================================
+     CLOSE LIGHTBOX
+     ========================================================= */
+
   function closeLightbox() {
 
     if (!lightbox) {
+
       return;
     }
 
@@ -960,6 +1023,10 @@
 
 
 
+  /* =========================================================
+     NEXT / PREVIOUS
+     ========================================================= */
+
   function move(step) {
 
     const valid =
@@ -967,6 +1034,7 @@
 
 
     if (!valid.length) {
+
       return;
     }
 
@@ -1004,6 +1072,10 @@
 
 
 
+  /* =========================================================
+     LIGHTBOX CONTENT
+     ========================================================= */
+
   function renderLightbox() {
 
     const photo =
@@ -1020,30 +1092,39 @@
     }
 
 
+
     const caption =
-      safeLocalized(
-        photo.caption || ""
+      localizedNonEmpty(
+        photo.caption
       );
 
 
     const note =
-      safeLocalized(
-        photo.note || ""
+      localizedNonEmpty(
+        photo.note
       );
+
 
 
     lightboxImage.src =
       photo.src;
 
 
+
     lightboxImage.alt =
-      safeLocalized(
-        photo.alt || ""
+
+      localizedNonEmpty(
+        photo.alt
       )
+
       ||
+
       caption
+
       ||
+
       `${collectionTitles().primary} photograph ${currentIndex + 1}`;
+
 
 
     lightboxCaption.textContent =
@@ -1061,40 +1142,35 @@
 
 
   /* =========================================================
-     LIGHTBOX CONTROLS
+     LIGHTBOX EVENTS
      ========================================================= */
 
-  get(
-    "lightbox-close"
-  )
-  ?.addEventListener(
-    "click",
-    closeLightbox
-  );
+  get("lightbox-close")
+    ?.addEventListener(
+      "click",
+      closeLightbox
+    );
 
 
-  get(
-    "lightbox-prev"
-  )
-  ?.addEventListener(
-    "click",
-    () => move(-1)
-  );
+  get("lightbox-prev")
+    ?.addEventListener(
+      "click",
+      () => move(-1)
+    );
 
 
-  get(
-    "lightbox-next"
-  )
-  ?.addEventListener(
-    "click",
-    () => move(1)
-  );
+  get("lightbox-next")
+    ?.addEventListener(
+      "click",
+      () => move(1)
+    );
 
 
 
   lightbox
     ?.addEventListener(
       "click",
+
       (event) => {
 
         if (
@@ -1111,6 +1187,7 @@
 
   document.addEventListener(
     "keydown",
+
     (event) => {
 
       if (
@@ -1133,6 +1210,7 @@
         closeLightbox();
       }
 
+
       else if (
         event.key ===
         "ArrowLeft"
@@ -1140,6 +1218,7 @@
 
         move(-1);
       }
+
 
       else if (
         event.key ===
@@ -1159,9 +1238,17 @@
 
   window.addEventListener(
     "languagechange",
+
     () => {
 
       closeLightbox();
+
+
+      /*
+        Rebuild both intro and photo
+        text in the newly selected
+        language.
+      */
 
       renderPage();
     }
