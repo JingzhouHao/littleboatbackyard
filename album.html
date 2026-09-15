@@ -1,61 +1,274 @@
 <!doctype html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Photography collection." />
-  <meta name="theme-color" content="#f3efe5" />
-  <title>Collection — Little Boat's Backyard</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
+  <meta
+    name="description"
+    content="Photography collection."
+  />
+
+  <meta
+    name="theme-color"
+    content="#f3efe5"
+  />
+
+  <title>
+    Collection — Little Boat's Backyard
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="assets/css/styles.css"
+  />
+
 </head>
+
+
 <body class="inner-page album-page">
+
+
+  <!-- =====================================================
+       TOP NAVIGATION
+       ===================================================== -->
+
   <header class="topbar">
-    <a class="brand" href="index.html" id="album-brand">Little Boat's Backyard</a>
-    <nav class="topnav" aria-label="Site navigation">
-      <a class="is-current" href="photography.html">Photography</a>
-      <a href="bio.html">Bio</a>
+
+    <a
+      class="brand"
+      href="index.html"
+      id="album-brand"
+    >
+      Little Boat's Backyard
+    </a>
+
+
+    <nav
+      class="topnav"
+      aria-label="Site navigation"
+    >
+
+      <a
+        class="is-current"
+        href="photography.html"
+      >
+        Photography
+      </a>
+
+      <a href="bio.html">
+        Bio
+      </a>
+
     </nav>
+
   </header>
 
+
+
+  <!-- =====================================================
+       MAIN CONTENT
+       ===================================================== -->
+
   <main id="album-root">
+
+
+    <!-- ===================================================
+         COLLECTION HERO
+         =================================================== -->
+
     <section class="page-hero album-hero">
-      <img id="album-cover" src="assets/images/cover.jpeg" alt="Collection cover" />
-      <div class="page-hero-shade" aria-hidden="true"></div>
+
+      <img
+        id="album-cover"
+        src="assets/images/cover.jpeg"
+        alt="Collection cover"
+      />
+
+
+      <div
+        class="page-hero-shade"
+        aria-hidden="true"
+      ></div>
+
+
       <div class="page-hero-title">
-        <p class="kicker" id="album-meta"></p>
-        <h1 id="album-title">Collection</h1>
+
+        <!--
+          Secondary-language title.
+
+          EN mode:
+          回到人类
+          Back to Human
+
+          中文 mode:
+          Back to Human
+          回到人类
+        -->
+
+        <p
+          class="kicker"
+          id="album-meta"
+        ></p>
+
+
+        <h1 id="album-title">
+          Collection
+        </h1>
+
       </div>
+
     </section>
+
+
+
+    <!-- ===================================================
+         INTRO
+
+         Reflection and
+         "About this collection"
+         have been removed completely.
+         =================================================== -->
 
     <section class="album-intro-section">
-      <a class="back-link" href="photography.html">← All collections</a>
+
+      <a
+        class="back-link"
+        href="photography.html"
+      >
+        ← All collections
+      </a>
+
+
       <div class="album-intro-copy">
-        <p class="kicker">About this collection</p>
-        <p id="album-intro" class="album-intro"></p>
-        <p id="album-reflection" class="album-reflection"></p>
+
+        <p
+          id="album-intro"
+          class="album-intro"
+        ></p>
+
       </div>
+
     </section>
 
-    <section class="photo-stories" id="photo-stories" aria-label="Collection photographs"></section>
+
+
+    <!-- ===================================================
+         PHOTOGRAPHS
+         =================================================== -->
+
+    <section
+      class="photo-stories"
+      id="photo-stories"
+      aria-label="Collection photographs"
+    ></section>
+
+
   </main>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Close photo viewer">×</button>
-    <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous photo">‹</button>
+
+
+  <!-- =====================================================
+       LIGHTBOX
+       ===================================================== -->
+
+  <div
+    class="lightbox"
+    id="lightbox"
+    aria-hidden="true"
+    role="dialog"
+    aria-label="Photo viewer"
+  >
+
+
+    <button
+      class="lightbox-close"
+      id="lightbox-close"
+      aria-label="Close photo viewer"
+      type="button"
+    >
+      ×
+    </button>
+
+
+    <button
+      class="lightbox-prev"
+      id="lightbox-prev"
+      aria-label="Previous photo"
+      type="button"
+    >
+      ‹
+    </button>
+
+
     <figure>
-      <img id="lightbox-image" alt="Enlarged photograph" />
-      <figcaption id="lightbox-caption"></figcaption>
+
+      <img
+        id="lightbox-image"
+        alt="Enlarged photograph"
+      />
+
+      <figcaption
+        id="lightbox-caption"
+      ></figcaption>
+
     </figure>
-    <button class="lightbox-next" id="lightbox-next" aria-label="Next photo">›</button>
+
+
+    <button
+      class="lightbox-next"
+      id="lightbox-next"
+      aria-label="Next photo"
+      type="button"
+    >
+      ›
+    </button>
+
+
   </div>
 
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
   <footer class="site-footer site-footer--paper">
-    <div class="social-links" id="album-social-links" aria-label="Social links"></div>
-    <p class="copyright" id="album-copyright"></p>
+
+    <div
+      class="social-links"
+      id="album-social-links"
+      aria-label="Social links"
+    ></div>
+
+
+    <p
+      class="copyright"
+      id="album-copyright"
+    ></p>
+
   </footer>
 
+
+
+  <!-- =====================================================
+       SCRIPTS
+       ===================================================== -->
+
   <script src="assets/js/site-data.js"></script>
+
   <script src="assets/js/shared.js"></script>
+
   <script src="assets/js/album.js"></script>
+
+
 </body>
+
 </html>
