@@ -475,7 +475,7 @@ window.SITE = {
             "",
 
           note:
-            ""
+            "Shot with Kodak h35, film is gold 200"
         },
 
 
@@ -487,7 +487,7 @@ window.SITE = {
             "assets/images/Moments_of_summer/000020140055-1.jpg",
 
           caption:
-            "",
+            "so good......so good!!",
 
           note:
             "Shot with Kodak h35, film is gold 200"
