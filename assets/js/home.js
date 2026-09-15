@@ -1,142 +1,152 @@
 (() => {
+  const site = window.SITE;
 
-  const site =
-    window.SITE;
-
-  if (!site) return;
-
+  if (!site) {
+    console.error("SITE data is missing.");
+    return;
+  }
 
   /*
-    <= 1024 px uses the
-    phone/tablet cover.
+    Desktop uses the horizontal cover.
+    Tablet / phone uses the vertical cover.
   */
 
-  const media =
-    window.matchMedia(
-      "(max-width: 1024px)"
-    );
-
+  const media = window.matchMedia("(max-width: 1024px)");
 
   function setCover() {
+    const image = document.getElementById("home-image");
+    const backdrop = document.getElementById("home-backdrop");
 
-    const src =
-      media.matches
-
-        ? (
+    const src = media.matches
+      ? (
           site.homeCoverMobile ||
           site.homeCoverDesktop ||
           "assets/images/cover.jpeg"
         )
-
-        : (
+      : (
           site.homeCoverDesktop ||
           site.homeCoverMobile ||
           "assets/images/cover.jpeg"
         );
 
-
-    const image =
-      document.getElementById(
-        "home-image"
-      );
-
-    const backdrop =
-      document.getElementById(
-        "home-backdrop"
-      );
-
-
     if (image) {
       image.src = src;
-    }
 
+      image.alt =
+        typeof window.localized === "function"
+          ? window.localized(site.homeCoverAlt)
+          : "Website cover";
+    }
 
     if (backdrop) {
       backdrop.src = src;
     }
-
-
-    if (image) {
-
-      image.alt =
-        window.localized(
-          site.homeCoverAlt
-        ) ||
-        "Website cover";
-    }
   }
 
 
-  function render() {
-
+  function renderHome() {
     const title =
-      window.siteTitle();
+      typeof window.siteTitle === "function"
+        ? window.siteTitle()
+        : "Little Boat's Backyard";
+
+    document.title = title;
 
 
-    document.title =
-      title;
+    const titleElement =
+      document.getElementById("site-title");
 
-
-    document.getElementById(
-      "site-title"
-    ).textContent =
-      title;
-
-
-    document.getElementById(
-      "tagline"
-    ).textContent =
-      window.localized(
-        site.tagline
-      );
-
-
-    const links =
-      document.querySelectorAll(
-        ".home-nav a"
-      );
-
-
-    if (links[0]) {
-
-      links[0].textContent =
-        window.uiText(
-          "photography"
-        );
+    if (titleElement) {
+      titleElement.textContent = title;
     }
 
 
-    if (links[1]) {
+    const taglineElement =
+      document.getElementById("tagline");
 
-      links[1].textContent =
-        window.uiText(
-          "bio"
-        );
+    if (taglineElement) {
+      taglineElement.textContent =
+        typeof window.localized === "function"
+          ? window.localized(site.tagline)
+          : "";
+    }
+
+
+    /*
+      Home navigation:
+      Photography / Bio
+      or
+      摄影集 / 关于我
+    */
+
+    const photographyLink =
+      document.querySelector(
+        '.home-nav a[href="photography.html"]'
+      );
+
+    const bioLink =
+      document.querySelector(
+        '.home-nav a[href="bio.html"]'
+      );
+
+
+    if (photographyLink) {
+      photographyLink.textContent =
+        typeof window.uiText === "function"
+          ? window.uiText("photography")
+          : "Photography";
+    }
+
+
+    if (bioLink) {
+      bioLink.textContent =
+        typeof window.uiText === "function"
+          ? window.uiText("bio")
+          : "Bio";
     }
 
 
     setCover();
 
 
-    window.renderFooter(
-      "home-social-links",
-      "home-copyright"
+    if (
+      typeof window.renderFooter === "function"
+    ) {
+      window.renderFooter(
+        "home-social-links",
+        "home-copyright"
+      );
+    }
+  }
+
+
+  /*
+    Automatically switch cover
+    when resizing between desktop
+    and tablet/mobile.
+  */
+
+  if (typeof media.addEventListener === "function") {
+    media.addEventListener(
+      "change",
+      setCover
+    );
+  } else if (typeof media.addListener === "function") {
+    media.addListener(
+      setCover
     );
   }
 
 
-  media.addEventListener?.(
-    "change",
-    setCover
-  );
-
+  /*
+    Re-render when language changes.
+  */
 
   window.addEventListener(
     "languagechange",
-    render
+    renderHome
   );
 
 
-  render();
-
+  renderHome();
 })();
