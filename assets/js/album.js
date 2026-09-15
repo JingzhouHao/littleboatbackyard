@@ -293,8 +293,6 @@
           portrait vs landscape.
         */
 
-        article.hidden =
-          true;
 
 
         const figure =
