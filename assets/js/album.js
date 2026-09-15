@@ -1,24 +1,17 @@
 (() => {
+  const site = window.SITE;
 
-  const site =
-    window.SITE;
-
-
-  if (
-    !site ||
-    !Array.isArray(
-      site.collections
-    )
-  ) {
+  if (!site || !Array.isArray(site.collections)) {
+    console.error("SITE data or collections are missing.");
     return;
   }
 
 
-  const get =
-    id =>
-      document.getElementById(
-        id
-      );
+  /* =========================================================
+     BASIC HELPERS
+     ========================================================= */
+
+  const get = (id) => document.getElementById(id);
 
 
   const params =
@@ -32,70 +25,221 @@
 
 
   const collection =
-
     site.collections.find(
-      item =>
+      (item) =>
         item.id === requestedId
     )
-
     ||
-
     site.collections[0];
 
 
   if (!collection) {
+    console.error("No collection found.");
     return;
   }
 
 
+  /* =========================================================
+     NORMALIZE PHOTO DATA
+     ========================================================= */
+
   const photos =
-    (
-      collection.photos || []
-    ).map(photo =>
+    (collection.photos || []).map(
+      (photo) => {
 
-      typeof photo === "string"
+        if (
+          typeof photo === "string"
+        ) {
 
-        ? {
-          src: photo,
-          caption: "",
-          note: "",
-          alt: ""
+          return {
+            src: photo,
+            caption: "",
+            note: "",
+            alt: ""
+          };
         }
 
-        : photo
+
+        return {
+          src: photo.src || "",
+          caption:
+            photo.caption || "",
+          note:
+            photo.note || "",
+          alt:
+            photo.alt || ""
+        };
+      }
     );
 
 
-  const lightbox =
-    get("lightbox");
+  /*
+    Keep track of genuinely broken
+    image paths.
 
+    A broken path is skipped in the
+    lightbox, but valid photos are
+    never hidden.
+  */
 
-  const lightboxImage =
-    get("lightbox-image");
-
-
-  const lightboxCaption =
-    get("lightbox-caption");
+  const failedPhotoIndices =
+    new Set();
 
 
   let currentIndex = 0;
 
 
-  /* ======================================================
-     Bilingual collection title
-     ====================================================== */
+
+  /* =========================================================
+     SAFE SHARED FUNCTIONS
+     ========================================================= */
+
+  function safeLocalized(value) {
+
+    if (
+      typeof window.localized ===
+      "function"
+    ) {
+
+      return window.localized(
+        value
+      );
+    }
+
+
+    if (
+      typeof value === "string"
+    ) {
+
+      return value;
+    }
+
+
+    if (
+      value &&
+      typeof value === "object"
+    ) {
+
+      return (
+        value.en ||
+        value.zh ||
+        ""
+      );
+    }
+
+
+    return "";
+  }
+
+
+
+  function safeSiteTitle() {
+
+    if (
+      typeof window.siteTitle ===
+      "function"
+    ) {
+
+      return window.siteTitle();
+    }
+
+
+    return (
+      safeLocalized(
+        site.siteTitle
+      )
+      ||
+      "Little Boat's Backyard"
+    );
+  }
+
+
+
+  function safeUIText(
+    key,
+    fallback
+  ) {
+
+    if (
+      typeof window.uiText ===
+      "function"
+    ) {
+
+      return window.uiText(
+        key
+      );
+    }
+
+
+    return fallback;
+  }
+
+
+
+  function safeEscapeHTML(value) {
+
+    if (
+      typeof window.escapeHTML ===
+      "function"
+    ) {
+
+      return window.escapeHTML(
+        value
+      );
+    }
+
+
+    const div =
+      document.createElement(
+        "div"
+      );
+
+
+    div.textContent =
+      value ?? "";
+
+
+    return div.innerHTML;
+  }
+
+
+
+  function currentLanguage() {
+
+    if (
+      typeof window.getLang ===
+      "function"
+    ) {
+
+      return window.getLang();
+    }
+
+
+    return (
+      site.defaultLang === "zh"
+        ? "zh"
+        : "en"
+    );
+  }
+
+
+
+  /* =========================================================
+     BILINGUAL COLLECTION TITLES
+     ========================================================= */
 
   function collectionTitles() {
 
     if (
-      window.getLang() === "zh"
+      currentLanguage() === "zh"
     ) {
 
       return {
 
         primary:
           collection.titleZh ||
-          collection.title,
+          collection.title ||
+          "",
 
         secondary:
           collection.title ||
@@ -108,7 +252,8 @@
 
       primary:
         collection.title ||
-        collection.titleZh,
+        collection.titleZh ||
+        "",
 
       secondary:
         collection.titleZh ||
@@ -117,146 +262,218 @@
   }
 
 
-  function localizedPhotoText(
-    value
-  ) {
 
-    return window.localized(
-      value
-    );
-  }
-
-
-  /* ======================================================
-     Main render
-     ====================================================== */
+  /* =========================================================
+     PAGE
+     ========================================================= */
 
   function renderPage() {
 
-    const t =
+    const titles =
       collectionTitles();
 
 
     document.title =
-      `${t.primary} — ` +
-      `${window.siteTitle()}`;
-
-
-    get(
-      "album-brand"
-    ).textContent =
-      window.siteTitle();
+      `${titles.primary} — ${safeSiteTitle()}`;
 
 
     /*
-      Other-language title:
-      small, above.
-
-      Current-language title:
-      large, below.
+      Header brand
     */
 
-    get(
-      "album-title"
-    ).textContent =
-      t.primary;
+    const brand =
+      get("album-brand");
 
 
-    get(
-      "album-meta"
-    ).textContent =
-      t.secondary;
+    if (brand) {
+
+      brand.textContent =
+        safeSiteTitle();
+    }
 
 
-    get(
-      "album-meta"
-    ).hidden =
-      !t.secondary;
+
+    /*
+      Main collection title
+    */
+
+    const albumTitle =
+      get("album-title");
 
 
-    /* Cover */
+    if (albumTitle) {
+
+      albumTitle.textContent =
+        titles.primary;
+    }
+
+
+
+    /*
+      Secondary language title
+    */
+
+    const albumMeta =
+      get("album-meta");
+
+
+    if (albumMeta) {
+
+      albumMeta.textContent =
+        titles.secondary;
+
+
+      albumMeta.hidden =
+        !titles.secondary;
+    }
+
+
+
+    /* =====================================================
+       COLLECTION COVER
+       ===================================================== */
 
     const cover =
       get("album-cover");
 
 
-    cover.src =
-      collection.cover;
+    if (cover) {
+
+      cover.src =
+        collection.cover ||
+        "";
 
 
-    cover.alt =
-      `${t.primary} collection cover`;
+      cover.alt =
+        titles.primary
+
+          ? `${titles.primary} collection cover`
+
+          : "Collection cover";
 
 
-    cover.style.objectPosition =
-      collection
-        .coverPosition ||
-      "50% 50%";
+      cover.style.objectPosition =
+        collection.coverPosition ||
+        "50% 50%";
+    }
 
 
-    /* Intro */
+
+    /* =====================================================
+       INTRO
+       ===================================================== */
 
     const intro =
       get("album-intro");
 
 
+    if (intro) {
+
+      intro.textContent =
+        safeLocalized(
+          collection.intro
+        );
+
+
+      intro.hidden =
+        !intro.textContent.trim();
+    }
+
+
+
+    /* =====================================================
+       REFLECTION
+       ===================================================== */
+
     const reflection =
       get("album-reflection");
 
 
-    intro.textContent =
-      window.localized(
-        collection.intro
+    if (reflection) {
+
+      reflection.textContent =
+        safeLocalized(
+          collection.reflection
+        );
+
+
+      reflection.hidden =
+        !reflection.textContent.trim();
+    }
+
+
+
+    /* =====================================================
+       BACK LINK
+       ===================================================== */
+
+    const backLink =
+      document.querySelector(
+        ".back-link"
       );
 
 
-    reflection.textContent =
-      window.localized(
-        collection.reflection
+    if (backLink) {
+
+      backLink.textContent =
+        safeUIText(
+          "allCollections",
+          "← All collections"
+        );
+    }
+
+
+
+    /* =====================================================
+       ABOUT COLLECTION LABEL
+       ===================================================== */
+
+    const introKicker =
+      document.querySelector(
+        ".album-intro-copy .kicker"
       );
 
 
-    intro.hidden =
-      !intro
-        .textContent
-        .trim();
+    if (introKicker) {
+
+      introKicker.textContent =
+        safeUIText(
+          "aboutCollection",
+          "About this collection"
+        );
+    }
 
 
-    reflection.hidden =
-      !reflection
-        .textContent
-        .trim();
 
-
-    document.querySelector(
-      ".back-link"
-    ).textContent =
-      window.uiText(
-        "allCollections"
-      );
-
-
-    document.querySelector(
-      ".album-intro-copy .kicker"
-    ).textContent =
-      window.uiText(
-        "aboutCollection"
-      );
-
+    /* =====================================================
+       PHOTOS
+       ===================================================== */
 
     renderPhotos();
 
 
-    window.renderFooter(
-      "album-social-links",
-      "album-copyright"
-    );
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    if (
+      typeof window.renderFooter ===
+      "function"
+    ) {
+
+      window.renderFooter(
+        "album-social-links",
+        "album-copyright"
+      );
+    }
   }
 
 
-  /* ======================================================
-     Photos
-     ====================================================== */
+
+  /* =========================================================
+     RENDER EVERY PHOTO
+     ========================================================= */
 
   function renderPhotos() {
 
@@ -264,12 +481,63 @@
       get("photo-stories");
 
 
-    stories.innerHTML =
-      "";
+    if (!stories) {
+
+      console.error(
+        'Element with id="photo-stories" was not found.'
+      );
+
+      return;
+    }
+
+
+    /*
+      Rebuild the collection cleanly.
+    */
+
+    stories.innerHTML = "";
+
+
+    failedPhotoIndices.clear();
+
 
 
     photos.forEach(
       (photo, index) => {
+
+
+        /*
+          Missing src:
+          genuinely invalid entry.
+        */
+
+        if (!photo.src) {
+
+          failedPhotoIndices.add(
+            index
+          );
+
+          return;
+        }
+
+
+
+        const caption =
+          safeLocalized(
+            photo.caption || ""
+          );
+
+
+        const note =
+          safeLocalized(
+            photo.note || ""
+          );
+
+
+
+        /* =================================================
+           ARTICLE
+           ================================================= */
 
         const article =
           document.createElement(
@@ -277,23 +545,45 @@
           );
 
 
+        /*
+          IMPORTANT:
+
+          The article is NEVER hidden.
+
+          We give it a landscape layout
+          initially, then switch it to
+          portrait after the image loads
+          if necessary.
+
+          Therefore no browser can get
+          stuck waiting for a hidden
+          lazy-loaded element.
+        */
+
         article.className =
-          "photo-story";
+          "photo-story photo-story--landscape";
 
 
         article.dataset.photoIndex =
           String(index);
 
 
-        /*
-          Wait for photo to load
-          before displaying it.
 
-          That lets us identify
-          portrait vs landscape.
-        */
+        if (
+          !caption &&
+          !note
+        ) {
+
+          article.classList.add(
+            "photo-story--no-note"
+          );
+        }
 
 
+
+        /* =================================================
+           FIGURE
+           ================================================= */
 
         const figure =
           document.createElement(
@@ -304,6 +594,11 @@
         figure.className =
           "photo-story-figure";
 
+
+
+        /* =================================================
+           IMAGE BUTTON
+           ================================================= */
 
         const button =
           document.createElement(
@@ -325,56 +620,79 @@
         );
 
 
+
+        /* =================================================
+           IMAGE
+           ================================================= */
+
         const img =
           document.createElement(
             "img"
           );
 
 
-        const caption =
-          localizedPhotoText(
-            photo.caption || ""
-          );
+        /*
+          THIS IS THE MAIN BUG FIX.
+
+          Do NOT lazy-load photo 3 onward.
+
+          Every photo is explicitly
+          requested on desktop, tablet
+          and mobile.
+        */
+
+        img.loading =
+          "eager";
 
 
-        const note =
-          localizedPhotoText(
-            photo.note || ""
-          );
+        /*
+          Decode asynchronously so loading
+          all images doesn't block layout
+          more than necessary.
+        */
+
+        img.decoding =
+          "async";
+
 
 
         img.alt =
-          localizedPhotoText(
+          safeLocalized(
             photo.alt || ""
           )
-
           ||
-
           caption
-
           ||
-
           `${collectionTitles().primary} photograph ${index + 1}`;
 
 
-        img.loading =
-          index < 2
-            ? "eager"
-            : "lazy";
 
-
-        /* Orientation detection */
+        /* =================================================
+           DETECT LANDSCAPE / PORTRAIT
+           ================================================= */
 
         img.addEventListener(
           "load",
           () => {
 
             const isPortrait =
-
               img.naturalHeight >
-
               img.naturalWidth;
 
+
+            /*
+              Remove provisional class.
+            */
+
+            article.classList.remove(
+              "photo-story--portrait",
+              "photo-story--landscape"
+            );
+
+
+            /*
+              Add real orientation.
+            */
 
             article.classList.add(
 
@@ -385,20 +703,6 @@
                 : "photo-story--landscape"
             );
 
-
-            if (
-              !caption &&
-              !note
-            ) {
-
-              article.classList.add(
-                "photo-story--no-note"
-              );
-            }
-
-
-            article.hidden =
-              false;
           },
 
           {
@@ -407,18 +711,34 @@
         );
 
 
-        /*
-          Wrong path:
-          remove the broken item.
 
-          No broken-image icon.
-        */
+        /* =================================================
+           BROKEN IMAGE
+           ================================================= */
 
         img.addEventListener(
           "error",
           () => {
 
+            /*
+              Only remove this entry if
+              the actual URL failed.
+
+              Valid photos are unaffected.
+            */
+
+            failedPhotoIndices.add(
+              index
+            );
+
+
             article.remove();
+
+
+            console.warn(
+              `Could not load photograph: ${photo.src}`
+            );
+
           },
 
           {
@@ -427,8 +747,14 @@
         );
 
 
+
+        /*
+          Set src AFTER event handlers.
+        */
+
         img.src =
           photo.src;
+
 
 
         button.appendChild(
@@ -436,13 +762,17 @@
         );
 
 
+
         button.addEventListener(
           "click",
-          () =>
+          () => {
+
             openLightbox(
               index
-            )
+            );
+          }
         );
+
 
 
         figure.appendChild(
@@ -455,19 +785,10 @@
         );
 
 
-        /*
-          Caption + film/camera note
-          live in ONE comment block.
 
-          Landscape:
-          block sits underneath.
-
-          Portrait desktop:
-          block sits to the right.
-
-          Portrait mobile:
-          block returns underneath.
-        */
+        /* =================================================
+           CAPTION / SHORT COMMENT
+           ================================================= */
 
         if (
           caption ||
@@ -491,7 +812,7 @@
 
                 ? `
                   <p class="photo-caption">
-                    ${window.escapeHTML(caption)}
+                    ${safeEscapeHTML(caption)}
                   </p>
                 `
 
@@ -504,7 +825,7 @@
 
                 ? `
                   <p class="photo-tech">
-                    ${window.escapeHTML(note)}
+                    ${safeEscapeHTML(note)}
                   </p>
                 `
 
@@ -520,48 +841,74 @@
         }
 
 
+
+        /*
+          Add immediately.
+
+          We DO NOT wait for img.load
+          before adding it to the page.
+        */
+
         stories.appendChild(
           article
         );
+
       }
     );
   }
 
 
-  /* ======================================================
-     Lightbox
-     ====================================================== */
 
-  function availableIndices() {
+  /* =========================================================
+     LIGHTBOX
+     ========================================================= */
 
-    return Array.from(
+  const lightbox =
+    get("lightbox");
 
-      get(
-        "photo-stories"
-      )
-      .querySelectorAll(
-        ".photo-story:not([hidden])"
-      )
 
-    )
+  const lightboxImage =
+    get("lightbox-image");
+
+
+  const lightboxCaption =
+    get("lightbox-caption");
+
+
+
+  function validPhotoIndices() {
+
+    return photos
 
       .map(
-        el =>
-          Number(
-            el.dataset
-              .photoIndex
-          )
+        (_, index) =>
+          index
       )
 
       .filter(
-        Number.isFinite
+        (index) =>
+          !failedPhotoIndices.has(
+            index
+          )
+          &&
+          Boolean(
+            photos[index]?.src
+          )
       );
   }
 
 
-  function openLightbox(
-    index
-  ) {
+
+  function openLightbox(index) {
+
+    if (
+      !lightbox ||
+      failedPhotoIndices.has(index)
+    ) {
+
+      return;
+    }
+
 
     currentIndex =
       index;
@@ -570,95 +917,91 @@
     renderLightbox();
 
 
-    lightbox
-      ?.classList
-      .add(
-        "is-open"
-      );
+    lightbox.classList.add(
+      "is-open"
+    );
 
 
-    lightbox
-      ?.setAttribute(
-        "aria-hidden",
-        "false"
-      );
+    lightbox.setAttribute(
+      "aria-hidden",
+      "false"
+    );
 
 
-    document.body
-      .classList
-      .add(
-        "no-scroll"
-      );
+    document.body.classList.add(
+      "no-scroll"
+    );
   }
+
 
 
   function closeLightbox() {
 
-    lightbox
-      ?.classList
-      .remove(
-        "is-open"
-      );
+    if (!lightbox) {
+      return;
+    }
 
 
-    lightbox
-      ?.setAttribute(
-        "aria-hidden",
-        "true"
-      );
+    lightbox.classList.remove(
+      "is-open"
+    );
 
 
-    document.body
-      .classList
-      .remove(
-        "no-scroll"
-      );
+    lightbox.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+    document.body.classList.remove(
+      "no-scroll"
+    );
   }
+
 
 
   function move(step) {
 
-    const available =
-      availableIndices();
+    const valid =
+      validPhotoIndices();
 
 
-    if (
-      !available.length
-    ) {
+    if (!valid.length) {
       return;
     }
 
 
     let position =
-      available.indexOf(
+      valid.indexOf(
         currentIndex
       );
 
 
     if (
-      position < 0
+      position === -1
     ) {
+
       position = 0;
     }
 
 
+    position =
+      (
+        position +
+        step +
+        valid.length
+      )
+      %
+      valid.length;
+
+
     currentIndex =
-
-      available[
-        (
-          position +
-          step +
-          available.length
-        )
-
-        %
-
-        available.length
-      ];
+      valid[position];
 
 
     renderLightbox();
   }
+
 
 
   function renderLightbox() {
@@ -672,18 +1015,19 @@
       !lightboxImage ||
       !lightboxCaption
     ) {
+
       return;
     }
 
 
     const caption =
-      localizedPhotoText(
+      safeLocalized(
         photo.caption || ""
       );
 
 
     const note =
-      localizedPhotoText(
+      safeLocalized(
         photo.note || ""
       );
 
@@ -693,17 +1037,12 @@
 
 
     lightboxImage.alt =
-
-      localizedPhotoText(
+      safeLocalized(
         photo.alt || ""
       )
-
       ||
-
       caption
-
       ||
-
       `${collectionTitles().primary} photograph ${currentIndex + 1}`;
 
 
@@ -720,6 +1059,11 @@
   }
 
 
+
+  /* =========================================================
+     LIGHTBOX CONTROLS
+     ========================================================= */
+
   get(
     "lightbox-close"
   )
@@ -734,8 +1078,7 @@
   )
   ?.addEventListener(
     "click",
-    () =>
-      move(-1)
+    () => move(-1)
   );
 
 
@@ -744,15 +1087,15 @@
   )
   ?.addEventListener(
     "click",
-    () =>
-      move(1)
+    () => move(1)
   );
+
 
 
   lightbox
     ?.addEventListener(
       "click",
-      event => {
+      (event) => {
 
         if (
           event.target ===
@@ -765,9 +1108,10 @@
     );
 
 
+
   document.addEventListener(
     "keydown",
-    event => {
+    (event) => {
 
       if (
         !lightbox
@@ -776,6 +1120,7 @@
             "is-open"
           )
       ) {
+
         return;
       }
 
@@ -788,8 +1133,7 @@
         closeLightbox();
       }
 
-
-      if (
+      else if (
         event.key ===
         "ArrowLeft"
       ) {
@@ -797,8 +1141,7 @@
         move(-1);
       }
 
-
-      if (
+      else if (
         event.key ===
         "ArrowRight"
       ) {
@@ -809,10 +1152,10 @@
   );
 
 
-  /*
-    Language switch can happen
-    without reloading the page.
-  */
+
+  /* =========================================================
+     LANGUAGE SWITCH
+     ========================================================= */
 
   window.addEventListener(
     "languagechange",
@@ -824,6 +1167,11 @@
     }
   );
 
+
+
+  /* =========================================================
+     START
+     ========================================================= */
 
   renderPage();
 
