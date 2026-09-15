@@ -397,10 +397,10 @@ window.SITE = {
             "assets/images/Carnival/000018.jpg",
 
           caption:
-            "街头集市上的陶艺摊子，本来想偷拍结果被摊主发现了。心虚的我有点想跑掉，但是她说我可以随便拍。她笑地真美，她看着真健康",
+            "Newbury st上演奏的音乐家，他们那么年轻，看起来是Berklee音乐学院的学生",
 
           note:
-            "Shot with Pentax espio 928, Film is ektar100"
+            "Shot with Kodak Funsaver"
         },
 
 
@@ -412,10 +412,10 @@ window.SITE = {
             "assets/images/Carnival/000407460027-2.jpg",
 
           caption:
-            "Newbury st上演奏的音乐家，他们那么年轻，看起来是Berklee的学生",
+            "街头集市上的陶艺摊子，本来想偷拍结果被摊主发现了。心虚的我有点想跑掉，但是她说我可以随便拍。她笑地真美，她看着真健康",
 
           note:
-            "Shot with Kodak Funsaver"
+            "Shot with Pentax espio 928, Film is ektar100"
         }
 
       ]
@@ -607,10 +607,10 @@ window.SITE = {
             "assets/images/secret_train_station/000407460024-1.jpg",
 
           caption:
-            "",
+            "暑假绿线停运，停靠在露天铁轨上的车厢",
 
           note:
-            ""
+            "Shot with Pentax espio 928, Film is ektar100"
         },
 
 
@@ -622,10 +622,10 @@ window.SITE = {
             "assets/images/secret_train_station/000407470024-1.jpg",
 
           caption:
-            "",
+            "蓝线经过这个站的时候隔着玻璃拍了一张，看着很有工业时代的废墟的感觉",
 
           note:
-            ""
+            "Shot with Pentax espio 928, Film is Ultramax400"
         }
 
       ]
