@@ -887,22 +887,37 @@ h3 {
 
 
 .back-link {
-  align-self:
-    start;
+  align-self: start;
 
-  color:
-    var(--muted);
+  display: inline-block;
 
-  font-size:
-    0.82rem;
+  width: fit-content;
+
+  color: var(--ink);
+
+  font-size: 0.92rem;
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  padding-bottom: 5px;
+
+  border-bottom:
+    1px solid
+    rgba(20, 42, 43, 0.45);
+
+  transition:
+    opacity 180ms ease,
+    border-color 180ms ease;
 }
 
 
 .back-link:hover {
-  color:
+  opacity: 0.6;
+
+  border-color:
     var(--ink);
 }
-
 
 .album-intro,
 .album-reflection {
