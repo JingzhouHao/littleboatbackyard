@@ -419,7 +419,7 @@ button {
 
   width:
     min(
-      1400px,
+      var(--content),
       calc(100% - 48px)
     );
 
@@ -2059,4 +2059,9 @@ h3 {
     font-size:
       2.4rem;
   }
+}
+/* Photography / Bio hero 不重复显示网站名字 */
+.page-hero--photography .kicker,
+.bio-hero .kicker {
+  display: none;
 }
