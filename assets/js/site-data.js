@@ -220,15 +220,6 @@ window.SITE = {
       },
 
 
-      reflection: {
-
-        en:
-          "",
-
-        zh:
-          ""
-      },
-
 
       photos: [
 
@@ -394,16 +385,7 @@ window.SITE = {
       },
 
 
-      reflection: {
-
-        en:
-          "",
-
-        zh:
-          ""
-      },
-
-
+     
       photos: [
 
 
@@ -478,16 +460,7 @@ window.SITE = {
       },
 
 
-      reflection: {
-
-        en:
-          "",
-
-        zh:
-          ""
-      },
-
-
+      
       photos: [
 
 
@@ -622,16 +595,7 @@ window.SITE = {
       },
 
 
-      reflection: {
-
-        en:
-          "",
-
-        zh:
-          ""
-      },
-
-
+     
       photos: [
 
 
