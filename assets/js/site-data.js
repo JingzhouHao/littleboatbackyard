@@ -19,8 +19,8 @@ window.SITE = {
   ownerName: "Jingzhou Hao",
 
   tagline: {
-    en: "A personal archive of photographs, walks, and things I wanted to keep.",
-    zh: "一个关于照片、散步，以及那些我想留下来的事物的私人档案。"
+    en: "I know that if I wait, it will be lost, gone.",
+    zh: "如果我等待的话，一切都将消失无踪。"
   },
 
 
@@ -127,7 +127,7 @@ window.SITE = {
 
       zh: [
 
-        "在这里写一段简短的自我介绍：你是谁、你拍摄什么，以及你希望这个网站把什么东西放在一起。",
+        "一个业余摄影爱好者，搞蓝调的，不务正业的研究人员。努力试图用理性的眼光看到人类的一面，不完美但是真实的一面。",
 
         "第二段是可选的。你可以在这里多写一点关于摄影、工作，或任何你希望访客了解的事情。"
       ]
@@ -499,21 +499,6 @@ window.SITE = {
         {
 
           src:
-            "assets/images/Moments_of_summer/000020140072.jpg",
-
-          caption:
-            "so good......so good!!",
-
-          note:
-            "Shot with Kodak h35, film is gold 200"
-        },
-
-
-        /* 04 */
-
-        {
-
-          src:
             "assets/images/Moments_of_summer/000024.jpg",
 
           caption:
@@ -524,7 +509,7 @@ window.SITE = {
         },
 
 
-        /* 05 */
+        /* 04 */
 
         {
 
@@ -539,7 +524,7 @@ window.SITE = {
         },
 
 
-        /* 06 */
+        /* 05 */
 
         {
 
