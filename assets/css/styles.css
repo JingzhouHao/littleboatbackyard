@@ -2438,3 +2438,318 @@ body.lang-zh
 #site-title {
   text-shadow: none;
 }
+/* =========================================================
+   FINAL BRAND / BIO SIZE OVERRIDES
+   ========================================================= */
+
+
+/* =========================================================
+   LARGE HANDWRITTEN TITLE — HOME
+   ========================================================= */
+
+#site-title::before {
+
+  width:
+    min(
+      82vw,
+      900px
+    );
+}
+
+
+/*
+  Chinese handwriting is naturally
+  a little more compact.
+*/
+
+body.lang-zh
+#site-title::before {
+
+  width:
+    min(
+      72vw,
+      780px
+    );
+}
+
+
+
+/* =========================================================
+   HANDWRITTEN HEADER BRAND
+   ========================================================= */
+
+.brand::before {
+
+  width:
+    235px;
+}
+
+
+body.lang-zh
+.brand::before {
+
+  width:
+    210px;
+}
+
+
+
+/* =========================================================
+   BIO — ALIGN TEXT WITH TOP OF PORTRAIT
+   ========================================================= */
+
+.bio-intro-section {
+
+  align-items:
+    start;
+}
+
+
+/*
+  Previously the whole copy block was
+  vertically centered beside the portrait.
+
+  Now it begins at the same top line
+  as the photograph.
+*/
+
+.bio-copy {
+
+  padding-top: 0;
+
+  align-self:
+    start;
+}
+
+
+
+/* =========================================================
+   BILINGUAL BIO NAME
+   ========================================================= */
+
+#bio-name {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items:
+    baseline;
+
+  column-gap:
+    0.24em;
+
+  row-gap:
+    0.08em;
+
+  margin-top: 0;
+}
+
+
+.bio-name-primary {
+
+  font: inherit;
+}
+
+
+.bio-name-secondary {
+
+  font-size:
+    0.48em;
+
+  font-weight:
+    400;
+
+  color:
+    var(--muted);
+
+  white-space:
+    nowrap;
+}
+
+
+
+/* =========================================================
+   BIO TEXT
+   ========================================================= */
+
+.bio-text {
+
+  margin-top:
+    28px;
+}
+
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media
+(max-width: 1024px)
+and
+(min-width: 681px) {
+
+
+  /*
+    Still noticeably larger than before.
+  */
+
+  .brand::before {
+
+    width:
+      205px;
+  }
+
+
+  body.lang-zh
+  .brand::before {
+
+    width:
+      188px;
+  }
+
+
+  #site-title::before {
+
+    width:
+      min(
+        82vw,
+        760px
+      );
+  }
+
+
+  body.lang-zh
+  #site-title::before {
+
+    width:
+      min(
+        74vw,
+        680px
+      );
+  }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media
+(max-width: 680px) {
+
+
+  /*
+    Homepage handwritten title.
+
+    This is deliberately much larger
+    than the previous version.
+  */
+
+  #site-title::before {
+
+    width:
+      min(
+        91vw,
+        500px
+      );
+  }
+
+
+  body.lang-zh
+  #site-title::before {
+
+    width:
+      min(
+        86vw,
+        455px
+      );
+  }
+
+
+
+  /*
+    Top-left handwritten brand.
+
+    Large enough to read, but still
+    leaves room for Photography/Bio/EN.
+  */
+
+  .brand::before {
+
+    width:
+      158px;
+  }
+
+
+  body.lang-zh
+  .brand::before {
+
+    width:
+      148px;
+  }
+
+
+
+  /*
+    Give navigation a little less gap
+    so the larger logo still fits.
+  */
+
+  .topnav {
+
+    gap:
+      11px;
+
+    flex-shrink: 0;
+  }
+
+
+
+  /*
+    Bio remains a vertical layout
+    on phones, but remove excessive
+    blank space before the name.
+  */
+
+  .bio-intro-section {
+
+    gap:
+      32px;
+  }
+
+
+  .bio-copy {
+
+    padding-top: 0;
+  }
+
+
+  #bio-name {
+
+    font-size:
+      clamp(
+        2.25rem,
+        10vw,
+        3.4rem
+      );
+  }
+
+
+  .bio-name-secondary {
+
+    font-size:
+      0.43em;
+  }
+
+
+  .bio-text {
+
+    margin-top:
+      24px;
+  }
+
+}
