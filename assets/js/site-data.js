@@ -17,6 +17,7 @@ window.SITE = {
   },
 
   ownerName: "Jingzhou Hao",
+  ownerNameZh: "郝泾舟",
 
   tagline: {
     en: "I know that if I wait, it will be lost, gone.",
