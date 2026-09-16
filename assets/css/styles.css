@@ -2753,3 +2753,372 @@ and
   }
 
 }
+/* =========================================================
+   FINAL TYPOGRAPHY + LOGO OVERRIDES
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   Cormorant Garamond
+   --------------------------------------------------------- */
+
+@import url(
+  'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap'
+);
+
+
+/* =========================================================
+   NAVIGATION FONT ONLY
+   ========================================================= */
+
+/*
+  English:
+  Cormorant Garamond
+
+  Chinese:
+  PingFang SC
+
+  This affects:
+  - Photography
+  - Bio
+  - 摄影集
+  - 关于我
+  - EN / 中文
+  - homepage navigation
+
+  It does NOT affect collection names,
+  captions, intro text or bio body text.
+*/
+
+
+html[lang="en"] .topnav,
+html[lang="en"] .home-nav,
+html[lang="en"] .lang-toggle {
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-weight: 500;
+}
+
+
+html[lang="zh-CN"] .topnav,
+html[lang="zh-CN"] .home-nav,
+html[lang="zh-CN"] .lang-toggle {
+
+  font-family:
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    sans-serif;
+
+  font-weight: 400;
+}
+
+
+
+/* =========================================================
+   PHOTOGRAPHY / BIO HERO TITLES ONLY
+   ========================================================= */
+
+/*
+  Important:
+  We target Photography and Bio specifically.
+
+  Album titles such as
+  Back to Human / 回到人类
+  remain completely untouched.
+*/
+
+
+html[lang="en"]
+.page-hero--photography
+.page-hero-title h1,
+
+html[lang="en"]
+.bio-hero
+.page-hero-title h1 {
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-weight: 500;
+}
+
+
+html[lang="zh-CN"]
+.page-hero--photography
+.page-hero-title h1,
+
+html[lang="zh-CN"]
+.bio-hero
+.page-hero-title h1 {
+
+  font-family:
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    sans-serif;
+
+  font-weight: 400;
+}
+
+
+
+/* =========================================================
+   HOMEPAGE TAGLINE ONLY
+   ========================================================= */
+
+
+/* English */
+
+html[lang="en"] .tagline {
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-style: italic;
+
+  font-weight: 400;
+
+  letter-spacing:
+    0.015em;
+}
+
+
+/* Chinese */
+
+html[lang="zh-CN"] .tagline {
+
+  font-family:
+    "Kaiti SC",
+    "STKaiti",
+    "KaiTi",
+    serif;
+
+  font-style: normal;
+
+  font-weight: 400;
+
+  letter-spacing:
+    0.035em;
+}
+
+
+
+/* =========================================================
+   LARGER HANDWRITTEN LOGO — HOMEPAGE
+   ========================================================= */
+
+#site-title::before {
+
+  width:
+    min(
+      88vw,
+      1000px
+    );
+}
+
+
+body.lang-zh
+#site-title::before {
+
+  width:
+    min(
+      78vw,
+      860px
+    );
+}
+
+
+
+/* =========================================================
+   LARGER HANDWRITTEN LOGO — TOP LEFT HEADER
+   ========================================================= */
+
+
+/*
+  Desktop
+*/
+
+.brand::before {
+
+  width:
+    300px;
+}
+
+
+body.lang-zh
+.brand::before {
+
+  width:
+    270px;
+}
+
+
+/*
+  Give the larger logo enough vertical room.
+*/
+
+.topbar {
+
+  min-height:
+    88px;
+}
+
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media
+(max-width: 1024px)
+and
+(min-width: 681px) {
+
+
+  .brand::before {
+
+    width:
+      250px;
+  }
+
+
+  body.lang-zh
+  .brand::before {
+
+    width:
+      225px;
+  }
+
+
+  #site-title::before {
+
+    width:
+      min(
+        88vw,
+        800px
+      );
+  }
+
+
+  body.lang-zh
+  #site-title::before {
+
+    width:
+      min(
+        80vw,
+        710px
+      );
+  }
+
+
+  .topnav {
+
+    gap:
+      20px;
+  }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media
+(max-width: 680px) {
+
+
+  /*
+    Homepage logo
+  */
+
+  #site-title::before {
+
+    width:
+      min(
+        94vw,
+        540px
+      );
+  }
+
+
+  body.lang-zh
+  #site-title::before {
+
+    width:
+      min(
+        89vw,
+        485px
+      );
+  }
+
+
+
+  /*
+    Top-left logo:
+    noticeably larger than before,
+    but still leaves room for navigation.
+  */
+
+  .brand::before {
+
+    width:
+      182px;
+  }
+
+
+  body.lang-zh
+  .brand::before {
+
+    width:
+      170px;
+  }
+
+
+
+  .topbar {
+
+    width:
+      calc(100% - 22px);
+
+    min-height:
+      74px;
+
+    gap:
+      8px;
+  }
+
+
+
+  /*
+    Smaller spacing is needed because
+    the logo itself is now much larger.
+  */
+
+  .topnav {
+
+    gap:
+      9px;
+
+    font-size:
+      0.76rem;
+  }
+
+
+  .topnav .lang-toggle {
+
+    margin-left:
+      0;
+  }
+
+}
