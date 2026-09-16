@@ -156,10 +156,10 @@ window.SITE = {
   social: {
 
     instagram:
-      "",
+      "https://www.instagram.com/jingzhou_hao/",
 
     linkedin:
-      ""
+      "https://www.linkedin.com/in/jingzhou-hao-2b9927434/"
   },
 
 
