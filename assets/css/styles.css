@@ -1,6 +1,5 @@
-@import url(
-  'https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap'
-);
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css');
 
 :root {
   --ink: #142a2b;
@@ -2246,40 +2245,26 @@ h3 {
   }
 
 }
+
 /* =========================================================
-   HANDWRITTEN SITE TITLE
+   CONSOLIDATED FINAL OVERRIDES
+   Typography, handwritten branding, responsive behavior,
+   and social icons.
    ========================================================= */
 
-/*
-  Default = English logo
-*/
+/* =========================================================
+   HANDWRITTEN SITE LOGO
+   ========================================================= */
 
 body {
-  --site-logo:
-    url("../images/branding/title-en.png");
-
-  --site-logo-ratio:
-    1446 / 299;
+  --site-logo: url("../images/branding/title-en.png");
+  --site-logo-ratio: 1446 / 299;
 }
-
-
-/*
-  Chinese mode
-*/
 
 body.lang-zh {
-  --site-logo:
-    url("../images/branding/title-zh.png");
-
-  --site-logo-ratio:
-    1300 / 242;
+  --site-logo: url("../images/branding/title-zh.png");
+  --site-logo-ratio: 1300 / 242;
 }
-
-
-/* =========================================================
-   HIDE THE NORMAL TYPE,
-   KEEP THE REAL TEXT FOR ACCESSIBILITY
-   ========================================================= */
 
 #site-title,
 .brand {
@@ -2287,887 +2272,253 @@ body.lang-zh {
   line-height: 0;
 }
 
-
-/* =========================================================
-   COMMON HANDWRITTEN MARK
-   ========================================================= */
-
 #site-title::before,
 .brand::before {
   content: "";
-
   display: block;
-
-  aspect-ratio:
-    var(--site-logo-ratio);
-
-  background:
-    currentColor;
-
-  -webkit-mask-image:
-    var(--site-logo);
-
-  mask-image:
-    var(--site-logo);
-
-  -webkit-mask-repeat:
-    no-repeat;
-
-  mask-repeat:
-    no-repeat;
-
-  -webkit-mask-position:
-    center;
-
-  mask-position:
-    center;
-
-  -webkit-mask-size:
-    contain;
-
-  mask-size:
-    contain;
+  aspect-ratio: var(--site-logo-ratio);
+  background: currentColor;
+  -webkit-mask-image: var(--site-logo);
+  mask-image: var(--site-logo);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
-
-/* =========================================================
-   HOME PAGE LARGE TITLE
-   ========================================================= */
-
+/* Homepage logo */
 #site-title {
   display: flex;
-
   justify-content: center;
-
-  color:
-    var(--cream);
-
   width: 100%;
+  color: var(--cream);
+  text-shadow: none;
+  overflow: visible;
 }
-
-
-/*
-  English handwriting is fairly long,
-  so give it a generous width.
-*/
 
 #site-title::before {
-  width:
-    min(
-      72vw,
-      720px
-    );
+  width: min(88vw, 1000px);
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
-
-/*
-  Chinese handwriting can sit slightly smaller.
-*/
-
-body.lang-zh
-#site-title::before {
-  width:
-    min(
-      62vw,
-      620px
-    );
+body.lang-zh #site-title::before {
+  width: min(79vw, 880px);
 }
 
-
-/* =========================================================
-   TOP-LEFT SITE BRAND
-   ========================================================= */
-
+/* Header logo */
 .brand {
   display: inline-flex;
-
   align-items: center;
-
-  color:
-    var(--ink);
-
   flex-shrink: 0;
+  color: var(--ink);
 }
 
-
-.brand::before {
-  width: 175px;
+/* English logo aligns with the left edge of the top rule. */
+body:not(.lang-zh) .brand {
+  margin-left: 0;
 }
 
-
-/* Chinese version can be a little narrower */
-
-body.lang-zh
-.brand::before {
-  width: 165px;
+body:not(.lang-zh) .brand::before {
+  width: 360px;
+  -webkit-mask-position: left center;
+  mask-position: left center;
 }
 
+/* Chinese placement was already visually balanced. */
+body.lang-zh .brand {
+  margin-left: -10px;
+}
+
+body.lang-zh .brand::before {
+  width: 315px;
+  -webkit-mask-position: left center;
+  mask-position: left center;
+}
+
+.topbar {
+  min-height: 88px;
+}
 
 /* =========================================================
-   MOBILE
+   NAVIGATION
+   Clearer than the earlier Cormorant navigation.
    ========================================================= */
-
-@media (max-width: 680px) {
-
-  #site-title::before {
-    width:
-      min(
-        86vw,
-        470px
-      );
-  }
-
-
-  body.lang-zh
-  #site-title::before {
-    width:
-      min(
-        78vw,
-        420px
-      );
-  }
-
-
-  .brand::before {
-    width: 132px;
-  }
-
-
-  body.lang-zh
-  .brand::before {
-    width: 124px;
-  }
-
-}
-#site-title {
-  text-shadow: none;
-}
-/* =========================================================
-   FINAL BRAND / BIO SIZE OVERRIDES
-   ========================================================= */
-
-
-/* =========================================================
-   LARGE HANDWRITTEN TITLE — HOME
-   ========================================================= */
-
-#site-title::before {
-
-  width:
-    min(
-      82vw,
-      900px
-    );
-}
-
-
-/*
-  Chinese handwriting is naturally
-  a little more compact.
-*/
-
-body.lang-zh
-#site-title::before {
-
-  width:
-    min(
-      72vw,
-      780px
-    );
-}
-
-
-
-/* =========================================================
-   HANDWRITTEN HEADER BRAND
-   ========================================================= */
-
-.brand::before {
-
-  width:
-    235px;
-}
-
-
-body.lang-zh
-.brand::before {
-
-  width:
-    210px;
-}
-
-
-
-/* =========================================================
-   BIO — ALIGN TEXT WITH TOP OF PORTRAIT
-   ========================================================= */
-
-.bio-intro-section {
-
-  align-items:
-    start;
-}
-
-
-/*
-  Previously the whole copy block was
-  vertically centered beside the portrait.
-
-  Now it begins at the same top line
-  as the photograph.
-*/
-
-.bio-copy {
-
-  padding-top: 0;
-
-  align-self:
-    start;
-}
-
-
-
-/* =========================================================
-   BILINGUAL BIO NAME
-   ========================================================= */
-
-#bio-name {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  align-items:
-    baseline;
-
-  column-gap:
-    0.24em;
-
-  row-gap:
-    0.08em;
-
-  margin-top: 0;
-}
-
-
-.bio-name-primary {
-
-  font: inherit;
-}
-
-
-.bio-name-secondary {
-
-  font-size:
-    0.48em;
-
-  font-weight:
-    400;
-
-  color:
-    var(--muted);
-
-  white-space:
-    nowrap;
-}
-
-
-
-/* =========================================================
-   BIO TEXT
-   ========================================================= */
-
-.bio-text {
-
-  margin-top:
-    28px;
-}
-
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media
-(max-width: 1024px)
-and
-(min-width: 681px) {
-
-
-  /*
-    Still noticeably larger than before.
-  */
-
-  .brand::before {
-
-    width:
-      205px;
-  }
-
-
-  body.lang-zh
-  .brand::before {
-
-    width:
-      188px;
-  }
-
-
-  #site-title::before {
-
-    width:
-      min(
-        82vw,
-        760px
-      );
-  }
-
-
-  body.lang-zh
-  #site-title::before {
-
-    width:
-      min(
-        74vw,
-        680px
-      );
-  }
-
-}
-
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media
-(max-width: 680px) {
-
-
-  /*
-    Homepage handwritten title.
-
-    This is deliberately much larger
-    than the previous version.
-  */
-
-  #site-title::before {
-
-    width:
-      min(
-        91vw,
-        500px
-      );
-  }
-
-
-  body.lang-zh
-  #site-title::before {
-
-    width:
-      min(
-        86vw,
-        455px
-      );
-  }
-
-
-
-  /*
-    Top-left handwritten brand.
-
-    Large enough to read, but still
-    leaves room for Photography/Bio/EN.
-  */
-
-  .brand::before {
-
-    width:
-      158px;
-  }
-
-
-  body.lang-zh
-  .brand::before {
-
-    width:
-      148px;
-  }
-
-
-
-  /*
-    Give navigation a little less gap
-    so the larger logo still fits.
-  */
-
-  .topnav {
-
-    gap:
-      11px;
-
-    flex-shrink: 0;
-  }
-
-
-
-  /*
-    Bio remains a vertical layout
-    on phones, but remove excessive
-    blank space before the name.
-  */
-
-  .bio-intro-section {
-
-    gap:
-      32px;
-  }
-
-
-  .bio-copy {
-
-    padding-top: 0;
-  }
-
-
-  #bio-name {
-
-    font-size:
-      clamp(
-        2.25rem,
-        10vw,
-        3.4rem
-      );
-  }
-
-
-  .bio-name-secondary {
-
-    font-size:
-      0.43em;
-  }
-
-
-  .bio-text {
-
-    margin-top:
-      24px;
-  }
-
-}
-/* =========================================================
-   FINAL TYPOGRAPHY + LOGO OVERRIDES
-   ========================================================= */
-
-
-/* =========================================================
-   NAVIGATION FONT ONLY
-   ========================================================= */
-
-/*
-  English:
-  Cormorant Garamond
-
-  Chinese:
-  PingFang SC
-
-  This affects:
-  - Photography
-  - Bio
-  - 摄影集
-  - 关于我
-  - EN / 中文
-  - homepage navigation
-
-  It does NOT affect collection names,
-  captions, intro text or bio body text.
-*/
-
 
 html[lang="en"] .topnav,
 html[lang="en"] .home-nav,
 html[lang="en"] .lang-toggle {
-
-  font-family:
-    "Cormorant Garamond",
-    Georgia,
-    serif;
-
-  font-weight: 500;
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
 }
-
 
 html[lang="zh-CN"] .topnav,
 html[lang="zh-CN"] .home-nav,
 html[lang="zh-CN"] .lang-toggle {
-
-  font-family:
-    "PingFang SC",
-    "Hiragino Sans GB",
-    "Microsoft YaHei",
-    sans-serif;
-
-  font-weight: 400;
-}
-
-
-
-/* =========================================================
-   PHOTOGRAPHY / BIO HERO TITLES ONLY
-   ========================================================= */
-
-/*
-  Important:
-  We target Photography and Bio specifically.
-
-  Album titles such as
-  Back to Human / 回到人类
-  remain completely untouched.
-*/
-
-
-html[lang="en"]
-.page-hero--photography
-.page-hero-title h1,
-
-html[lang="en"]
-.bio-hero
-.page-hero-title h1 {
-
-  font-family:
-    "Cormorant Garamond",
-    Georgia,
-    serif;
-
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   font-weight: 500;
 }
 
-
-html[lang="zh-CN"]
-.page-hero--photography
-.page-hero-title h1,
-
-html[lang="zh-CN"]
-.bio-hero
-.page-hero-title h1 {
-
-  font-family:
-    "PingFang SC",
-    "Hiragino Sans GB",
-    "Microsoft YaHei",
-    sans-serif;
-
-  font-weight: 400;
+.topnav {
+  font-size: 0.94rem;
 }
 
+.topnav .lang-toggle {
+  font-size: 0.90rem;
+  font-weight: inherit;
+}
 
+/* Homepage navigation needs stronger contrast over photography. */
+.home-page .home-nav {
+  font-size: 1.18rem;
+}
+
+.home-page .home-nav a {
+  padding: 10px 10px;
+  color: rgba(255, 248, 223, 0.99);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.66);
+}
+
+.home-page .lang-toggle--home {
+  padding: 9px 8px;
+  color: rgba(255, 248, 223, 0.99);
+  font-size: 0.98rem;
+  font-weight: 600;
+  opacity: 1;
+  text-shadow: 0 2px 11px rgba(0, 0, 0, 0.68);
+}
 
 /* =========================================================
-   HOMEPAGE TAGLINE ONLY
+   HOMEPAGE TAGLINE
    ========================================================= */
 
-
-/* English */
-
+/* English: artistic handwritten secondary voice. */
 html[lang="en"] .tagline {
-
-  font-family:
-    "Cormorant Garamond",
-    Georgia,
-    serif;
-
-  font-style: italic;
-
-  font-weight: 400;
-
-  letter-spacing:
-    0.015em;
-}
-
-
-/* Chinese */
-
-html[lang="zh-CN"] .tagline {
-
-  font-family:
-    "Kaiti SC",
-    "STKaiti",
-    "KaiTi",
-    serif;
-
+  font-family: "Caveat", "Segoe Print", cursive;
   font-style: normal;
+  font-weight: 600;
+  font-size: clamp(1.35rem, 2.1vw, 1.78rem);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: rgba(255, 248, 223, 0.99);
+  text-shadow: 0 2px 13px rgba(0, 0, 0, 0.66);
+}
 
+/* Chinese: use a real webfont so iPhone/iPad do not fall back to PingFang. */
+html[lang="zh-CN"] .tagline,
+body.lang-zh .tagline {
+  font-family: "LXGW WenKai", "STKaiti", "Kaiti SC", KaiTi, serif;
+  font-style: normal;
   font-weight: 400;
-
-  letter-spacing:
-    0.035em;
+  font-size: clamp(1.05rem, 1.65vw, 1.35rem);
+  line-height: 1.75;
+  letter-spacing: 0.045em;
+  color: rgba(255, 248, 223, 0.99);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.60);
 }
-
-
 
 /* =========================================================
-   LARGER HANDWRITTEN LOGO — HOMEPAGE
+   KEEP COLLECTION/BODY COPY IN THE SIMPLE SANS STYLE
+   across desktop, tablet, and mobile.
    ========================================================= */
 
-#site-title::before {
-
-  width:
-    min(
-      88vw,
-      1000px
-    );
+.collection-secondary-title,
+.collection-card-copy h3,
+.album-intro,
+.album-reflection,
+.photo-note,
+.bio-text {
+  font-family: var(--sans);
 }
 
-
-body.lang-zh
-#site-title::before {
-
-  width:
-    min(
-      78vw,
-      860px
-    );
+.collection-secondary-title,
+.collection-card-copy h3,
+.album-intro,
+.album-reflection,
+.photo-note,
+.bio-text,
+.bio-text p {
+  font-weight: 400;
 }
-
-
 
 /* =========================================================
-   LARGER HANDWRITTEN LOGO — TOP LEFT HEADER
+   BIO ALIGNMENT + BILINGUAL NAME
    ========================================================= */
 
-
-/*
-  Desktop
-*/
-
-.brand::before {
-
-  width:
-    300px;
+.bio-intro-section {
+  align-items: start;
 }
 
-
-body.lang-zh
-.brand::before {
-
-  width:
-    270px;
+.bio-copy {
+  padding-top: 0;
+  align-self: start;
 }
 
-
-/*
-  Give the larger logo enough vertical room.
-*/
-
-.topbar {
-
-  min-height:
-    88px;
+#bio-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.24em;
+  row-gap: 0.08em;
+  margin-top: 0;
 }
 
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media
-(max-width: 1024px)
-and
-(min-width: 681px) {
-
-
-  .brand::before {
-
-    width:
-      250px;
-  }
-
-
-  body.lang-zh
-  .brand::before {
-
-    width:
-      225px;
-  }
-
-
-  #site-title::before {
-
-    width:
-      min(
-        88vw,
-        800px
-      );
-  }
-
-
-  body.lang-zh
-  #site-title::before {
-
-    width:
-      min(
-        80vw,
-        710px
-      );
-  }
-
-
-  .topnav {
-
-    gap:
-      20px;
-  }
-
+.bio-name-primary {
+  font: inherit;
 }
 
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media
-(max-width: 680px) {
-
-
-  /*
-    Homepage logo
-  */
-
-  #site-title::before {
-
-    width:
-      min(
-        94vw,
-        540px
-      );
-  }
-
-
-  body.lang-zh
-  #site-title::before {
-
-    width:
-      min(
-        89vw,
-        485px
-      );
-  }
-
-
-
-  /*
-    Top-left logo:
-    noticeably larger than before,
-    but still leaves room for navigation.
-  */
-
-  .brand::before {
-
-    width:
-      182px;
-  }
-
-
-  body.lang-zh
-  .brand::before {
-
-    width:
-      170px;
-  }
-
-
-
-  .topbar {
-
-    width:
-      calc(100% - 22px);
-
-    min-height:
-      74px;
-
-    gap:
-      8px;
-  }
-
-
-
-  /*
-    Smaller spacing is needed because
-    the logo itself is now much larger.
-  */
-
-  .topnav {
-
-    gap:
-      9px;
-
-    font-size:
-      0.76rem;
-  }
-
-
-  .topnav .lang-toggle {
-
-    margin-left:
-      0;
-  }
-
+.bio-name-secondary {
+  font-size: 0.48em;
+  font-weight: 400;
+  color: var(--muted);
+  white-space: nowrap;
 }
+
+.bio-text {
+  margin-top: 28px;
+}
+
 /* =========================================================
    SOCIAL ICONS
+   Bigger, visually stronger, tighter spacing.
    ========================================================= */
 
 .social-links {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 5px;
 }
-
 
 .social-icon-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  width: 22px;
-  height: 22px;
-
+  width: 40px;
+  height: 40px;
   color: inherit;
-
-  opacity: 0.78;
-
-  transition:
-    opacity 180ms ease,
-    transform 180ms ease;
+  opacity: 0.92;
+  transition: opacity 180ms ease, transform 180ms ease;
 }
-
 
 .social-icon-link:hover {
   opacity: 1;
-
-  transform:
-    translateY(-1px);
+  transform: translateY(-1px);
 }
 
-
 .social-icon {
-  width: 20px;
-  height: 20px;
-
+  width: 32px;
+  height: 32px;
   fill: none;
-
   stroke: currentColor;
-
-  stroke-width: 1.45;
-
+  stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
+.social-icon--linkedin {
+  width: 31px;
+  height: 31px;
+}
 
 .social-icon-dot,
 .social-icon-fill {
@@ -3175,188 +2526,143 @@ and
   stroke: none;
 }
 
-
-/* LinkedIn 稍微收一点，看起来和 Instagram 视觉重量一致 */
-
-.social-icon--linkedin {
-  width: 19px;
-  height: 19px;
+.site-footer--overlay .social-icon-link {
+  opacity: 0.98;
 }
-
-
-/* 手机稍微大一点，方便点击 */
-
-@media (max-width: 680px) {
-
-  .social-links {
-    gap: 12px;
-  }
-
-
-  .social-icon-link {
-    width: 30px;
-    height: 30px;
-  }
-
-
-  .social-icon {
-    width: 30px;
-    height: 30px;
-  }
-
-
-  .social-icon--linkedin {
-    width: 30px;
-    height: 30px;
-  }
-
-}
-/* =========================================================
-   LOGO POSITION + HOMEPAGE ENGLISH READABILITY FIX
-   ========================================================= */
-
 
 /* =========================================================
-   TOP-LEFT HANDWRITTEN LOGO
-   Make it larger, shift it left,
-   and align the visible handwriting
-   to the left instead of centered.
+   TABLET
    ========================================================= */
-
-.brand {
-  margin-left: -10px;
-}
-
-
-.brand::before {
-  width: 340px;
-
-  -webkit-mask-position: left center;
-  mask-position: left center;
-}
-
-
-body.lang-zh .brand::before {
-  width: 300px;
-}
-
-
-
-/* Tablet */
 
 @media (max-width: 1024px) and (min-width: 681px) {
-
-  .brand {
-    margin-left: -10px;
-  }
-
-  .brand::before {
-    width: 285px;
+  body:not(.lang-zh) .brand::before {
+    width: 305px;
   }
 
   body.lang-zh .brand::before {
-    width: 250px;
+    width: 270px;
   }
 
-}
-
-
-
-/* Mobile */
-
-@media (max-width: 680px) {
-
-  .brand {
-    margin-left: -8px;
+  #site-title::before {
+    width: min(88vw, 800px);
   }
 
-  .brand::before {
-    width: 220px;
+  body.lang-zh #site-title::before {
+    width: min(81vw, 720px);
   }
 
-  body.lang-zh .brand::before {
-    width: 192px;
+  .topnav {
+    gap: 18px;
+    font-size: 0.90rem;
   }
 
-}
-/* =========================================================
-   FINAL RESPONSIVE POLISH
-   logo / tagline / nav / social icons
-   ========================================================= */
-
-
-/* =========================================================
-   1. SOCIAL ICONS
-   Bigger icons + tighter spacing
-   ========================================================= */
-
-.social-links {
-  gap: 8px;
-}
-
-
-.social-icon-link {
-  width: 34px;
-  height: 34px;
-
-  opacity: 0.9;
-}
-
-
-.social-icon {
-  width: 28px;
-  height: 28px;
-
-  stroke-width: 1.6;
-}
-
-
-.social-icon--linkedin {
-  width: 27px;
-  height: 27px;
-}
-
-
-/* Homepage icons sit on a photograph,
-   so don't make them too faint. */
-
-.site-footer--overlay .social-icon-link {
-  opacity: 0.96;
-}
-
-
-/* Tablet */
-
-@media (max-width: 1024px) {
+  .home-page .home-nav {
+    font-size: 1.12rem;
+  }
 
   .social-links {
-    gap: 8px;
+    gap: 5px;
   }
 
   .social-icon-link {
-    width: 34px;
-    height: 34px;
+    width: 38px;
+    height: 38px;
   }
 
   .social-icon {
-    width: 29px;
-    height: 29px;
+    width: 31px;
+    height: 31px;
   }
 
   .social-icon--linkedin {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
   }
-
 }
 
-
-/* Mobile */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 680px) {
+  /* Make the visible handwritten homepage title clearly
+     wider than the tagline despite transparency in the PNG. */
+  #site-title::before {
+    width: 100%;
+    max-width: none;
+    transform: scale(1.26);
+    transform-origin: center center;
+  }
+
+  body.lang-zh #site-title::before {
+    width: 100%;
+    transform: scale(1.17);
+  }
+
+  .tagline {
+    max-width: 76vw;
+  }
+
+  body:not(.lang-zh) .brand {
+    margin-left: 0;
+  }
+
+  body:not(.lang-zh) .brand::before {
+    width: 225px;
+  }
+
+  body.lang-zh .brand {
+    margin-left: -7px;
+  }
+
+  body.lang-zh .brand::before {
+    width: 205px;
+  }
+
+  .topbar {
+    width: calc(100% - 22px);
+    min-height: 74px;
+    gap: 6px;
+  }
+
+  .topnav {
+    gap: 7px;
+    font-size: 0.79rem;
+  }
+
+  .topnav .lang-toggle {
+    margin-left: 0;
+    font-size: 0.77rem;
+  }
+
+  .home-page .home-nav {
+    gap: 28px;
+    font-size: 1.05rem;
+  }
+
+  .home-page .home-nav a {
+    padding: 11px 8px;
+  }
+
+  .home-page .lang-toggle--home {
+    padding: 10px 8px;
+    font-size: 0.93rem;
+  }
+
+  html[lang="en"] .tagline {
+    font-size: clamp(1.24rem, 5.5vw, 1.50rem);
+    line-height: 1.4;
+  }
+
+  html[lang="zh-CN"] .tagline,
+  body.lang-zh .tagline {
+    font-family: "LXGW WenKai", "STKaiti", "Kaiti SC", KaiTi, serif;
+    font-size: clamp(1.02rem, 4.5vw, 1.20rem);
+    line-height: 1.68;
+  }
 
   .social-links {
-    gap: 7px;
+    gap: 4px;
   }
 
   .social-icon-link {
@@ -3366,520 +2672,23 @@ body.lang-zh .brand::before {
 
   .social-icon,
   .social-icon--linkedin {
-    width: 30px;
-    height: 30px;
+    width: 29px;
+    height: 29px;
   }
 
-}
-
-
-
-/* =========================================================
-   2. NAVIGATION
-   Stronger and easier to click
-   ========================================================= */
-
-
-/* ---------- English ---------- */
-
-html[lang="en"] .topnav,
-html[lang="en"] .home-nav {
-
-  font-family:
-    "Cormorant Garamond",
-    Georgia,
-    serif;
-
-  font-weight: 600;
-}
-
-
-html[lang="en"] .topnav {
-  font-size: 0.96rem;
-}
-
-
-html[lang="en"] .topnav .lang-toggle {
-  font-size: 0.92rem;
-  font-weight: 600;
-}
-
-
-/* ---------- Chinese ---------- */
-
-body.lang-zh .topnav,
-body.lang-zh .home-nav {
-
-  font-family:
-    "PingFang SC",
-    "Hiragino Sans GB",
-    "Microsoft YaHei",
-    sans-serif;
-
-  font-weight: 500;
-}
-
-
-body.lang-zh .topnav {
-  font-size: 0.88rem;
-}
-
-
-body.lang-zh .topnav .lang-toggle {
-  font-size: 0.84rem;
-  font-weight: 500;
-}
-
-
-
-/* =========================================================
-   HOMEPAGE NAVIGATION
-   Stronger contrast against photograph
-   ========================================================= */
-
-.home-page .home-nav {
-  font-size: 1.22rem;
-}
-
-
-.home-page .home-nav a {
-
-  padding:
-    10px 9px;
-
-  color:
-    rgba(255, 248, 223, 0.99);
-
-  text-shadow:
-    0 2px 11px
-    rgba(0, 0, 0, 0.62);
-}
-
-
-/* Language switch in upper-right */
-
-.home-page .lang-toggle--home {
-
-  padding:
-    9px 8px;
-
-  color:
-    rgba(255, 248, 223, 0.99);
-
-  font-size:
-    1rem;
-
-  font-weight:
-    600;
-
-  text-shadow:
-    0 2px 10px
-    rgba(0, 0, 0, 0.64);
-
-  opacity:
-    1;
-}
-
-
-
-/* =========================================================
-   3. ENGLISH HOMEPAGE TAGLINE
-   More artistic handwritten style,
-   but thick enough for a photo background
-   ========================================================= */
-
-html[lang="en"] .tagline {
-
-  font-family:
-    "Caveat",
-    "Segoe Print",
-    cursive;
-
-  font-style:
-    normal;
-
-  font-weight:
-    600;
-
-  font-size:
-    clamp(
-      1.35rem,
-      2.1vw,
-      1.75rem
-    );
-
-  line-height:
-    1.45;
-
-  letter-spacing:
-    0.01em;
-
-  color:
-    rgba(255, 248, 223, 0.99);
-
-  text-shadow:
-    0 2px 13px
-    rgba(0, 0, 0, 0.64);
-}
-
-
-
-/* =========================================================
-   4. CHINESE HOMEPAGE TAGLINE
-   Force Kaiti on Mac / iPhone / iPad
-   ========================================================= */
-
-/*
-  STKaiti is intentionally listed first.
-  It is important for Apple mobile devices.
-*/
-
-body.lang-zh .tagline {
-
-  font-family:
-    "STKaiti",
-    "Kaiti SC",
-    "KaiTi",
-    "BiauKai",
-    serif;
-
-  font-style:
-    normal;
-
-  font-weight:
-    400;
-
-  font-size:
-    clamp(
-      1.05rem,
-      1.65vw,
-      1.35rem
-    );
-
-  line-height:
-    1.75;
-
-  letter-spacing:
-    0.045em;
-
-  color:
-    rgba(255, 248, 223, 0.99);
-
-  text-shadow:
-    0 2px 12px
-    rgba(0, 0, 0, 0.58);
-}
-
-
-
-/* =========================================================
-   5. TOP-LEFT HANDWRITTEN LOGO
-   Larger, but English/Chinese positioned independently
-   ========================================================= */
-
-
-/* ---------- Desktop English ---------- */
-
-body:not(.lang-zh) .brand {
-
-  /*
-    Do NOT use the old -10px here.
-    It was pushing the English mark beyond
-    the beginning of the horizontal rule.
-  */
-
-  margin-left: 0;
-}
-
-
-body:not(.lang-zh) .brand::before {
-
-  width: 380px;
-
-  -webkit-mask-position:
-    left center;
-
-  mask-position:
-    left center;
-}
-
-
-
-/* ---------- Desktop Chinese ---------- */
-
-/*
-  Chinese positioning already looked right,
-  so retain a small left pull.
-*/
-
-body.lang-zh .brand {
-
-  margin-left:
-    -10px;
-}
-
-
-body.lang-zh .brand::before {
-
-  width:
-    330px;
-
-  -webkit-mask-position:
-    left center;
-
-  mask-position:
-    left center;
-}
-
-
-
-/* =========================================================
-   TABLET HEADER
-   ========================================================= */
-
-@media
-(max-width: 1024px)
-and
-(min-width: 681px) {
-
-
-  body:not(.lang-zh) .brand {
-
-    margin-left:
-      0;
+  .bio-intro-section {
+    gap: 32px;
   }
 
-
-  body:not(.lang-zh)
-  .brand::before {
-
-    width:
-      320px;
+  #bio-name {
+    font-size: clamp(2.25rem, 10vw, 3.4rem);
   }
 
-
-  body.lang-zh .brand {
-
-    margin-left:
-      -9px;
+  .bio-name-secondary {
+    font-size: 0.43em;
   }
 
-
-  body.lang-zh
-  .brand::before {
-
-    width:
-      280px;
+  .bio-text {
+    margin-top: 24px;
   }
-
-
-  .home-page .home-nav {
-
-    font-size:
-      1.15rem;
-  }
-
-
-  .home-page
-  .lang-toggle--home {
-
-    font-size:
-      0.96rem;
-  }
-
-}
-
-
-
-/* =========================================================
-   6. MOBILE HOMEPAGE LOGO
-
-   The old 94vw value describes the MASK BOX,
-   not the visible handwriting.
-
-   Slight scaling makes the visible ink clearly
-   wider than the tagline.
-   ========================================================= */
-
-@media
-(max-width: 680px) {
-
-
-  #site-title {
-
-    overflow:
-      visible;
-  }
-
-
-  #site-title::before {
-
-    width:
-      100%;
-
-    max-width:
-      none;
-
-    transform:
-      scale(1.18);
-
-    transform-origin:
-      center center;
-  }
-
-
-  body.lang-zh
-  #site-title::before {
-
-    width:
-      100%;
-
-    transform:
-      scale(1.12);
-  }
-
-
-
-  /*
-    Keep tagline narrower than logo.
-  */
-
-  .tagline {
-
-    max-width:
-      86vw;
-  }
-
-
-
-  /* ---------- Mobile header logo ---------- */
-
-
-  body:not(.lang-zh)
-  .brand {
-
-    margin-left:
-      0;
-  }
-
-
-  body:not(.lang-zh)
-  .brand::before {
-
-    width:
-      235px;
-  }
-
-
-  body.lang-zh
-  .brand {
-
-    margin-left:
-      -7px;
-  }
-
-
-  body.lang-zh
-  .brand::before {
-
-    width:
-      215px;
-  }
-
-
-
-  /*
-    Keep enough room for
-    Photography / Bio / EN.
-  */
-
-  .topbar {
-
-    gap:
-      6px;
-  }
-
-
-  .topnav {
-
-    gap:
-      7px;
-  }
-
-
-
-  /* Homepage navigation */
-
-  .home-page
-  .home-nav {
-
-    font-size:
-      1.07rem;
-
-    gap:
-      28px;
-  }
-
-
-  .home-page
-  .home-nav a {
-
-    padding:
-      11px 8px;
-  }
-
-
-  .home-page
-  .lang-toggle--home {
-
-    font-size:
-      0.94rem;
-
-    padding:
-      10px 8px;
-  }
-
-
-
-  /* English handwritten tagline */
-
-  html[lang="en"]
-  .tagline {
-
-    font-size:
-      clamp(
-        1.25rem,
-        5.5vw,
-        1.5rem
-      );
-
-    line-height:
-      1.42;
-  }
-
-
-
-  /* Chinese Kaiti tagline */
-
-  body.lang-zh
-  .tagline {
-
-    font-family:
-      "STKaiti",
-      "Kaiti SC",
-      "KaiTi",
-      "BiauKai",
-      serif;
-
-    font-size:
-      clamp(
-        1rem,
-        4.4vw,
-        1.18rem
-      );
-
-    line-height:
-      1.7;
-  }
-
 }
