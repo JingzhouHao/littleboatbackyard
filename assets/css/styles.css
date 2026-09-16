@@ -3194,20 +3194,20 @@ and
 
 
   .social-icon-link {
-    width: 26px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
   }
 
 
   .social-icon {
-    width: 21px;
-    height: 21px;
+    width: 30px;
+    height: 30px;
   }
 
 
   .social-icon--linkedin {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
   }
 
 }
@@ -3224,7 +3224,7 @@ and
    ========================================================= */
 
 .brand {
-  margin-left: -16px;
+  margin-left: -14px;
 }
 
 
