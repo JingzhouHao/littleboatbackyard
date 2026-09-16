@@ -96,7 +96,7 @@ window.SITE = {
       "50% 48%",
 
     portrait:
-      "assets/images/cover.jpeg",
+      "assets/images/bio/Bio_cover.jpg",
 
     portraitAlt: {
 
@@ -108,7 +108,7 @@ window.SITE = {
     },
 
     portraitPosition:
-      "50% 46%",
+      "50% 50%",
 
 
     /*
