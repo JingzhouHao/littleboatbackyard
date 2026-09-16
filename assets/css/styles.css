@@ -1,5 +1,5 @@
 @import url(
-  'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap'
+  'https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap'
 );
 
 :root {
@@ -3276,6 +3276,610 @@ body.lang-zh .brand::before {
 
   body.lang-zh .brand::before {
     width: 192px;
+  }
+
+}
+/* =========================================================
+   FINAL RESPONSIVE POLISH
+   logo / tagline / nav / social icons
+   ========================================================= */
+
+
+/* =========================================================
+   1. SOCIAL ICONS
+   Bigger icons + tighter spacing
+   ========================================================= */
+
+.social-links {
+  gap: 8px;
+}
+
+
+.social-icon-link {
+  width: 34px;
+  height: 34px;
+
+  opacity: 0.9;
+}
+
+
+.social-icon {
+  width: 28px;
+  height: 28px;
+
+  stroke-width: 1.6;
+}
+
+
+.social-icon--linkedin {
+  width: 27px;
+  height: 27px;
+}
+
+
+/* Homepage icons sit on a photograph,
+   so don't make them too faint. */
+
+.site-footer--overlay .social-icon-link {
+  opacity: 0.96;
+}
+
+
+/* Tablet */
+
+@media (max-width: 1024px) {
+
+  .social-links {
+    gap: 8px;
+  }
+
+  .social-icon-link {
+    width: 34px;
+    height: 34px;
+  }
+
+  .social-icon {
+    width: 29px;
+    height: 29px;
+  }
+
+  .social-icon--linkedin {
+    width: 28px;
+    height: 28px;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 680px) {
+
+  .social-links {
+    gap: 7px;
+  }
+
+  .social-icon-link {
+    width: 34px;
+    height: 34px;
+  }
+
+  .social-icon,
+  .social-icon--linkedin {
+    width: 30px;
+    height: 30px;
+  }
+
+}
+
+
+
+/* =========================================================
+   2. NAVIGATION
+   Stronger and easier to click
+   ========================================================= */
+
+
+/* ---------- English ---------- */
+
+html[lang="en"] .topnav,
+html[lang="en"] .home-nav {
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-weight: 600;
+}
+
+
+html[lang="en"] .topnav {
+  font-size: 0.96rem;
+}
+
+
+html[lang="en"] .topnav .lang-toggle {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+
+/* ---------- Chinese ---------- */
+
+body.lang-zh .topnav,
+body.lang-zh .home-nav {
+
+  font-family:
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    sans-serif;
+
+  font-weight: 500;
+}
+
+
+body.lang-zh .topnav {
+  font-size: 0.88rem;
+}
+
+
+body.lang-zh .topnav .lang-toggle {
+  font-size: 0.84rem;
+  font-weight: 500;
+}
+
+
+
+/* =========================================================
+   HOMEPAGE NAVIGATION
+   Stronger contrast against photograph
+   ========================================================= */
+
+.home-page .home-nav {
+  font-size: 1.22rem;
+}
+
+
+.home-page .home-nav a {
+
+  padding:
+    10px 9px;
+
+  color:
+    rgba(255, 248, 223, 0.99);
+
+  text-shadow:
+    0 2px 11px
+    rgba(0, 0, 0, 0.62);
+}
+
+
+/* Language switch in upper-right */
+
+.home-page .lang-toggle--home {
+
+  padding:
+    9px 8px;
+
+  color:
+    rgba(255, 248, 223, 0.99);
+
+  font-size:
+    1rem;
+
+  font-weight:
+    600;
+
+  text-shadow:
+    0 2px 10px
+    rgba(0, 0, 0, 0.64);
+
+  opacity:
+    1;
+}
+
+
+
+/* =========================================================
+   3. ENGLISH HOMEPAGE TAGLINE
+   More artistic handwritten style,
+   but thick enough for a photo background
+   ========================================================= */
+
+html[lang="en"] .tagline {
+
+  font-family:
+    "Caveat",
+    "Segoe Print",
+    cursive;
+
+  font-style:
+    normal;
+
+  font-weight:
+    600;
+
+  font-size:
+    clamp(
+      1.35rem,
+      2.1vw,
+      1.75rem
+    );
+
+  line-height:
+    1.45;
+
+  letter-spacing:
+    0.01em;
+
+  color:
+    rgba(255, 248, 223, 0.99);
+
+  text-shadow:
+    0 2px 13px
+    rgba(0, 0, 0, 0.64);
+}
+
+
+
+/* =========================================================
+   4. CHINESE HOMEPAGE TAGLINE
+   Force Kaiti on Mac / iPhone / iPad
+   ========================================================= */
+
+/*
+  STKaiti is intentionally listed first.
+  It is important for Apple mobile devices.
+*/
+
+body.lang-zh .tagline {
+
+  font-family:
+    "STKaiti",
+    "Kaiti SC",
+    "KaiTi",
+    "BiauKai",
+    serif;
+
+  font-style:
+    normal;
+
+  font-weight:
+    400;
+
+  font-size:
+    clamp(
+      1.05rem,
+      1.65vw,
+      1.35rem
+    );
+
+  line-height:
+    1.75;
+
+  letter-spacing:
+    0.045em;
+
+  color:
+    rgba(255, 248, 223, 0.99);
+
+  text-shadow:
+    0 2px 12px
+    rgba(0, 0, 0, 0.58);
+}
+
+
+
+/* =========================================================
+   5. TOP-LEFT HANDWRITTEN LOGO
+   Larger, but English/Chinese positioned independently
+   ========================================================= */
+
+
+/* ---------- Desktop English ---------- */
+
+body:not(.lang-zh) .brand {
+
+  /*
+    Do NOT use the old -10px here.
+    It was pushing the English mark beyond
+    the beginning of the horizontal rule.
+  */
+
+  margin-left: 0;
+}
+
+
+body:not(.lang-zh) .brand::before {
+
+  width: 380px;
+
+  -webkit-mask-position:
+    left center;
+
+  mask-position:
+    left center;
+}
+
+
+
+/* ---------- Desktop Chinese ---------- */
+
+/*
+  Chinese positioning already looked right,
+  so retain a small left pull.
+*/
+
+body.lang-zh .brand {
+
+  margin-left:
+    -10px;
+}
+
+
+body.lang-zh .brand::before {
+
+  width:
+    330px;
+
+  -webkit-mask-position:
+    left center;
+
+  mask-position:
+    left center;
+}
+
+
+
+/* =========================================================
+   TABLET HEADER
+   ========================================================= */
+
+@media
+(max-width: 1024px)
+and
+(min-width: 681px) {
+
+
+  body:not(.lang-zh) .brand {
+
+    margin-left:
+      0;
+  }
+
+
+  body:not(.lang-zh)
+  .brand::before {
+
+    width:
+      320px;
+  }
+
+
+  body.lang-zh .brand {
+
+    margin-left:
+      -9px;
+  }
+
+
+  body.lang-zh
+  .brand::before {
+
+    width:
+      280px;
+  }
+
+
+  .home-page .home-nav {
+
+    font-size:
+      1.15rem;
+  }
+
+
+  .home-page
+  .lang-toggle--home {
+
+    font-size:
+      0.96rem;
+  }
+
+}
+
+
+
+/* =========================================================
+   6. MOBILE HOMEPAGE LOGO
+
+   The old 94vw value describes the MASK BOX,
+   not the visible handwriting.
+
+   Slight scaling makes the visible ink clearly
+   wider than the tagline.
+   ========================================================= */
+
+@media
+(max-width: 680px) {
+
+
+  #site-title {
+
+    overflow:
+      visible;
+  }
+
+
+  #site-title::before {
+
+    width:
+      100%;
+
+    max-width:
+      none;
+
+    transform:
+      scale(1.18);
+
+    transform-origin:
+      center center;
+  }
+
+
+  body.lang-zh
+  #site-title::before {
+
+    width:
+      100%;
+
+    transform:
+      scale(1.12);
+  }
+
+
+
+  /*
+    Keep tagline narrower than logo.
+  */
+
+  .tagline {
+
+    max-width:
+      86vw;
+  }
+
+
+
+  /* ---------- Mobile header logo ---------- */
+
+
+  body:not(.lang-zh)
+  .brand {
+
+    margin-left:
+      0;
+  }
+
+
+  body:not(.lang-zh)
+  .brand::before {
+
+    width:
+      235px;
+  }
+
+
+  body.lang-zh
+  .brand {
+
+    margin-left:
+      -7px;
+  }
+
+
+  body.lang-zh
+  .brand::before {
+
+    width:
+      215px;
+  }
+
+
+
+  /*
+    Keep enough room for
+    Photography / Bio / EN.
+  */
+
+  .topbar {
+
+    gap:
+      6px;
+  }
+
+
+  .topnav {
+
+    gap:
+      7px;
+  }
+
+
+
+  /* Homepage navigation */
+
+  .home-page
+  .home-nav {
+
+    font-size:
+      1.07rem;
+
+    gap:
+      28px;
+  }
+
+
+  .home-page
+  .home-nav a {
+
+    padding:
+      11px 8px;
+  }
+
+
+  .home-page
+  .lang-toggle--home {
+
+    font-size:
+      0.94rem;
+
+    padding:
+      10px 8px;
+  }
+
+
+
+  /* English handwritten tagline */
+
+  html[lang="en"]
+  .tagline {
+
+    font-size:
+      clamp(
+        1.25rem,
+        5.5vw,
+        1.5rem
+      );
+
+    line-height:
+      1.42;
+  }
+
+
+
+  /* Chinese Kaiti tagline */
+
+  body.lang-zh
+  .tagline {
+
+    font-family:
+      "STKaiti",
+      "Kaiti SC",
+      "KaiTi",
+      "BiauKai",
+      serif;
+
+    font-size:
+      clamp(
+        1rem,
+        4.4vw,
+        1.18rem
+      );
+
+    line-height:
+      1.7;
   }
 
 }
