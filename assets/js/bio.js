@@ -3,38 +3,39 @@
   const site = window.SITE;
 
   if (!site) {
+    console.error("SITE data is missing.");
     return;
   }
 
 
   function getLang() {
+    return typeof window.getLang === "function"
+      ? window.getLang()
+      : "en";
+  }
 
-    if (
-      typeof window.getLang === "function"
-    ) {
-      return window.getLang();
+
+  function safeEscape(value) {
+    if (typeof window.escapeHTML === "function") {
+      return window.escapeHTML(value);
     }
 
-    return "en";
+    const div = document.createElement("div");
+    div.textContent = value ?? "";
+    return div.innerHTML;
   }
 
 
   function renderName() {
+    const target = document.getElementById("bio-name");
 
-    const name =
-      document.getElementById(
-        "bio-name"
-      );
-
-    if (!name) {
+    if (!target) {
       return;
     }
-
 
     const englishName =
       site.ownerName ||
       "Jingzhou Hao";
-
 
     const chineseName =
       site.ownerNameZh ||
@@ -49,35 +50,177 @@
       郝泾舟 (Jingzhou Hao)
     */
 
-    if (
-      getLang() === "zh"
-    ) {
+    if (getLang() === "zh") {
 
-      name.innerHTML = `
+      target.innerHTML = `
         <span class="bio-name-primary">
-          ${window.escapeHTML(chineseName)}
+          ${safeEscape(chineseName)}
         </span>
 
         <span class="bio-name-secondary">
-          (${window.escapeHTML(englishName)})
+          (${safeEscape(englishName)})
         </span>
       `;
 
     } else {
 
-      name.innerHTML = `
+      target.innerHTML = `
         <span class="bio-name-primary">
-          ${window.escapeHTML(englishName)}
+          ${safeEscape(englishName)}
         </span>
 
         <span class="bio-name-secondary">
-          (${window.escapeHTML(chineseName)})
+          (${safeEscape(chineseName)})
         </span>
       `;
     }
   }
 
 
+  /* =========================================================
+     SELFIE / PHOTO GALLERY
+     ========================================================= */
+
+  function renderGallery() {
+
+    const gallery =
+      document.getElementById(
+        "bio-gallery"
+      );
+
+    const section =
+      document.querySelector(
+        ".bio-gallery-section"
+      );
+
+
+    if (
+      !gallery ||
+      !section
+    ) {
+      return;
+    }
+
+
+    gallery.innerHTML = "";
+
+
+    const photos =
+      Array.isArray(
+        site.bio?.gallery
+      )
+        ? site.bio.gallery
+        : [];
+
+
+    photos.forEach(
+      (item, index) => {
+
+        /*
+          Supports either:
+
+          "assets/images/xxx.jpg"
+
+          OR
+
+          {
+            src: "assets/images/xxx.jpg"
+          }
+        */
+
+        const src =
+          typeof item === "string"
+            ? item
+            : item?.src;
+
+
+        if (!src) {
+          return;
+        }
+
+
+        const wrapper =
+          document.createElement(
+            "div"
+          );
+
+
+        wrapper.className =
+          "bio-gallery-item";
+
+
+        const img =
+          document.createElement(
+            "img"
+          );
+
+
+        img.src =
+          src;
+
+
+        img.loading =
+          index < 3
+            ? "eager"
+            : "lazy";
+
+
+        img.decoding =
+          "async";
+
+
+        /*
+          Decorative gallery:
+          no captions / text.
+        */
+
+        img.alt =
+          "";
+
+
+        /*
+          If one path is wrong,
+          remove only that photo.
+        */
+
+        img.addEventListener(
+          "error",
+          () => {
+
+            wrapper.remove();
+
+          },
+          {
+            once: true
+          }
+        );
+
+
+        wrapper.appendChild(
+          img
+        );
+
+
+        gallery.appendChild(
+          wrapper
+        );
+      }
+    );
+
+
+    /*
+      If no photos are configured,
+      hide the whole gallery section.
+    */
+
+    section.hidden =
+      gallery.children.length === 0;
+  }
+
+
+  /* =========================================================
+     MAIN RENDER
+     ========================================================= */
 
   function render() {
 
@@ -85,14 +228,17 @@
       getLang();
 
 
+    /* ---------------------------------------------------------
+       Browser title
+       --------------------------------------------------------- */
+
     document.title =
       `${window.uiText("bio")} — ${window.siteTitle()}`;
 
 
-
-    /* =====================================================
-       BRAND
-       ===================================================== */
+    /* ---------------------------------------------------------
+       Header brand
+       --------------------------------------------------------- */
 
     const brand =
       document.getElementById(
@@ -101,16 +247,14 @@
 
 
     if (brand) {
-
       brand.textContent =
         window.siteTitle();
     }
 
 
-
-    /* =====================================================
-       HERO
-       ===================================================== */
+    /* ---------------------------------------------------------
+       Hero title
+       --------------------------------------------------------- */
 
     const heroTitle =
       document.querySelector(
@@ -119,7 +263,6 @@
 
 
     if (heroTitle) {
-
       heroTitle.textContent =
         window.uiText(
           "bio"
@@ -127,6 +270,9 @@
     }
 
 
+    /* ---------------------------------------------------------
+       Hero cover
+       --------------------------------------------------------- */
 
     const cover =
       document.getElementById(
@@ -148,10 +294,9 @@
     }
 
 
-
-    /* =====================================================
-       PORTRAIT
-       ===================================================== */
+    /* ---------------------------------------------------------
+       Portrait
+       --------------------------------------------------------- */
 
     const portrait =
       document.getElementById(
@@ -184,18 +329,16 @@
     }
 
 
-
-    /* =====================================================
-       NAME
-       ===================================================== */
+    /* ---------------------------------------------------------
+       Bilingual name
+       --------------------------------------------------------- */
 
     renderName();
 
 
-
-    /* =====================================================
-       BIO PARAGRAPHS
-       ===================================================== */
+    /* ---------------------------------------------------------
+       Bio paragraphs
+       --------------------------------------------------------- */
 
     const text =
       document.getElementById(
@@ -226,7 +369,7 @@
 
 
       paragraphs.forEach(
-        paragraph => {
+        (paragraph) => {
 
           const p =
             document.createElement(
@@ -246,50 +389,44 @@
     }
 
 
+    /* ---------------------------------------------------------
+       Selfie / photo gallery
+       --------------------------------------------------------- */
 
-    /* =====================================================
-       CV
-       ===================================================== */
+    renderGallery();
 
-    const cvSection =
+
+    /* ---------------------------------------------------------
+       CV heading
+
+       English:
+       Curriculum Vitae
+
+       Chinese:
+       简历
+       --------------------------------------------------------- */
+
+    const cvHeading =
       document.getElementById(
-        "cv-section"
+        "cv-heading"
       );
 
 
-    if (cvSection) {
+    if (cvHeading) {
 
-      const kicker =
-        cvSection.querySelector(
-          ".kicker"
-        );
+      cvHeading.textContent =
 
+        lang === "zh"
 
-      const heading =
-        cvSection.querySelector(
-          "h2"
-        );
+          ? "简历"
 
-
-      if (kicker) {
-
-        kicker.textContent =
-          window.uiText(
-            "cvKicker"
-          );
-      }
-
-
-      if (heading) {
-
-        heading.textContent =
-          window.uiText(
-            "cvTitle"
-          );
-      }
+          : "Curriculum Vitae";
     }
 
 
+    /* ---------------------------------------------------------
+       CV description
+       --------------------------------------------------------- */
 
     const description =
       document.getElementById(
@@ -306,6 +443,9 @@
     }
 
 
+    /* ---------------------------------------------------------
+       CV download
+       --------------------------------------------------------- */
 
     const link =
       document.getElementById(
@@ -325,16 +465,6 @@
         `${window.uiText("downloadCV")} ` +
         `<span aria-hidden="true">↓</span>`;
     }
-
-
-    if (missing) {
-
-      missing.textContent =
-        window.uiText(
-          "cvMissing"
-        );
-    }
-
 
 
     if (
@@ -370,14 +500,19 @@
 
         missing.hidden =
           false;
+
+
+        missing.textContent =
+          window.uiText(
+            "cvMissing"
+          );
       }
     }
 
 
-
-    /* =====================================================
-       FOOTER
-       ===================================================== */
+    /* ---------------------------------------------------------
+       Footer
+       --------------------------------------------------------- */
 
     if (
       typeof window.renderFooter ===
@@ -392,12 +527,19 @@
   }
 
 
+  /* =========================================================
+     LANGUAGE SWITCH
+     ========================================================= */
 
   window.addEventListener(
     "languagechange",
     render
   );
 
+
+  /* =========================================================
+     START
+     ========================================================= */
 
   render();
 
