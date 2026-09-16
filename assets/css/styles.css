@@ -2242,3 +2242,199 @@ h3 {
   }
 
 }
+/* =========================================================
+   HANDWRITTEN SITE TITLE
+   ========================================================= */
+
+/*
+  Default = English logo
+*/
+
+body {
+  --site-logo:
+    url("../images/branding/title-en.png");
+
+  --site-logo-ratio:
+    1446 / 299;
+}
+
+
+/*
+  Chinese mode
+*/
+
+body.lang-zh {
+  --site-logo:
+    url("../images/branding/title-zh.png");
+
+  --site-logo-ratio:
+    1300 / 242;
+}
+
+
+/* =========================================================
+   HIDE THE NORMAL TYPE,
+   KEEP THE REAL TEXT FOR ACCESSIBILITY
+   ========================================================= */
+
+#site-title,
+.brand {
+  font-size: 0;
+  line-height: 0;
+}
+
+
+/* =========================================================
+   COMMON HANDWRITTEN MARK
+   ========================================================= */
+
+#site-title::before,
+.brand::before {
+  content: "";
+
+  display: block;
+
+  aspect-ratio:
+    var(--site-logo-ratio);
+
+  background:
+    currentColor;
+
+  -webkit-mask-image:
+    var(--site-logo);
+
+  mask-image:
+    var(--site-logo);
+
+  -webkit-mask-repeat:
+    no-repeat;
+
+  mask-repeat:
+    no-repeat;
+
+  -webkit-mask-position:
+    center;
+
+  mask-position:
+    center;
+
+  -webkit-mask-size:
+    contain;
+
+  mask-size:
+    contain;
+}
+
+
+/* =========================================================
+   HOME PAGE LARGE TITLE
+   ========================================================= */
+
+#site-title {
+  display: flex;
+
+  justify-content: center;
+
+  color:
+    var(--cream);
+
+  width: 100%;
+}
+
+
+/*
+  English handwriting is fairly long,
+  so give it a generous width.
+*/
+
+#site-title::before {
+  width:
+    min(
+      72vw,
+      720px
+    );
+}
+
+
+/*
+  Chinese handwriting can sit slightly smaller.
+*/
+
+body.lang-zh
+#site-title::before {
+  width:
+    min(
+      62vw,
+      620px
+    );
+}
+
+
+/* =========================================================
+   TOP-LEFT SITE BRAND
+   ========================================================= */
+
+.brand {
+  display: inline-flex;
+
+  align-items: center;
+
+  color:
+    var(--ink);
+
+  flex-shrink: 0;
+}
+
+
+.brand::before {
+  width: 175px;
+}
+
+
+/* Chinese version can be a little narrower */
+
+body.lang-zh
+.brand::before {
+  width: 165px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 680px) {
+
+  #site-title::before {
+    width:
+      min(
+        86vw,
+        470px
+      );
+  }
+
+
+  body.lang-zh
+  #site-title::before {
+    width:
+      min(
+        78vw,
+        420px
+      );
+  }
+
+
+  .brand::before {
+    width: 132px;
+  }
+
+
+  body.lang-zh
+  .brand::before {
+    width: 124px;
+  }
+
+}
+#site-title {
+  text-shadow: none;
+}
