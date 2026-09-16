@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap');
-@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Zhi+Mang+Xing&display=swap');
 
 :root {
   --ink: #142a2b;
@@ -2407,12 +2406,12 @@ html[lang="en"] .tagline {
 /* Chinese: use a real webfont so iPhone/iPad do not fall back to PingFang. */
 html[lang="zh-CN"] .tagline,
 body.lang-zh .tagline {
-  font-family: "LXGW WenKai", "STKaiti", "Kaiti SC", KaiTi, serif;
+  font-family: "Zhi Mang Xing", "STKaiti", "Kaiti SC", KaiTi, cursive;
   font-style: normal;
   font-weight: 400;
-  font-size: clamp(1.05rem, 1.65vw, 1.35rem);
-  line-height: 1.75;
-  letter-spacing: 0.045em;
+  font-size: clamp(0.96rem, 1.30vw, 1.16rem);
+  line-height: 1.70;
+  letter-spacing: 0.035em;
   color: rgba(255, 248, 223, 0.99);
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.60);
 }
@@ -2424,20 +2423,19 @@ body.lang-zh .tagline {
 
 .collection-secondary-title,
 .collection-card-copy h3,
+.album-hero .page-hero-title h1,
+.album-hero .kicker,
 .album-intro,
 .album-reflection,
 .photo-note,
-.bio-text {
-  font-family: var(--sans);
-}
-
-.collection-secondary-title,
-.collection-card-copy h3,
-.album-intro,
-.album-reflection,
-.photo-note,
+.photo-tech,
+#bio-name,
+.bio-copy h2,
 .bio-text,
-.bio-text p {
+.bio-text p,
+.cv-section h2,
+.cv-copy p {
+  font-family: var(--sans) !important;
   font-weight: 400;
 }
 
@@ -2656,9 +2654,11 @@ body.lang-zh .tagline {
 
   html[lang="zh-CN"] .tagline,
   body.lang-zh .tagline {
-    font-family: "LXGW WenKai", "STKaiti", "Kaiti SC", KaiTi, serif;
-    font-size: clamp(1.02rem, 4.5vw, 1.20rem);
-    line-height: 1.68;
+    font-family: "Zhi Mang Xing", "STKaiti", "Kaiti SC", KaiTi, cursive;
+    font-weight: 400;
+    font-size: clamp(0.94rem, 4.0vw, 1.08rem);
+    line-height: 1.65;
+    letter-spacing: 0.03em;
   }
 
   .social-links {
