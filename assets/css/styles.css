@@ -3189,7 +3189,7 @@ and
 @media (max-width: 680px) {
 
   .social-links {
-    gap: 17px;
+    gap: 12px;
   }
 
 
@@ -3224,7 +3224,7 @@ and
    ========================================================= */
 
 .brand {
-  margin-left: -14px;
+  margin-left: -10px;
 }
 
 
@@ -3247,7 +3247,7 @@ body.lang-zh .brand::before {
 @media (max-width: 1024px) and (min-width: 681px) {
 
   .brand {
-    margin-left: -12px;
+    margin-left: -10px;
   }
 
   .brand::before {
@@ -3267,7 +3267,7 @@ body.lang-zh .brand::before {
 @media (max-width: 680px) {
 
   .brand {
-    margin-left: -10px;
+    margin-left: -8px;
   }
 
   .brand::before {
