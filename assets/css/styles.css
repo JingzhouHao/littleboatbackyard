@@ -1,6 +1,7 @@
 @import url(
   'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap'
 );
+
 :root {
   --ink: #142a2b;
   --deep: #0c2628;
@@ -3113,6 +3114,100 @@ and
 
     margin-left:
       0;
+  }
+
+}
+/* =========================================================
+   SOCIAL ICONS
+   ========================================================= */
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+.social-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+
+  color: inherit;
+
+  opacity: 0.78;
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+
+.social-icon-link:hover {
+  opacity: 1;
+
+  transform:
+    translateY(-1px);
+}
+
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.45;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+.social-icon-dot,
+.social-icon-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+
+/* LinkedIn 稍微收一点，看起来和 Instagram 视觉重量一致 */
+
+.social-icon--linkedin {
+  width: 19px;
+  height: 19px;
+}
+
+
+/* 手机稍微大一点，方便点击 */
+
+@media (max-width: 680px) {
+
+  .social-links {
+    gap: 17px;
+  }
+
+
+  .social-icon-link {
+    width: 26px;
+    height: 26px;
+  }
+
+
+  .social-icon {
+    width: 21px;
+    height: 21px;
+  }
+
+
+  .social-icon--linkedin {
+    width: 20px;
+    height: 20px;
   }
 
 }
