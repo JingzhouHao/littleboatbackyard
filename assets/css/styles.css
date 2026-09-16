@@ -3211,3 +3211,71 @@ and
   }
 
 }
+/* =========================================================
+   LOGO POSITION + HOMEPAGE ENGLISH READABILITY FIX
+   ========================================================= */
+
+
+/* =========================================================
+   TOP-LEFT HANDWRITTEN LOGO
+   Make it larger, shift it left,
+   and align the visible handwriting
+   to the left instead of centered.
+   ========================================================= */
+
+.brand {
+  margin-left: -16px;
+}
+
+
+.brand::before {
+  width: 340px;
+
+  -webkit-mask-position: left center;
+  mask-position: left center;
+}
+
+
+body.lang-zh .brand::before {
+  width: 300px;
+}
+
+
+
+/* Tablet */
+
+@media (max-width: 1024px) and (min-width: 681px) {
+
+  .brand {
+    margin-left: -12px;
+  }
+
+  .brand::before {
+    width: 285px;
+  }
+
+  body.lang-zh .brand::before {
+    width: 250px;
+  }
+
+}
+
+
+
+/* Mobile */
+
+@media (max-width: 680px) {
+
+  .brand {
+    margin-left: -10px;
+  }
+
+  .brand::before {
+    width: 220px;
+  }
+
+  body.lang-zh .brand::before {
+    width: 192px;
+  }
+
+}
