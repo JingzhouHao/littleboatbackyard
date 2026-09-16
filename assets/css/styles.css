@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Zhi+Mang+Xing&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Ma+Shan+Zheng&display=swap');
 
 :root {
   --ink: #142a2b;
@@ -2406,7 +2406,7 @@ html[lang="en"] .tagline {
 /* Chinese: use a real webfont so iPhone/iPad do not fall back to PingFang. */
 html[lang="zh-CN"] .tagline,
 body.lang-zh .tagline {
-  font-family: "Zhi Mang Xing", "STKaiti", "Kaiti SC", KaiTi, cursive;
+  font-family: "Ma Shan Zheng", "STKaiti", "Kaiti SC", KaiTi, cursive;
   font-style: normal;
   font-weight: 400;
   font-size: clamp(0.96rem, 1.30vw, 1.16rem);
@@ -2654,7 +2654,7 @@ body.lang-zh .tagline {
 
   html[lang="zh-CN"] .tagline,
   body.lang-zh .tagline {
-    font-family: "Zhi Mang Xing", "STKaiti", "Kaiti SC", KaiTi, cursive;
+    font-family: "Ma Shan Zheng", "STKaiti", "Kaiti SC", KaiTi, cursive;
     font-weight: 400;
     font-size: clamp(0.94rem, 4.0vw, 1.08rem);
     line-height: 1.65;
@@ -2691,4 +2691,100 @@ body.lang-zh .tagline {
   .bio-text {
     margin-top: 24px;
   }
+}
+
+
+/* =========================================================
+   BIO / HERO FINAL POLISH
+   ========================================================= */
+
+/* Keep all inner-page wide-cover titles in the same clean sans family.
+   This prevents desktop Chinese from falling back to Songti. */
+.inner-page .page-hero-title h1,
+.inner-page .page-hero-title .kicker {
+  font-family: var(--sans) !important;
+  font-weight: 400;
+}
+
+/* Chinese homepage tagline: Ma Shan Zheng, slightly smaller and light-looking.
+   English homepage typography is intentionally untouched. */
+html[lang="zh-CN"] .tagline,
+body.lang-zh .tagline {
+  font-family: "Ma Shan Zheng", "STKaiti", "Kaiti SC", KaiTi, cursive !important;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(0.90rem, 1.18vw, 1.06rem);
+  line-height: 1.72;
+  letter-spacing: 0.025em;
+}
+
+@media (max-width: 680px) {
+  html[lang="zh-CN"] .tagline,
+  body.lang-zh .tagline {
+    font-size: clamp(0.90rem, 3.8vw, 1.02rem);
+    line-height: 1.68;
+  }
+}
+
+/* =========================================================
+   BIO PHOTO GALLERY
+   Pure-photo masonry-like columns, no captions or text blocks.
+   ========================================================= */
+
+.bio-gallery-section {
+  width: min(var(--content), calc(100% - 48px));
+  margin: 0 auto;
+  padding: 16px 0 92px;
+}
+
+.bio-gallery {
+  columns: 3 260px;
+  column-gap: 18px;
+}
+
+.bio-gallery-item {
+  break-inside: avoid;
+  margin: 0 0 18px;
+}
+
+.bio-gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .bio-gallery-section {
+    width: calc(100% - 36px);
+    padding-bottom: 72px;
+  }
+
+  .bio-gallery {
+    columns: 2 240px;
+    column-gap: 14px;
+  }
+
+  .bio-gallery-item {
+    margin-bottom: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bio-gallery-section {
+    width: calc(100% - 30px);
+    padding-bottom: 60px;
+  }
+
+  .bio-gallery {
+    columns: 1;
+  }
+}
+
+/* Single CV heading only; no duplicated kicker/title hierarchy. */
+.cv-section .cv-heading {
+  margin: 0;
+  font-family: var(--sans) !important;
+  font-weight: 500;
+  font-size: clamp(2rem, 3.3vw, 3.2rem);
+  line-height: 1.08;
 }
