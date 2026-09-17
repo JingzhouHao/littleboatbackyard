@@ -121,16 +121,16 @@ window.SITE = {
 
       en: [
 
-        "Write a short self-introduction here: who you are, what you photograph, and what you want this site to hold together.",
+        "A film photography beginner, blues harmonica amateur, a researcher who has too many hobbies, human manic. I likes to find the human perspective on people, the moment that is imperfect but real.",
 
-        "A second paragraph is optional. You can use it for a little more context about your photography, work, or anything else you want visitors to know."
+        "What else can I say......I hope everyone can find the happiness they deserve."
       ],
 
       zh: [
 
-        "一个业余摄影爱好者，搞蓝调的，不务正业的研究人员。努力试图用理性的眼光看到人类的一面，不完美但是真实的一面。",
+        "一个胶片摄影初学者，不专业蓝调口琴手，不务正业的研究人员，人狂热症患者。努力用理性的眼光寻找人类的一面，不完美但是真实的一面。",
 
-        "第二段是可选的。你可以在这里多写一点关于摄影、工作，或任何你希望访客了解的事情。"
+        "我能说啥呢......希望所有人都能找到他们值得拥有的快乐。"
       ]
     },
 
@@ -217,7 +217,7 @@ window.SITE = {
           "",
 
         zh:
-          "这个合集的名字来源于Amy Winehouse <Back to Black>。华语把它翻译成《黑色会》，完全不知道为啥要翻成这样，我觉得更恰当的名字是《回到黑暗》。不知为何，听Amy唱这首歌，感受她的心碎，和她的Mad love， 让我特别想关爱人类，接触人类的欲望和情绪。可能在这个AI的时代，偶尔也会有“回到人类”的呐喊吧！"
+          "这个合集的名字灵感来源于Amy Winehouse 的专辑<Back to Black>。中文名是《黑色会》，我觉得更恰当的名字是《回到黑暗》。不知为什么，Amy的歌声总是让我想关爱人类，接触人类的欲望和情绪。老实说我已经厌倦所谓的AI艺术了，就这次，把注意力重新聚焦在人类身上，回到人类，可以吗？"
       },
 
 
@@ -473,7 +473,7 @@ window.SITE = {
             "assets/images/Moments_of_summer/000020140008-1.jpg",
 
           caption:
-            "",
+            "比赛日的露天酒吧。请问一个夏天Red Sox到底要打几场比赛？感觉一周里没几天我可以正常从Fenway park附近通过的。",
 
           note:
             "Shot with Kodak h35, film is gold 200"
@@ -503,7 +503,7 @@ window.SITE = {
             "assets/images/Moments_of_summer/000024.jpg",
 
           caption:
-            "Street art at Golden Hour",
+            "黄金时刻的街头涂鸦",
 
           note:
             "Shot with Kodak Funsaver"
