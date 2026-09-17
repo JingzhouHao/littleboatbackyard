@@ -1,4 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Ma+Shan+Zheng&display=swap');
+/* =========================================================
+   LOCAL WEBFONTS
+   Self-hosted from assets/fonts/ for consistent rendering
+   across Safari, Chrome, iPhone, iPad, and desktop.
+   ========================================================= */
+
+@font-face {
+  font-family: "Caveat Local";
+  src: url("../fonts/caveat-latin-600-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ma Shan Zheng Local";
+  src: url("../fonts/ma-shan-zheng-chinese-simplified-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 
 :root {
   --ink: #142a2b;
@@ -2393,7 +2413,8 @@ html[lang="zh-CN"] .lang-toggle {
 
 /* English: artistic handwritten secondary voice. */
 html[lang="en"] .tagline {
-  font-family: "Caveat", "Segoe Print", cursive;
+  font-family: "Caveat Local", cursive;
+  font-synthesis: none;
   font-style: normal;
   font-weight: 600;
   font-size: clamp(1.35rem, 2.1vw, 1.78rem);
@@ -2406,7 +2427,8 @@ html[lang="en"] .tagline {
 /* Chinese: use a real webfont so iPhone/iPad do not fall back to PingFang. */
 html[lang="zh-CN"] .tagline,
 body.lang-zh .tagline {
-  font-family: "Ma Shan Zheng", "STKaiti", "Kaiti SC", KaiTi, cursive;
+  font-family: "Ma Shan Zheng Local", cursive;
+  font-synthesis: none;
   font-style: normal;
   font-weight: 400;
   font-size: clamp(0.96rem, 1.30vw, 1.16rem);
@@ -2654,7 +2676,7 @@ body.lang-zh .tagline {
 
   html[lang="zh-CN"] .tagline,
   body.lang-zh .tagline {
-    font-family: "Ma Shan Zheng", "STKaiti", "Kaiti SC", KaiTi, cursive;
+    font-family: "Ma Shan Zheng Local", cursive;
     font-weight: 400;
     font-size: clamp(0.94rem, 4.0vw, 1.08rem);
     line-height: 1.65;
@@ -2710,7 +2732,8 @@ body.lang-zh .tagline {
    English homepage typography is intentionally untouched. */
 html[lang="zh-CN"] .tagline,
 body.lang-zh .tagline {
-  font-family: "Ma Shan Zheng", "STKaiti", "Kaiti SC", KaiTi, cursive !important;
+  font-family: "Ma Shan Zheng Local", cursive !important;
+  font-synthesis: none;
   font-style: normal;
   font-weight: 400;
   font-size: clamp(0.90rem, 1.18vw, 1.06rem);
