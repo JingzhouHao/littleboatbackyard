@@ -112,7 +112,7 @@ window.SITE = {
 
       zh: [
 
-        "一个胶片摄影初学者，不专业蓝调口琴手，不务正业的研究人员，人狂热症患者。努力用理性的眼光寻找人类的一面，不完美但是真实的一面。",
+        "一个胶片摄影初学者，不专业蓝调口琴手，不务正业的研究人员。努力寻找人类的一面，不完美但是真实的一面。",
 
         "我能说啥呢......希望所有人都能找到他们值得拥有的快乐。"
       ]
@@ -198,10 +198,10 @@ window.SITE = {
       intro: {
 
         en:
-          "The name of this collection was inspired by Amy Winehouse's album Back to Black. Its Chinese title is 《黑色会》, though I think 《回到黑暗》—Back to Darkness—would be a more fitting translation. I don't know why, but Amy's voice always makes me want to care about people, to get close to human desire and emotion. Honestly, I'm already tired of so-called AI art. Just this once, can we turn our attention back to people—and be human again?",
+          "The name of this collection was inspired by Amy Winehouse's album <Back to Black>. Its Chinese name is 《黑色会》, though I think 《回到黑暗》—Back to Darkness—would be a better translation. I don't know why, but something in Amy's voice always makes me want to care about people, to get close to human desire and emotion. Honestly, I'm already tired of so-called AI art. Just this once, can we return to people—and care about human again?",
 
         zh:
-          "这个合集的名字灵感来源于Amy Winehouse 的专辑<Back to Black>。中文名是《黑色会》，我觉得更恰当的名字是《回到黑暗》。不知为什么，Amy的歌声总是让我想关爱人类，接触人类的欲望和情绪。老实说我已经厌倦所谓的AI艺术了，就这次，把注意力重新聚焦在人类身上，做回人类，可以吗？"
+          "这个合集的名字灵感来源于Amy Winehouse 的专辑<Back to Black>。中文名是《黑色会》，我觉得更恰当的名字是《回到黑暗》。不知为什么，Amy的歌声总是让我想关爱人类，接触人类的欲望和情绪。老实说我已经厌倦所谓的AI艺术了，就这次，把注意力重新聚焦在人类身上，做回人类，OK？"
       },
 
 
@@ -218,7 +218,7 @@ window.SITE = {
           caption: {
 
             en:
-              "A long heart-to-heart by the Charles River.",
+              "Having conversation by the Charles River.",
 
             zh:
               "在查尔斯河畔促膝长谈"
@@ -260,7 +260,7 @@ window.SITE = {
           caption: {
 
             en:
-              "A pensive figure on the park steps, and geese looking for food.",
+              "A person sitting on the stairs, and geese looking for food.",
 
             zh:
               "公园阶梯上沉思的人和揾食的鹅"
@@ -281,7 +281,7 @@ window.SITE = {
           caption: {
 
             en:
-              "The Green Line C train passing through the trees.",
+              "The Green Line C train passing through the woods.",
 
             zh:
               "greenlineC线从林中穿过"
@@ -302,7 +302,7 @@ window.SITE = {
           caption: {
 
             en:
-              "Children on the swings, with their parents nearby.",
+              "Children playing on the swings.",
 
             zh:
               "荡秋千的孩子们和他们的父母"
@@ -451,7 +451,7 @@ window.SITE = {
           caption: {
 
             en:
-              "A ceramics stall at the street market. I was trying to take a candid shot, but the vendor noticed me. Feeling guilty, I almost wanted to run away, but she told me I could photograph as much as I liked. She has such a beautiful smile. She looks so healthy, so full of life.",
+              "A ceramics stall at the street market. I was trying to take a candid shot, but the vendor noticed me. I almost wanted to run away, but she told me I could photograph as much as I liked. She has such a beautiful smile. She looks so healthy, so full of life.",
 
             zh:
               "街头集市上的陶艺摊子，本来想偷拍结果被摊主发现了。心虚的我有点想跑掉，但是她说我可以随便拍。她笑地真美，她看着真健康"
@@ -516,7 +516,7 @@ window.SITE = {
           caption: {
 
             en:
-              "An open-air bar on game day. Seriously, how many games do the Red Sox play in one summer? It feels like there are barely any days in the week when I can get through the Fenway Park area normally.",
+              "Beer garden near fenway park. Seriously, how many games do the Red Sox play in one summer? It feels like there are barely any days in the week when I can get through the Fenway Park area normally.",
 
             zh:
               "比赛日的露天酒吧。请问一个夏天Red Sox到底要打几场比赛？感觉一周里没几天我可以正常从Fenway park附近通过的。"
@@ -645,7 +645,7 @@ window.SITE = {
       intro: {
 
         en:
-          "I don't know why, but deserted train stations always make me want to take pictures. There is something about them that feels forgotten in some corner of the world—or maybe it's that they make me imagine all the unknown places I could reach if I boarded a train there. Stations always seem tied to possibility.",
+          "I don't know why, but deserted train stations always make me want to take pictures. There is something about them that feels forgotten in a corner of the world—or maybe it's that they make me imagine all the unknown places I could reach if I boarded a train there.",
 
         zh:
           "不知道为啥荒凉的车站总是能唤起我拍照的冲动，有一种在世界的角落里被遗忘的感觉，或者怎么说呢......会让我肖想从这个车站出发能够到达的未知的地方，车站常常和可能性联系在一起。"
@@ -665,7 +665,7 @@ window.SITE = {
           caption: {
 
             en:
-              "A Green Line train sitting on the open-air tracks during the summer shutdown.",
+              "A Green Line train sitting on the tracks during the summer shutdown.",
 
             zh:
               "暑假绿线停运，停靠在露天铁轨上的车厢"
