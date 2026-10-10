@@ -7,8 +7,8 @@ window.SITE = {
   "ownerName": "Jingzhou Hao",
   "ownerNameZh": "郝泾舟",
   "tagline": {
-    "en": "I know that if I wait, it will be lost, gone.",
-    "zh": "如果我等待的话，一切都将消失无踪。"
+    "en": "",
+    "zh": ""
   },
   "homeCoverDesktop": "assets/images/cover.jpeg",
   "homeCoverMobile": "assets/images/cover.jpeg",
@@ -83,7 +83,7 @@ window.SITE = {
         {
           "src": "assets/images/Back_to_human/000020.jpg",
           "caption": {
-            "en": "A long heart-to-heart by the Charles River.",
+            "en": "A conversation by the Charles River.",
             "zh": "在查尔斯河畔促膝长谈"
           },
           "note": "Shot with Kodak Funsaver"
@@ -108,7 +108,7 @@ window.SITE = {
           "src": "assets/images/Back_to_human/000020140020-1.jpg",
           "caption": {
             "en": "The Green Line C train passing through the trees.",
-            "zh": "greenlineC线从林中穿过"
+            "zh": "greenline C线从林中穿过"
           },
           "note": "Shot with kodak h35, film is gold 200"
         },
@@ -139,8 +139,8 @@ window.SITE = {
         {
           "src": "assets/images/Back_to_human/the bebop.jpg",
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "Irish pub near the berklee college of music called The bebop. It has live music performance every day. I like this view, especially the accordion on top of the mirror.",
+            "zh": "伯克利音乐学院附近有一家名叫“The Bebop”的爱尔兰酒吧，那里每天都有现场音乐表演。我很喜欢这个视角，尤其是镜子上方的那架手风琴。"
           },
           "note": ""
         }
@@ -178,8 +178,8 @@ window.SITE = {
         {
           "src": "assets/images/Carnival/OOTD.jpg",
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "Outfit of the day",
+            "zh": "Outfit of the day"
           },
           "note": ""
         },
@@ -187,7 +187,7 @@ window.SITE = {
           "src": "assets/images/Carnival/firestation.jpg",
           "caption": {
             "en": "",
-            "zh": ""
+            "zh": "就是很喜欢这个光影。光线把消防站的墙面照得明暗分明，莫名有点电影感？"
           },
           "note": ""
         },
@@ -195,7 +195,7 @@ window.SITE = {
           "src": "assets/images/Carnival/fruit.jpg",
           "caption": {
             "en": "",
-            "zh": ""
+            "zh": "一个街头水果摊。我只用一秒钟就想要"
           },
           "note": ""
         },
