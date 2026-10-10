@@ -1,0 +1,3234 @@
+/* =========================================================
+   LOCAL WEBFONTS
+   Self-hosted from assets/fonts/ for consistent rendering
+   across Safari, Chrome, iPhone, iPad, and desktop.
+   ========================================================= */
+
+@font-face {
+  font-family: "Caveat Local";
+  src: url("../fonts/caveat-latin-600-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ma Shan Zheng Local";
+  src: url("../fonts/ma-shan-zheng-chinese-simplified-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --ink: #142a2b;
+  --deep: #0c2628;
+
+  --paper: #f3efe5;
+  --paper-soft: #ece6d8;
+
+  --cream: #fff8df;
+  --muted: #6a7470;
+
+  --line:
+    rgba(20, 42, 43, 0.18);
+
+  --serif:
+    "Iowan Old Style",
+    Baskerville,
+    "Songti SC",
+    STSong,
+    Georgia,
+    serif;
+
+  --sans:
+    "Helvetica Neue",
+    "PingFang SC",
+    "Hiragino Sans GB",
+    Arial,
+    sans-serif;
+
+  --content: 1280px;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  margin: 0;
+
+  color: var(--ink);
+  background: var(--paper);
+
+  font-family: var(--sans);
+
+  -webkit-font-smoothing:
+    antialiased;
+
+  text-rendering:
+    optimizeLegibility;
+}
+
+
+img {
+  display: block;
+
+  max-width: 100%;
+}
+
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+
+button {
+  font: inherit;
+}
+
+
+[hidden] {
+  display: none !important;
+}
+
+
+/* =========================================================
+   HOME
+   ========================================================= */
+
+
+.home-page {
+  height: 100svh;
+
+  overflow: hidden;
+
+  background:
+    var(--deep);
+}
+
+
+.home-hero {
+  position: relative;
+
+  height: 100svh;
+
+  overflow: hidden;
+
+  display: grid;
+
+  place-items: center;
+
+  isolation: isolate;
+}
+
+
+/*
+  Old blurred background is no
+  longer needed now that desktop
+  and mobile have their own covers.
+*/
+
+.home-backdrop {
+  display: none;
+}
+
+
+.home-image {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -3;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+}
+
+
+.home-shade {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -2;
+
+  background:
+
+    radial-gradient(
+      circle at 50% 45%,
+
+      rgba(3,18,20,0.03)
+      0 25%,
+
+      rgba(3,18,20,0.28)
+      72%,
+
+      rgba(3,18,20,0.52)
+      100%
+    ),
+
+    linear-gradient(
+      to bottom,
+
+      rgba(2,14,16,0.18),
+
+      rgba(2,14,16,0.03)
+      45%,
+
+      rgba(2,14,16,0.40)
+    );
+}
+
+
+.home-copy {
+  width:
+    min(
+      900px,
+      calc(100% - 48px)
+    );
+
+  padding:
+    0 28px 52px;
+
+  text-align: center;
+
+  color:
+    var(--cream);
+
+  text-shadow:
+    0 2px 22px
+    rgba(0,0,0,0.34);
+}
+
+
+.home-copy h1 {
+  margin: 0;
+
+  font:
+    400
+    clamp(
+      2.2rem,
+      4.2vw,
+      4rem
+    )
+    / 1.08
+    var(--serif);
+}
+
+
+.tagline {
+  max-width: 670px;
+
+  margin:
+    36px auto 0;
+
+  font:
+    italic
+    400
+    clamp(
+      0.98rem,
+      1.35vw,
+      1.16rem
+    )
+    / 1.8
+    var(--serif);
+}
+
+
+.home-nav {
+  display: flex;
+
+  justify-content: center;
+
+  gap:
+    clamp(
+      42px,
+      6vw,
+      76px
+    );
+
+  margin-top:
+    70px;
+
+  font:
+    400
+    clamp(
+      1rem,
+      1.55vw,
+      1.18rem
+    )
+    / 1.2
+    var(--serif);
+}
+
+
+.home-nav a,
+.topnav a {
+  position: relative;
+
+  padding:
+    5px 0;
+}
+
+
+.home-nav a::after,
+.topnav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 100%;
+
+  bottom: 0;
+
+  height: 1px;
+
+  background:
+    currentColor;
+
+  transition:
+    right 180ms ease;
+}
+
+
+.home-nav a:hover::after,
+.topnav a:hover::after,
+.topnav a.is-current::after {
+  right: 0;
+}
+
+
+/* =========================================================
+   LANGUAGE SWITCH
+   ========================================================= */
+
+
+.lang-toggle {
+  border: 0;
+
+  padding: 5px 0;
+
+  background:
+    transparent;
+
+  color: inherit;
+
+  cursor: pointer;
+
+  font: inherit;
+
+  opacity: 0.82;
+
+  transition:
+    opacity 180ms ease;
+}
+
+
+.lang-toggle:hover {
+  opacity: 1;
+}
+
+
+.lang-toggle--home {
+  position: absolute;
+
+  z-index: 4;
+
+  top: 24px;
+  right: 30px;
+
+  color:
+    rgba(
+      255,
+      248,
+      223,
+      0.90
+    );
+
+  font-size:
+    0.82rem;
+
+  letter-spacing:
+    0.06em;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+
+.topbar {
+  width:
+    min(
+      var(--content),
+      calc(100% - 48px)
+    );
+
+  min-height: 76px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  align-items: center;
+
+  gap: 24px;
+
+  border-bottom:
+    1px solid
+    var(--line);
+}
+
+
+.brand {
+  font:
+    400
+    1.08rem
+    / 1.2
+    var(--serif);
+}
+
+
+.topnav {
+  display: flex;
+
+  align-items: center;
+
+  gap: 28px;
+
+  font-size:
+    0.86rem;
+}
+
+
+.topnav .lang-toggle {
+  margin-left: 4px;
+
+  font-size:
+    0.80rem;
+
+  letter-spacing:
+    0.05em;
+}
+
+
+/* =========================================================
+   SHARED HERO
+   ========================================================= */
+
+
+.page-hero {
+  position: relative;
+
+  width:
+    min(
+      var(--content),
+      calc(100% - 48px)
+    );
+
+  height:
+    clamp(
+      360px,
+      48vw,
+      650px
+    );
+
+  max-height:
+    70svh;
+
+  margin:
+    24px auto 0;
+
+  overflow: hidden;
+
+  background:
+    var(--deep);
+}
+
+
+.page-hero > img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+.page-hero-shade {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+
+      rgba(
+        3,
+        17,
+        19,
+        0.64
+      ),
+
+      rgba(
+        3,
+        17,
+        19,
+        0.04
+      )
+      58%
+    );
+}
+
+
+.page-hero-title {
+  position: absolute;
+
+  left:
+    clamp(
+      24px,
+      5vw,
+      74px
+    );
+
+  right:
+    clamp(
+      24px,
+      5vw,
+      74px
+    );
+
+  bottom:
+    clamp(
+      26px,
+      5vw,
+      64px
+    );
+
+  color:
+    var(--cream);
+}
+
+
+.page-hero-title h1 {
+  margin: 0;
+
+  font:
+    400
+    clamp(
+      3rem,
+      7.5vw,
+      6.5rem
+    )
+    / 0.96
+    var(--serif);
+}
+
+
+.kicker {
+  margin:
+    0 0 12px;
+
+  font-size:
+    0.69rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.18em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.lang-zh .kicker {
+  letter-spacing:
+    0.10em;
+
+  text-transform:
+    none;
+}
+
+
+/* =========================================================
+   ALBUM HERO
+   ========================================================= */
+
+
+/*
+  3:2 is deliberately close to
+  a normal horizontal 35 mm frame.
+
+  This keeps the hero wide without
+  heavily cropping the original.
+*/
+
+.album-hero {
+  width:
+    min(
+      1180px,
+      calc(100% - 48px)
+    );
+
+  height: auto;
+
+  aspect-ratio:
+    3 / 2;
+
+  max-height: none;
+}
+
+
+.album-hero > img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position:
+    center;
+}
+
+
+/*
+  Secondary-language title.
+*/
+
+.album-hero .kicker {
+  margin-bottom:
+    10px;
+
+  font:
+    400
+    clamp(
+      0.95rem,
+      1.4vw,
+      1.2rem
+    )
+    / 1.4
+    var(--serif);
+
+  letter-spacing:
+    0.03em;
+
+  text-transform:
+    none;
+}
+
+
+/*
+  Main-language title.
+*/
+
+.album-hero
+.page-hero-title
+h1 {
+  font-size:
+    clamp(
+      2.9rem,
+      6.2vw,
+      5.3rem
+    );
+}
+
+
+/* =========================================================
+   PHOTOGRAPHY
+   ========================================================= */
+
+
+.collections-wrap {
+  width:
+    min(
+      var(--content),
+      calc(100% - 48px)
+    );
+
+  margin:
+    0 auto;
+
+  padding:
+    88px 0 124px;
+}
+
+
+.collections-heading {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(280px, 0.65fr);
+
+  gap: 64px;
+
+  align-items: end;
+
+  margin-bottom:
+    48px;
+
+  padding-bottom:
+    30px;
+
+  border-bottom:
+    1px solid
+    var(--line);
+}
+
+
+.collections-heading h2 {
+  max-width: 800px;
+
+  margin: 0;
+
+  font:
+    400
+    clamp(
+      2rem,
+      4vw,
+      3.35rem
+    )
+    / 1.1
+    var(--serif);
+}
+
+
+.collections-note {
+  margin: 0;
+
+  color:
+    var(--muted);
+
+  font:
+    400
+    1rem
+    / 1.75
+    var(--serif);
+}
+
+
+.collection-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    54px 24px;
+}
+
+
+.collection-card {
+  min-width: 0;
+
+  opacity: 0;
+
+  transform:
+    translateY(10px);
+
+  animation:
+    collection-reveal
+    480ms
+    ease
+    forwards;
+
+  animation-delay:
+    var(
+      --delay,
+      0ms
+    );
+}
+
+
+@keyframes
+collection-reveal {
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+/*
+  3:2 instead of old 4:3.
+
+  This keeps your film covers
+  closer to the original frame.
+*/
+
+.collection-image-wrap {
+  aspect-ratio:
+    3 / 2;
+
+  overflow: hidden;
+
+  background:
+    var(--paper-soft);
+}
+
+
+.collection-image-wrap img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform
+    600ms
+    cubic-bezier(
+      .2,
+      .7,
+      .2,
+      1
+    ),
+
+    opacity
+    250ms
+    ease;
+}
+
+
+.collection-card:hover img {
+  transform:
+    scale(1.022);
+
+  opacity:
+    0.95;
+}
+
+
+.collection-card-copy {
+  padding-top:
+    16px;
+}
+
+
+/*
+  Other-language title.
+*/
+
+.collection-secondary-title {
+  margin-bottom:
+    7px;
+
+  color:
+    var(--muted);
+
+  font:
+    400
+    0.92rem
+    / 1.45
+    var(--serif);
+}
+
+
+/*
+  Current-language title.
+*/
+
+.collection-card-copy h3 {
+  margin: 0;
+
+  font:
+    400
+    clamp(
+      1.4rem,
+      2.1vw,
+      1.95rem
+    )
+    / 1.12
+    var(--serif);
+}
+
+
+.lang-zh
+.collection-card-copy
+h3 {
+  line-height:
+    1.28;
+}
+
+
+/* =========================================================
+   ALBUM INTRO
+   ========================================================= */
+
+
+.album-intro-section {
+  width:
+    min(
+      1120px,
+      calc(100% - 48px)
+    );
+
+  margin:
+    0 auto;
+
+  padding:
+    82px 0 96px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(150px, 0.3fr)
+    minmax(0, 1fr);
+
+  gap: 64px;
+
+  border-bottom:
+    1px solid
+    var(--line);
+}
+
+
+.back-link {
+  align-self: start;
+
+  display: inline-block;
+
+  width: fit-content;
+
+  color: var(--ink);
+
+  font-size: 0.92rem;
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  padding-bottom: 5px;
+
+  border-bottom:
+    1px solid
+    rgba(20, 42, 43, 0.45);
+
+  transition:
+    opacity 180ms ease,
+    border-color 180ms ease;
+}
+
+
+.back-link:hover {
+  opacity: 0.6;
+
+  border-color:
+    var(--ink);
+}
+
+.album-intro,
+.album-reflection {
+  max-width: 790px;
+
+  margin: 0;
+
+  font:
+    400
+    clamp(
+      1.1rem,
+      1.7vw,
+      1.35rem
+    )
+    / 1.85
+    var(--serif);
+}
+
+
+.album-reflection {
+  margin-top:
+    26px;
+
+  color:
+    #53605c;
+}
+
+
+/* =========================================================
+   PHOTO STORIES
+   ========================================================= */
+
+
+.photo-stories {
+  width:
+    min(
+      1080px,
+      calc(100% - 48px)
+    );
+
+  margin:
+    0 auto;
+
+  padding:
+    88px 0 124px;
+}
+
+
+.photo-story {
+  width: 100%;
+
+  margin:
+    0 0
+    clamp(
+      82px,
+      10vw,
+      136px
+    );
+}
+
+
+/*
+  LANDSCAPE
+
+  Image above,
+  comment below.
+*/
+
+.photo-story--landscape {
+  display: block;
+
+  max-width: 840px;
+}
+
+
+/*
+  PORTRAIT — DESKTOP
+
+  Image left,
+  comment right.
+*/
+
+.photo-story--portrait {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 500px)
+    minmax(210px, 300px);
+
+  gap:
+    clamp(
+      38px,
+      5vw,
+      66px
+    );
+
+  align-items: center;
+
+  max-width: 900px;
+}
+
+
+/*
+  If there is no text,
+  don't reserve text space.
+*/
+
+.photo-story--no-note
+.photo-story--portrait {
+  display: block;
+
+  max-width: 500px;
+}
+
+
+.photo-story--no-note
+.photo-story--landscape {
+  max-width: 840px;
+}
+
+
+.photo-story-figure {
+  margin: 0;
+
+  min-width: 0;
+}
+
+
+.photo-open {
+  display: flex;
+
+  justify-content:
+    flex-start;
+
+  width: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  background:
+    transparent;
+
+  cursor:
+    zoom-in;
+}
+
+
+.photo-open img {
+  display: block;
+
+  width: auto;
+
+  max-width: 100%;
+
+  height: auto;
+
+  object-fit:
+    contain;
+
+  object-position:
+    left center;
+
+  transition:
+    opacity 220ms ease;
+}
+
+
+.photo-story--landscape
+.photo-open img {
+  width: 100%;
+}
+
+
+.photo-story--portrait
+.photo-open img {
+  max-height:
+    74svh;
+}
+
+
+.photo-open:hover img {
+  opacity:
+    0.94;
+}
+
+
+/* Photo comment */
+
+.photo-note {
+  max-width: 700px;
+
+  margin-top:
+    18px;
+
+  font:
+    400
+    clamp(
+      0.98rem,
+      1.25vw,
+      1.08rem
+    )
+    / 1.75
+    var(--serif);
+}
+
+
+/*
+  Only portrait desktop
+  moves comment to right.
+*/
+
+.photo-story--portrait
+.photo-note {
+  max-width: 300px;
+
+  margin-top: 0;
+}
+
+
+.photo-caption {
+  margin: 0;
+}
+
+
+.photo-tech {
+  margin:
+    12px 0 0;
+
+  color:
+    var(--muted);
+
+  font:
+    400
+    0.78rem
+    / 1.55
+    var(--sans);
+
+  letter-spacing:
+    0.015em;
+}
+
+
+/* =========================================================
+   BIO
+   ========================================================= */
+
+
+.bio-intro-section {
+  width:
+    min(
+      1120px,
+      calc(100% - 48px)
+    );
+
+  margin:
+    0 auto;
+
+  padding:
+    98px 0 106px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(280px, 0.75fr)
+    minmax(0, 1.25fr);
+
+  gap:
+    clamp(
+      52px,
+      8vw,
+      108px
+    );
+
+  align-items:
+    center;
+}
+
+
+.bio-portrait-wrap {
+  margin: 0;
+
+  aspect-ratio:
+    4 / 5;
+
+  overflow: hidden;
+
+  background:
+    var(--paper-soft);
+}
+
+
+.bio-portrait-wrap img {
+  width: 100%;
+  height: 100%;
+
+  object-fit:
+    cover;
+}
+
+
+.bio-copy h2,
+.cv-section h2 {
+  margin: 0;
+
+  font:
+    400
+    clamp(
+      2.2rem,
+      4vw,
+      3.6rem
+    )
+    / 1.05
+    var(--serif);
+}
+
+
+.bio-text {
+  margin-top:
+    30px;
+
+  font:
+    400
+    1.05rem
+    / 1.85
+    var(--serif);
+}
+
+
+.bio-text p {
+  margin:
+    0 0 18px;
+}
+
+
+/* ---------- CV ---------- */
+
+
+.cv-section {
+  width:
+    min(
+      1120px,
+      calc(100% - 48px)
+    );
+
+  margin:
+    0 auto;
+
+  padding:
+    76px 0 90px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(220px, 0.7fr)
+    minmax(0, 1.3fr);
+
+  gap: 72px;
+
+  border-top:
+    1px solid
+    var(--line);
+}
+
+
+.cv-copy {
+  max-width: 650px;
+}
+
+
+.cv-copy p {
+  margin:
+    0 0 24px;
+
+  font:
+    400
+    1rem
+    / 1.75
+    var(--serif);
+}
+
+
+.cv-button {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap: 10px;
+
+  padding:
+    11px 0;
+
+  border-bottom:
+    1px solid
+    currentColor;
+
+  font-size:
+    0.88rem;
+}
+
+
+.cv-missing {
+  color:
+    var(--muted);
+
+  font-size:
+    0.82rem !important;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+
+.site-footer {
+  width:
+    min(
+      var(--content),
+      calc(100% - 48px)
+    );
+
+  min-height:
+    90px;
+
+  margin:
+    0 auto;
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  gap: 24px;
+
+  font-size:
+    0.76rem;
+}
+
+
+.site-footer--paper {
+  border-top:
+    1px solid
+    var(--line);
+
+  color:
+    var(--muted);
+}
+
+
+.site-footer--overlay {
+  position:
+    absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 2;
+
+  color:
+    rgba(
+      255,
+      248,
+      223,
+      0.82
+    );
+}
+
+
+.social-links {
+  display: flex;
+
+  gap: 20px;
+}
+
+
+.social-links a:hover {
+  opacity:
+    0.6;
+}
+
+
+.copyright {
+  margin: 0;
+
+  text-align:
+    right;
+}
+
+
+/* =========================================================
+   LIGHTBOX
+   ========================================================= */
+
+
+.no-scroll {
+  overflow:
+    hidden;
+}
+
+
+.lightbox {
+  position:
+    fixed;
+
+  inset: 0;
+
+  z-index: 50;
+
+  display: none;
+
+  place-items:
+    center;
+
+  padding:
+    34px 72px;
+
+  color:
+    white;
+
+  background:
+    rgba(
+      5,
+      18,
+      20,
+      0.96
+    );
+}
+
+
+.lightbox.is-open {
+  display: grid;
+}
+
+
+.lightbox figure {
+  margin: 0;
+
+  text-align:
+    center;
+
+  max-width:
+    100%;
+}
+
+
+.lightbox img {
+  max-width:
+    min(
+      92vw,
+      1700px
+    );
+
+  max-height:
+    86vh;
+
+  width: auto;
+  height: auto;
+
+  margin:
+    0 auto;
+}
+
+
+.lightbox figcaption {
+  max-width: 760px;
+
+  min-height:
+    1.3em;
+
+  margin:
+    12px auto 0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.70
+    );
+
+  font:
+    400
+    0.8rem
+    / 1.55
+    var(--serif);
+}
+
+
+.lightbox button {
+  position:
+    fixed;
+
+  border: 0;
+
+  background:
+    transparent;
+
+  color:
+    white;
+
+  cursor:
+    pointer;
+
+  opacity:
+    0.82;
+}
+
+
+.lightbox button:hover {
+  opacity: 1;
+}
+
+
+.lightbox-close {
+  top: 16px;
+
+  right: 24px;
+
+  font-size:
+    2.25rem;
+}
+
+
+.lightbox-prev,
+.lightbox-next {
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  font-size:
+    3rem;
+}
+
+
+.lightbox-prev {
+  left: 20px;
+}
+
+
+.lightbox-next {
+  right: 20px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+
+@media
+(max-width: 1024px) {
+
+
+  .collection-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+
+  .collections-heading {
+    grid-template-columns:
+      1fr;
+
+    gap:
+      26px;
+  }
+
+
+  .photo-story--portrait {
+    grid-template-columns:
+      minmax(0, 430px)
+      minmax(180px, 240px);
+
+    gap:
+      32px;
+  }
+
+
+  .bio-intro-section {
+    gap:
+      48px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+
+@media
+(max-width: 680px) {
+
+
+  /* ---------- Home ---------- */
+
+
+  .home-copy {
+    width:
+      calc(100% - 28px);
+
+    padding:
+      0 14px 84px;
+  }
+
+
+  .home-copy h1 {
+    font-size:
+      clamp(
+        2rem,
+        9vw,
+        3.15rem
+      );
+  }
+
+
+  .tagline {
+    margin-top:
+      28px;
+
+    font-size:
+      0.94rem;
+
+    line-height:
+      1.7;
+  }
+
+
+  .home-nav {
+    margin-top:
+      52px;
+
+    gap:
+      38px;
+  }
+
+
+  .lang-toggle--home {
+    top: 18px;
+
+    right: 20px;
+  }
+
+
+  /* ---------- Navigation ---------- */
+
+
+  .topbar {
+    width:
+      calc(
+        100% - 28px
+      );
+
+    min-height:
+      66px;
+
+    gap:
+      14px;
+  }
+
+
+  .brand {
+    font-size:
+      0.92rem;
+  }
+
+
+  .topnav {
+    gap:
+      15px;
+
+    font-size:
+      0.76rem;
+  }
+
+
+  .topnav
+  .lang-toggle {
+    font-size:
+      0.73rem;
+  }
+
+
+  /* ---------- Hero ---------- */
+
+
+  .page-hero {
+    width:
+      calc(
+        100% - 24px
+      );
+
+    margin-top:
+      12px;
+
+    height:
+      54svh;
+
+    min-height:
+      350px;
+
+    max-height:
+      560px;
+  }
+
+
+  .page-hero-title h1 {
+    font-size:
+      clamp(
+        2.8rem,
+        14vw,
+        4.8rem
+      );
+  }
+
+
+  /*
+    Album hero remains 3:2.
+
+    It is intentionally not made
+    tall like the Photography and
+    Bio heroes.
+  */
+
+  .album-hero {
+    width:
+      calc(
+        100% - 24px
+      );
+
+    height: auto;
+
+    min-height: 0;
+
+    aspect-ratio:
+      3 / 2;
+  }
+
+
+  .album-hero
+  .page-hero-title {
+    left: 20px;
+
+    right: 20px;
+
+    bottom: 20px;
+  }
+
+
+  .album-hero
+  .page-hero-title
+  h1 {
+    font-size:
+      clamp(
+        2.3rem,
+        11vw,
+        3.9rem
+      );
+  }
+
+
+  .album-hero
+  .kicker {
+    font-size:
+      0.90rem;
+
+    line-height:
+      1.35;
+  }
+
+
+  /* ---------- Photography ---------- */
+
+
+  .collections-wrap {
+    width:
+      calc(
+        100% - 30px
+      );
+
+    padding:
+      64px 0 84px;
+  }
+
+
+  .collections-heading {
+    margin-bottom:
+      30px;
+
+    padding-bottom:
+      24px;
+  }
+
+
+  .collections-heading h2 {
+    font-size:
+      2rem;
+  }
+
+
+  .collection-grid {
+    grid-template-columns:
+      1fr;
+
+    gap:
+      42px;
+  }
+
+
+  .collection-image-wrap {
+    aspect-ratio:
+      3 / 2;
+  }
+
+
+  /* ---------- Album intro ---------- */
+
+
+  .album-intro-section {
+    width:
+      calc(
+        100% - 30px
+      );
+
+    grid-template-columns:
+      1fr;
+
+    gap:
+      34px;
+
+    padding:
+      58px 0 66px;
+  }
+
+
+  /* ---------- Photos ---------- */
+
+
+  .photo-stories {
+    width:
+      calc(
+        100% - 30px
+      );
+
+    padding:
+      64px 0 88px;
+  }
+
+
+  /*
+    ALL photos become vertical
+    flow on mobile:
+
+    image
+    text
+  */
+
+  .photo-story,
+  .photo-story--landscape,
+  .photo-story--portrait,
+  .photo-story--no-note,
+  .photo-story--no-note.photo-story--portrait {
+
+    display: block;
+
+    width: 100%;
+
+    max-width: none;
+
+    margin:
+      0 0 72px;
+  }
+
+
+  /*
+    Portrait photo itself stays a
+    little narrower than screen.
+  */
+
+  .photo-story--portrait
+  .photo-story-figure {
+
+    width:
+      min(
+        88%,
+        520px
+      );
+  }
+
+
+  .photo-open img,
+  .photo-story--portrait
+  .photo-open img,
+  .photo-story--landscape
+  .photo-open img {
+
+    width: 100%;
+
+    max-height: none;
+  }
+
+
+  .photo-note,
+  .photo-story--portrait
+  .photo-note {
+
+    width:
+      min(
+        94%,
+        700px
+      );
+
+    max-width: none;
+
+    margin:
+      16px 0 0;
+  }
+
+
+  /* ---------- Bio ---------- */
+
+
+  .bio-intro-section {
+    width:
+      calc(
+        100% - 30px
+      );
+
+    grid-template-columns:
+      1fr;
+
+    gap:
+      42px;
+
+    padding:
+      68px 0 76px;
+  }
+
+
+  .bio-portrait-wrap {
+    width:
+      min(
+        82%,
+        420px
+      );
+  }
+
+
+  .cv-section {
+    width:
+      calc(
+        100% - 30px
+      );
+
+    grid-template-columns:
+      1fr;
+
+    gap:
+      28px;
+
+    padding:
+      58px 0 70px;
+  }
+
+
+  /* ---------- Footer ---------- */
+
+
+  .site-footer {
+    width:
+      calc(
+        100% - 30px
+      );
+
+    min-height:
+      112px;
+
+    flex-direction:
+      column;
+
+    justify-content:
+      center;
+
+    gap:
+      12px;
+
+    text-align:
+      center;
+  }
+
+
+  .copyright {
+    text-align:
+      center;
+  }
+
+
+  .site-footer--overlay {
+    min-height:
+      82px;
+
+    flex-direction:
+      row;
+
+    justify-content:
+      space-between;
+
+    text-align:
+      left;
+  }
+
+
+  .site-footer--overlay
+  .copyright {
+    text-align:
+      right;
+  }
+
+
+  /* ---------- Lightbox ---------- */
+
+
+  .lightbox {
+    padding:
+      52px 18px 28px;
+  }
+
+
+  .lightbox-prev {
+    left: 8px;
+  }
+
+
+  .lightbox-next {
+    right: 8px;
+  }
+
+
+  .lightbox-prev,
+  .lightbox-next {
+    font-size:
+      2.4rem;
+  }
+}
+/* Photography / Bio hero 不重复显示网站名字 */
+.page-hero--photography .kicker,
+.bio-hero .kicker {
+  display: none;
+}
+/* =========================================================
+   PHOTOGRAPHY + BIO
+   unified post-hero layout
+   ========================================================= */
+
+
+/*
+  Desktop / tablet hero width follows
+  the same content width as the top navigation.
+
+  This prevents the hero from being
+  wider than the line above it.
+*/
+
+@media (min-width: 681px) {
+
+  .page-hero--photography,
+  .bio-hero {
+
+    width:
+      min(
+        var(--content),
+        calc(100% - 48px)
+      );
+  }
+
+}
+
+
+
+/* =========================================================
+   PHOTOGRAPHY
+   ========================================================= */
+
+
+/*
+  No headline / intro section.
+
+  The horizontal rule directly separates
+  the hero from the collection grid.
+*/
+
+.collections-wrap--minimal {
+
+  width:
+    min(
+      var(--content),
+      calc(100% - 48px)
+    );
+
+  margin:
+    64px auto 0;
+
+  padding:
+    56px 0 124px;
+
+  border-top:
+    1px solid
+    var(--line);
+}
+
+
+
+/*
+  The old duplicated site-title kicker
+  inside the hero should never appear.
+*/
+
+.page-hero--photography
+.kicker {
+
+  display: none;
+}
+
+
+
+/* =========================================================
+   BIO
+   ========================================================= */
+
+
+/*
+  Make Bio start exactly like Photography:
+
+      hero
+      spacing
+      horizontal rule
+      content
+*/
+
+.bio-intro-section {
+
+  width:
+    min(
+      var(--content),
+      calc(100% - 48px)
+    );
+
+  margin:
+    64px auto 0;
+
+  padding:
+    56px 0 106px;
+
+  border-top:
+    1px solid
+    var(--line);
+}
+
+
+
+/*
+  Same rule:
+  don't repeat the website name
+  inside the hero.
+*/
+
+.bio-hero
+.kicker {
+
+  display: none;
+}
+
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 680px) {
+
+
+  /*
+    Keep the existing mobile hero behavior.
+  */
+
+  .collections-wrap--minimal {
+
+    width:
+      calc(100% - 30px);
+
+    margin:
+      44px auto 0;
+
+    padding:
+      42px 0 84px;
+  }
+
+
+  .bio-intro-section {
+
+    width:
+      calc(100% - 30px);
+
+    margin:
+      44px auto 0;
+
+    padding:
+      42px 0 76px;
+  }
+
+}
+
+/* =========================================================
+   CONSOLIDATED FINAL OVERRIDES
+   Typography, handwritten branding, responsive behavior,
+   and social icons.
+   ========================================================= */
+
+/* =========================================================
+   HANDWRITTEN SITE LOGO
+   ========================================================= */
+
+body {
+  --site-logo: url("../images/branding/title-en.png");
+  --site-logo-ratio: 1446 / 299;
+}
+
+body.lang-zh {
+  --site-logo: url("../images/branding/title-zh.png");
+  --site-logo-ratio: 1300 / 242;
+}
+
+#site-title,
+.brand {
+  font-size: 0;
+  line-height: 0;
+}
+
+#site-title::before,
+.brand::before {
+  content: "";
+  display: block;
+  aspect-ratio: var(--site-logo-ratio);
+  background: currentColor;
+  -webkit-mask-image: var(--site-logo);
+  mask-image: var(--site-logo);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* Homepage logo */
+#site-title {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: var(--cream);
+  text-shadow: none;
+  overflow: visible;
+}
+
+#site-title::before {
+  width: min(88vw, 1000px);
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+body.lang-zh #site-title::before {
+  width: min(79vw, 880px);
+}
+
+/* Header logo */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--ink);
+}
+
+/* English logo aligns with the left edge of the top rule. */
+body:not(.lang-zh) .brand {
+  margin-left: 0;
+}
+
+body:not(.lang-zh) .brand::before {
+  width: 360px;
+  -webkit-mask-position: left center;
+  mask-position: left center;
+}
+
+/* Chinese placement was already visually balanced. */
+body.lang-zh .brand {
+  margin-left: -10px;
+}
+
+body.lang-zh .brand::before {
+  width: 315px;
+  -webkit-mask-position: left center;
+  mask-position: left center;
+}
+
+.topbar {
+  min-height: 88px;
+}
+
+/* =========================================================
+   NAVIGATION
+   Clearer than the earlier Cormorant navigation.
+   ========================================================= */
+
+html[lang="en"] .topnav,
+html[lang="en"] .home-nav,
+html[lang="en"] .lang-toggle {
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+}
+
+html[lang="zh-CN"] .topnav,
+html[lang="zh-CN"] .home-nav,
+html[lang="zh-CN"] .lang-toggle {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-weight: 500;
+}
+
+.topnav {
+  font-size: 0.94rem;
+}
+
+.topnav .lang-toggle {
+  font-size: 0.90rem;
+  font-weight: inherit;
+}
+
+/* Homepage navigation needs stronger contrast over photography. */
+.home-page .home-nav {
+  font-size: 1.18rem;
+}
+
+.home-page .home-nav a {
+  padding: 10px 10px;
+  color: rgba(255, 248, 223, 0.99);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.66);
+}
+
+.home-page .lang-toggle--home {
+  padding: 9px 8px;
+  color: rgba(255, 248, 223, 0.99);
+  font-size: 0.98rem;
+  font-weight: 600;
+  opacity: 1;
+  text-shadow: 0 2px 11px rgba(0, 0, 0, 0.68);
+}
+
+/* =========================================================
+   HOMEPAGE TAGLINE
+   ========================================================= */
+
+/* English: artistic handwritten secondary voice. */
+html[lang="en"] .tagline {
+  font-family: "Caveat Local", cursive;
+  font-synthesis: none;
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(1.35rem, 2.1vw, 1.78rem);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: rgba(255, 248, 223, 0.99);
+  text-shadow: 0 2px 13px rgba(0, 0, 0, 0.66);
+}
+
+/* Chinese: use a real webfont so iPhone/iPad do not fall back to PingFang. */
+html[lang="zh-CN"] .tagline,
+body.lang-zh .tagline {
+  font-family: "Ma Shan Zheng Local", cursive;
+  font-synthesis: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(0.96rem, 1.30vw, 1.16rem);
+  line-height: 1.70;
+  letter-spacing: 0.035em;
+  color: rgba(255, 248, 223, 0.99);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.60);
+}
+
+/* =========================================================
+   KEEP COLLECTION/BODY COPY IN THE SIMPLE SANS STYLE
+   across desktop, tablet, and mobile.
+   ========================================================= */
+
+.collection-secondary-title,
+.collection-card-copy h3,
+.album-hero .page-hero-title h1,
+.album-hero .kicker,
+.album-intro,
+.album-reflection,
+.photo-note,
+.photo-tech,
+#bio-name,
+.bio-copy h2,
+.bio-text,
+.bio-text p,
+.cv-section h2,
+.cv-copy p {
+  font-family: var(--sans) !important;
+  font-weight: 400;
+}
+
+/* =========================================================
+   BIO ALIGNMENT + BILINGUAL NAME
+   ========================================================= */
+
+.bio-intro-section {
+  align-items: start;
+}
+
+.bio-copy {
+  padding-top: 0;
+  align-self: start;
+}
+
+#bio-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.24em;
+  row-gap: 0.08em;
+  margin-top: 0;
+}
+
+.bio-name-primary {
+  font: inherit;
+}
+
+.bio-name-secondary {
+  font-size: 0.48em;
+  font-weight: 400;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.bio-text {
+  margin-top: 28px;
+}
+
+/* =========================================================
+   SOCIAL ICONS
+   Bigger, visually stronger, tighter spacing.
+   ========================================================= */
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.social-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: inherit;
+  opacity: 0.92;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.social-icon-link:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.social-icon--linkedin {
+  width: 31px;
+  height: 31px;
+}
+
+.social-icon-dot,
+.social-icon-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+.site-footer--overlay .social-icon-link {
+  opacity: 0.98;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1024px) and (min-width: 681px) {
+  body:not(.lang-zh) .brand::before {
+    width: 305px;
+  }
+
+  body.lang-zh .brand::before {
+    width: 270px;
+  }
+
+  #site-title::before {
+    width: min(88vw, 800px);
+  }
+
+  body.lang-zh #site-title::before {
+    width: min(81vw, 720px);
+  }
+
+  .topnav {
+    gap: 18px;
+    font-size: 0.90rem;
+  }
+
+  .home-page .home-nav {
+    font-size: 1.12rem;
+  }
+
+  .social-links {
+    gap: 5px;
+  }
+
+  .social-icon-link {
+    width: 38px;
+    height: 38px;
+  }
+
+  .social-icon {
+    width: 31px;
+    height: 31px;
+  }
+
+  .social-icon--linkedin {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 680px) {
+  /* Make the visible handwritten homepage title clearly
+     wider than the tagline despite transparency in the PNG. */
+  #site-title::before {
+    width: 100%;
+    max-width: none;
+    transform: scale(1.26);
+    transform-origin: center center;
+  }
+
+  body.lang-zh #site-title::before {
+    width: 100%;
+    transform: scale(1.17);
+  }
+
+  .tagline {
+    max-width: 76vw;
+  }
+
+  body:not(.lang-zh) .brand {
+    margin-left: 0;
+  }
+
+  body:not(.lang-zh) .brand::before {
+    width: 225px;
+  }
+
+  body.lang-zh .brand {
+    margin-left: -7px;
+  }
+
+  body.lang-zh .brand::before {
+    width: 205px;
+  }
+
+  .topbar {
+    width: calc(100% - 22px);
+    min-height: 74px;
+    gap: 6px;
+  }
+
+  .topnav {
+    gap: 7px;
+    font-size: 0.79rem;
+  }
+
+  .topnav .lang-toggle {
+    margin-left: 0;
+    font-size: 0.77rem;
+  }
+
+  .home-page .home-nav {
+    gap: 28px;
+    font-size: 1.05rem;
+  }
+
+  .home-page .home-nav a {
+    padding: 11px 8px;
+  }
+
+  .home-page .lang-toggle--home {
+    padding: 10px 8px;
+    font-size: 0.93rem;
+  }
+
+  html[lang="en"] .tagline {
+    font-size: clamp(1.24rem, 5.5vw, 1.50rem);
+    line-height: 1.4;
+  }
+
+  html[lang="zh-CN"] .tagline,
+  body.lang-zh .tagline {
+    font-family: "Ma Shan Zheng Local", cursive;
+    font-weight: 400;
+    font-size: clamp(0.94rem, 4.0vw, 1.08rem);
+    line-height: 1.65;
+    letter-spacing: 0.03em;
+  }
+
+  .social-links {
+    gap: 4px;
+  }
+
+  .social-icon-link {
+    width: 34px;
+    height: 34px;
+  }
+
+  .social-icon,
+  .social-icon--linkedin {
+    width: 29px;
+    height: 29px;
+  }
+
+  .bio-intro-section {
+    gap: 32px;
+  }
+
+  #bio-name {
+    font-size: clamp(2.25rem, 10vw, 3.4rem);
+  }
+
+  .bio-name-secondary {
+    font-size: 0.43em;
+  }
+
+  .bio-text {
+    margin-top: 24px;
+  }
+}
+
+
+/* =========================================================
+   BIO / HERO FINAL POLISH
+   ========================================================= */
+
+/* Keep all inner-page wide-cover titles in the same clean sans family.
+   This prevents desktop Chinese from falling back to Songti. */
+.inner-page .page-hero-title h1,
+.inner-page .page-hero-title .kicker {
+  font-family: var(--sans) !important;
+  font-weight: 400;
+}
+
+/* Chinese homepage tagline: Ma Shan Zheng, slightly smaller and light-looking.
+   English homepage typography is intentionally untouched. */
+html[lang="zh-CN"] .tagline,
+body.lang-zh .tagline {
+  font-family: "Ma Shan Zheng Local", cursive !important;
+  font-synthesis: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(0.90rem, 1.18vw, 1.06rem);
+  line-height: 1.72;
+  letter-spacing: 0.025em;
+}
+
+@media (max-width: 680px) {
+  html[lang="zh-CN"] .tagline,
+  body.lang-zh .tagline {
+    font-size: clamp(0.90rem, 3.8vw, 1.02rem);
+    line-height: 1.68;
+  }
+}
+
+/* =========================================================
+   BIO PHOTO GALLERY
+   Pure-photo masonry-like columns, no captions or text blocks.
+   ========================================================= */
+
+.bio-gallery-section {
+  width: min(var(--content), calc(100% - 48px));
+  margin: 0 auto;
+  padding: 16px 0 92px;
+}
+
+.bio-gallery {
+  columns: 3 260px;
+  column-gap: 18px;
+}
+
+.bio-gallery-item {
+  break-inside: avoid;
+  margin: 0 0 18px;
+}
+
+.bio-gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .bio-gallery-section {
+    width: calc(100% - 36px);
+    padding-bottom: 72px;
+  }
+
+  .bio-gallery {
+    columns: 2 240px;
+    column-gap: 14px;
+  }
+
+  .bio-gallery-item {
+    margin-bottom: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bio-gallery-section {
+    width: calc(100% - 30px);
+    padding-bottom: 60px;
+  }
+
+  .bio-gallery {
+    columns: 1;
+  }
+}
+
+/* Single CV heading only; no duplicated kicker/title hierarchy. */
+.cv-section .cv-heading {
+  margin: 0;
+  font-family: var(--sans) !important;
+  font-weight: 500;
+  font-size: clamp(2rem, 3.3vw, 3.2rem);
+  line-height: 1.08;
+}
+
+/* =========================================================
+   FINE ART TYPOGRAPHY OVERRIDE
+   Keep layout intact; simplify language + typography only.
+   ========================================================= */
+
+:root {
+  --fine-en: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fine-zh: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+}
+
+/* One language at a time */
+.collection-secondary-title,
+.album-hero .kicker,
+#album-meta,
+.album-meta,
+.bio-name-secondary,
+.page-hero-title > .kicker,
+.collections-heading .kicker,
+.album-intro-copy > .kicker {
+  display: none !important;
+}
+
+/* Base language fonts */
+html[lang="en"] body {
+  font-family: var(--fine-en);
+}
+
+html[lang="zh-CN"] body,
+body.lang-zh {
+  font-family: var(--fine-zh);
+}
+
+/* Navigation */
+html[lang="en"] .topnav,
+html[lang="en"] .home-nav,
+html[lang="en"] .lang-toggle {
+  font-family: var(--fine-en) !important;
+  font-weight: 400 !important;
+}
+
+html[lang="zh-CN"] .topnav,
+html[lang="zh-CN"] .home-nav,
+html[lang="zh-CN"] .lang-toggle,
+body.lang-zh .topnav,
+body.lang-zh .home-nav,
+body.lang-zh .lang-toggle {
+  font-family: var(--fine-zh) !important;
+  font-weight: 400 !important;
+}
+
+.topnav {
+  gap: 26px !important;
+  font-size: 0.84rem !important;
+  letter-spacing: 0 !important;
+}
+
+.topnav .lang-toggle {
+  margin-left: 5px !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Homepage tagline — restrained, not handwritten */
+html[lang="en"] .tagline {
+  max-width: 580px !important;
+  margin-top: 30px !important;
+  font-family: var(--fine-en) !important;
+  font-style: normal !important;
+  font-weight: 300 !important;
+  font-size: clamp(0.92rem, 1.1vw, 1.02rem) !important;
+  line-height: 1.65 !important;
+  letter-spacing: 0.015em !important;
+}
+
+html[lang="zh-CN"] .tagline,
+body.lang-zh .tagline {
+  max-width: 580px !important;
+  margin-top: 30px !important;
+  font-family: var(--fine-zh) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: clamp(0.90rem, 1.05vw, 1rem) !important;
+  line-height: 1.75 !important;
+  letter-spacing: 0.02em !important;
+}
+
+.home-nav {
+  margin-top: 52px !important;
+  gap: clamp(38px, 5vw, 62px) !important;
+  font-size: clamp(0.96rem, 1.25vw, 1.08rem) !important;
+}
+
+.home-nav a {
+  padding: 7px 2px !important;
+}
+
+/* Page hero titles */
+html[lang="en"] .page-hero-title h1 {
+  font-family: var(--fine-en) !important;
+  font-weight: 300 !important;
+  font-size: clamp(2rem, 3.4vw, 3.1rem) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.025em !important;
+}
+
+html[lang="zh-CN"] .page-hero-title h1,
+body.lang-zh .page-hero-title h1 {
+  font-family: var(--fine-zh) !important;
+  font-weight: 400 !important;
+  font-size: clamp(1.8rem, 3vw, 2.7rem) !important;
+  line-height: 1.15 !important;
+  letter-spacing: 0.01em !important;
+}
+
+html[lang="en"] .album-hero .page-hero-title h1 {
+  font-size: clamp(2.05rem, 3.6vw, 3.2rem) !important;
+}
+
+html[lang="zh-CN"] .album-hero .page-hero-title h1,
+body.lang-zh .album-hero .page-hero-title h1 {
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem) !important;
+}
+
+/* Photography index */
+.collections-wrap {
+  padding-top: 70px !important;
+  padding-bottom: 108px !important;
+}
+
+.collections-heading {
+  margin-bottom: 40px !important;
+  padding-bottom: 26px !important;
+}
+
+html[lang="en"] .collections-heading h2 {
+  font-family: var(--fine-en) !important;
+  font-weight: 300 !important;
+  font-size: clamp(1.5rem, 2.35vw, 2.1rem) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.018em !important;
+}
+
+html[lang="zh-CN"] .collections-heading h2,
+body.lang-zh .collections-heading h2 {
+  font-family: var(--fine-zh) !important;
+  font-weight: 400 !important;
+  font-size: clamp(1.45rem, 2.2vw, 2rem) !important;
+  line-height: 1.32 !important;
+  letter-spacing: 0.01em !important;
+}
+
+.collections-note {
+  font-family: inherit !important;
+  font-size: 0.91rem !important;
+  line-height: 1.75 !important;
+}
+
+.collection-grid {
+  gap: 46px 24px !important;
+}
+
+.collection-card-copy {
+  padding-top: 11px !important;
+}
+
+/* Collection titles: small gallery-label scale */
+html[lang="en"] .collection-card-copy h3 {
+  margin: 0 !important;
+  font-family: var(--fine-en) !important;
+  font-weight: 300 !important;
+  font-size: clamp(1rem, 1.2vw, 1.14rem) !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.012em !important;
+}
+
+html[lang="zh-CN"] .collection-card-copy h3,
+body.lang-zh .collection-card-copy h3 {
+  margin: 0 !important;
+  font-family: var(--fine-zh) !important;
+  font-weight: 400 !important;
+  font-size: clamp(0.98rem, 1.15vw, 1.10rem) !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Album text */
+.album-intro-section {
+  padding-top: 62px !important;
+  padding-bottom: 72px !important;
+}
+
+.back-link {
+  font-family: inherit !important;
+  font-size: 0.82rem !important;
+  font-weight: 400 !important;
+}
+
+.album-intro,
+.album-reflection {
+  font-family: inherit !important;
+  font-weight: 400 !important;
+  font-size: clamp(0.96rem, 1.15vw, 1.05rem) !important;
+  line-height: 1.82 !important;
+  letter-spacing: 0 !important;
+}
+
+/* Captions */
+.photo-note,
+.photo-caption,
+.photo-tech {
+  font-family: inherit !important;
+  font-weight: 400 !important;
+}
+
+.photo-note,
+.photo-caption {
+  font-size: 0.94rem !important;
+  line-height: 1.72 !important;
+}
+
+.photo-tech {
+  font-size: 0.76rem !important;
+  line-height: 1.55 !important;
+}
+
+/* Bio */
+html[lang="en"] #bio-name {
+  font-family: var(--fine-en) !important;
+  font-weight: 300 !important;
+  font-size: clamp(2rem, 3.2vw, 2.9rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.025em !important;
+}
+
+html[lang="zh-CN"] #bio-name,
+body.lang-zh #bio-name {
+  font-family: var(--fine-zh) !important;
+  font-weight: 400 !important;
+  font-size: clamp(1.85rem, 3vw, 2.65rem) !important;
+  line-height: 1.15 !important;
+  letter-spacing: 0.01em !important;
+}
+
+.bio-text,
+.bio-text p,
+.cv-copy,
+.cv-copy p {
+  font-family: inherit !important;
+}
+
+.bio-text,
+.bio-text p {
+  font-size: 0.94rem !important;
+  line-height: 1.82 !important;
+  font-weight: 400 !important;
+}
+
+/* CV */
+html[lang="en"] .cv-section h2 {
+  font-family: var(--fine-en) !important;
+  font-weight: 300 !important;
+  font-size: clamp(1.45rem, 2vw, 1.9rem) !important;
+  letter-spacing: -0.015em !important;
+}
+
+html[lang="zh-CN"] .cv-section h2,
+body.lang-zh .cv-section h2 {
+  font-family: var(--fine-zh) !important;
+  font-weight: 400 !important;
+  font-size: clamp(1.4rem, 1.9vw, 1.8rem) !important;
+  letter-spacing: 0.01em !important;
+}
+
+.cv-copy,
+.cv-copy p {
+  font-size: 0.90rem !important;
+  line-height: 1.7 !important;
+}
+
+/* Footer */
+.site-footer,
+.site-footer--overlay {
+  font-family: inherit !important;
+  font-size: 0.76rem !important;
+  letter-spacing: 0 !important;
+}
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 681px) {
+  .topnav {
+    gap: 18px !important;
+    font-size: 0.80rem !important;
+  }
+
+  .home-nav {
+    font-size: 0.94rem !important;
+  }
+
+  .collections-wrap {
+    padding-top: 58px !important;
+    padding-bottom: 88px !important;
+  }
+
+  .collection-grid {
+    gap: 38px 20px !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 680px) {
+  .topnav {
+    gap: 14px !important;
+    font-size: 0.76rem !important;
+  }
+
+  .topnav .lang-toggle {
+    font-size: 0.72rem !important;
+  }
+
+  .home-nav {
+    margin-top: 44px !important;
+    gap: 32px !important;
+    font-size: 0.94rem !important;
+  }
+
+  html[lang="en"] .tagline {
+    max-width: 78vw !important;
+    font-size: 0.88rem !important;
+    line-height: 1.62 !important;
+  }
+
+  html[lang="zh-CN"] .tagline,
+  body.lang-zh .tagline {
+    max-width: 82vw !important;
+    font-size: 0.86rem !important;
+    line-height: 1.72 !important;
+  }
+
+  html[lang="en"] .page-hero-title h1 {
+    font-size: 1.72rem !important;
+  }
+
+  html[lang="zh-CN"] .page-hero-title h1,
+  body.lang-zh .page-hero-title h1 {
+    font-size: 1.60rem !important;
+  }
+
+  html[lang="en"] .album-hero .page-hero-title h1 {
+    font-size: 1.82rem !important;
+  }
+
+  html[lang="zh-CN"] .album-hero .page-hero-title h1,
+  body.lang-zh .album-hero .page-hero-title h1 {
+    font-size: 1.68rem !important;
+  }
+
+  .collections-wrap {
+    padding-top: 54px !important;
+    padding-bottom: 82px !important;
+  }
+
+  .collections-heading {
+    margin-bottom: 30px !important;
+  }
+
+  .collections-heading h2 {
+    font-size: 1.4rem !important;
+  }
+
+  .collections-note {
+    font-size: 0.86rem !important;
+  }
+
+  .collection-grid {
+    gap: 38px !important;
+  }
+
+  .collection-card-copy {
+    padding-top: 9px !important;
+  }
+
+  .collection-card-copy h3 {
+    font-size: 1rem !important;
+  }
+
+  .album-intro-section {
+    padding-top: 46px !important;
+    padding-bottom: 56px !important;
+  }
+
+  .album-intro,
+  .album-reflection {
+    font-size: 0.92rem !important;
+    line-height: 1.78 !important;
+  }
+
+  .photo-note,
+  .photo-caption {
+    font-size: 0.90rem !important;
+  }
+
+  .photo-tech {
+    font-size: 0.73rem !important;
+  }
+
+  html[lang="en"] #bio-name {
+    font-size: 1.85rem !important;
+  }
+
+  html[lang="zh-CN"] #bio-name,
+  body.lang-zh #bio-name {
+    font-size: 1.72rem !important;
+  }
+
+  .bio-text,
+  .bio-text p {
+    font-size: 0.91rem !important;
+    line-height: 1.78 !important;
+  }
+}
