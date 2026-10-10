@@ -3232,3 +3232,147 @@ body.lang-zh .cv-section h2 {
     line-height: 1.78 !important;
   }
 }
+/* =========================================================
+   OPTIMA ENGLISH + STRONGER NAV
+   ========================================================= */
+
+/* English overall display type */
+html[lang="en"] .topnav,
+html[lang="en"] .home-nav,
+html[lang="en"] .lang-toggle,
+html[lang="en"] .page-hero-title h1,
+html[lang="en"] .collections-heading h2,
+html[lang="en"] .collection-card-copy h3,
+html[lang="en"] #bio-name,
+html[lang="en"] .cv-section h2,
+html[lang="en"] .tagline {
+  font-family:
+    Optima,
+    "Optima Nova",
+    "Segoe UI",
+    sans-serif !important;
+}
+
+
+/* ---------- Main navigation ---------- */
+
+.topnav {
+  font-size:
+    0.92rem !important;
+
+  font-weight:
+    600 !important;
+}
+
+
+/* Chinese nav */
+
+html[lang="zh-CN"] .topnav,
+body.lang-zh .topnav {
+  font-family:
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    sans-serif !important;
+
+  font-weight:
+    600 !important;
+}
+
+
+/* ---------- Homepage Photography / Bio ---------- */
+
+.home-nav {
+  font-size:
+    clamp(
+      1.08rem,
+      1.5vw,
+      1.22rem
+    ) !important;
+
+  font-weight:
+    600 !important;
+}
+
+
+.home-nav a {
+  font-weight:
+    600 !important;
+}
+
+
+/* Chinese homepage nav */
+
+html[lang="zh-CN"] .home-nav,
+body.lang-zh .home-nav {
+  font-family:
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    sans-serif !important;
+
+  font-weight:
+    600 !important;
+}
+
+
+/* ---------- Language toggle stays slightly quieter ---------- */
+
+.lang-toggle {
+  font-weight:
+    500 !important;
+}
+
+
+/* ---------- English collection titles ---------- */
+
+html[lang="en"] .collection-card-copy h3 {
+  font-family:
+    Optima,
+    "Optima Nova",
+    "Segoe UI",
+    sans-serif !important;
+
+  font-weight:
+    400 !important;
+
+  letter-spacing:
+    0.005em !important;
+}
+
+
+/* ---------- English large titles ---------- */
+
+html[lang="en"] .page-hero-title h1,
+html[lang="en"] .collections-heading h2,
+html[lang="en"] #bio-name,
+html[lang="en"] .cv-section h2 {
+  font-weight:
+    400 !important;
+
+  letter-spacing:
+    -0.01em !important;
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 680px) {
+
+  .topnav {
+    font-size:
+      0.84rem !important;
+
+    font-weight:
+      600 !important;
+  }
+
+  .home-nav {
+    font-size:
+      1.08rem !important;
+
+    font-weight:
+      600 !important;
+  }
+
+}
