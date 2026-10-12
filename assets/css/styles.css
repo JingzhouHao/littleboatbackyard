@@ -94,3 +94,24 @@ a {
 
 button {
   font: inherit;
+/* =========================================================
+   TEXT JUSTIFICATION
+   Editorial-style alignment
+   ========================================================= */
+
+html[lang="en"] .album-intro,
+body.lang-en .album-intro,
+html[lang="en"] .text-story-body,
+body.lang-en .text-story-body {
+  text-align: justify;
+
+  text-justify: inter-word;
+
+  hyphens: auto;
+
+  -webkit-hyphens: auto;
+
+  overflow-wrap: normal;
+
+  word-break: normal;
+}
