@@ -4028,3 +4028,54 @@ body.lang-zh .text-story-body::first-letter {
       0.1em;
   }
 }
+html[lang="en"] .text-story-body,
+body.lang-en .text-story-body {
+  font-family:
+    var(--graphik-stack);
+
+  font-size:
+    1.02rem;
+
+  line-height:
+    1.92;
+
+  max-width:
+    38rem;
+
+  text-align:
+    justify;
+
+  text-justify:
+    inter-word;
+
+  hyphens:
+    auto;
+
+  -webkit-hyphens:
+    auto;
+}
+
+
+html[lang="en"] .text-story-body::first-letter,
+body.lang-en .text-story-body::first-letter {
+  float:
+    left;
+
+  font-family:
+    var(--nyt-serif-stack);
+
+  font-size:
+    3.7rem;
+
+  line-height:
+    0.84;
+
+  padding-top:
+    0.08em;
+
+  padding-right:
+    0.10em;
+
+  font-weight:
+    400;
+}
