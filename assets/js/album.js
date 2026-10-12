@@ -11,9 +11,92 @@
   }
 
 
+  /* ======================================================
+     BASIC HELPERS
+     ====================================================== */
+
   const get = id =>
     document.getElementById(id);
 
+
+  function getLanguage() {
+
+    if (
+      typeof window.getLang ===
+      "function"
+    ) {
+      return window.getLang();
+    }
+
+    return "en";
+  }
+
+
+  function localized(value) {
+
+    if (
+      typeof window.localized ===
+      "function"
+    ) {
+      return window.localized(value);
+    }
+
+
+    if (
+      value &&
+      typeof value === "object"
+    ) {
+
+      const lang =
+        getLanguage();
+
+      return (
+        value[lang] ||
+        value.en ||
+        value.zh ||
+        ""
+      );
+    }
+
+
+    return value || "";
+  }
+
+
+  function siteTitle() {
+
+    if (
+      typeof window.siteTitle ===
+      "function"
+    ) {
+      return window.siteTitle();
+    }
+
+
+    if (
+      site.siteTitle &&
+      typeof site.siteTitle ===
+      "object"
+    ) {
+
+      return (
+        localized(site.siteTitle) ||
+        "Little Boat's Backyard"
+      );
+    }
+
+
+    return (
+      site.siteTitle ||
+      "Little Boat's Backyard"
+    );
+  }
+
+
+
+  /* ======================================================
+     FIND CURRENT COLLECTION
+     ====================================================== */
 
   const params =
     new URLSearchParams(
@@ -35,23 +118,50 @@
 
 
   if (!collection) {
+    console.error(
+      "No collection found."
+    );
     return;
   }
 
 
+
+  /* ======================================================
+     NORMALIZE PHOTOS
+     ====================================================== */
+
   const photos =
-    (collection.photos || []).map(
-      photo =>
-        typeof photo === "string"
-          ? {
-              src: photo,
-              caption: "",
-              note: "",
-              alt: ""
-            }
-          : photo
+    (
+      Array.isArray(
+        collection.photos
+      )
+        ? collection.photos
+        : []
+    ).map(
+      photo => {
+
+        if (
+          typeof photo ===
+          "string"
+        ) {
+
+          return {
+            src: photo,
+            caption: "",
+            note: "",
+            alt: ""
+          };
+        }
+
+        return photo;
+      }
     );
 
+
+
+  /* ======================================================
+     LIGHTBOX REFERENCES
+     ====================================================== */
 
   const lightbox =
     get("lightbox");
@@ -62,85 +172,26 @@
   const lightboxCaption =
     get("lightbox-caption");
 
-  let currentIndex = 0;
+
+  let currentIndex =
+    0;
 
 
 
   /* ======================================================
-     HELPERS
-     ====================================================== */
-
-  function localized(value) {
-
-    if (
-      typeof window.localized ===
-      "function"
-    ) {
-      return window.localized(value);
-    }
-
-
-    if (
-      value &&
-      typeof value === "object"
-    ) {
-
-      const lang =
-        typeof window.getLang ===
-        "function"
-          ? window.getLang()
-          : "en";
-
-      return (
-        value[lang] ||
-        value.en ||
-        value.zh ||
-        ""
-      );
-    }
-
-
-    return value || "";
-  }
-
-
-  function escapeHTML(value) {
-
-    if (
-      typeof window.escapeHTML ===
-      "function"
-    ) {
-      return window.escapeHTML(value);
-    }
-
-
-    const div =
-      document.createElement("div");
-
-    div.textContent =
-      value ?? "";
-
-    return div.innerHTML;
-  }
-
-
-
-  /* ======================================================
-     COLLECTION TITLE
+     COLLECTION TITLES
      ====================================================== */
 
   function collectionTitles() {
 
     const lang =
-      typeof window.getLang ===
-      "function"
-        ? window.getLang()
-        : "en";
+      getLanguage();
 
 
     if (lang === "zh") {
 
       return {
+
         primary:
           collection.titleZh ||
           collection.title ||
@@ -154,6 +205,7 @@
 
 
     return {
+
       primary:
         collection.title ||
         collection.titleZh ||
@@ -168,7 +220,7 @@
 
 
   /* ======================================================
-     MAIN PAGE
+     MAIN RENDER
      ====================================================== */
 
   function renderPage() {
@@ -177,13 +229,14 @@
       collectionTitles();
 
 
-    document.title =
-      `${titles.primary} — ${
-        typeof window.siteTitle === "function"
-          ? window.siteTitle()
-          : "Little Boat's Backyard"
-      }`;
+    /* ---------- Browser title ---------- */
 
+    document.title =
+      `${titles.primary} — ${siteTitle()}`;
+
+
+
+    /* ---------- Brand ---------- */
 
     const brand =
       get("album-brand");
@@ -191,21 +244,25 @@
     if (brand) {
 
       brand.textContent =
-        typeof window.siteTitle ===
-        "function"
-          ? window.siteTitle()
-          : "Little Boat's Backyard";
+        siteTitle();
     }
 
+
+
+    /* ---------- Collection title ---------- */
 
     const title =
       get("album-title");
 
     if (title) {
+
       title.textContent =
         titles.primary;
     }
 
+
+
+    /* ---------- Secondary title ---------- */
 
     const meta =
       get("album-meta");
@@ -249,13 +306,16 @@
 
     if (intro) {
 
-      intro.textContent =
+      const introText =
         localized(
           collection.intro
         );
 
+      intro.textContent =
+        introText;
+
       intro.hidden =
-        !intro.textContent.trim();
+        !introText.trim();
     }
 
 
@@ -269,20 +329,33 @@
 
     if (backLink) {
 
-      backLink.textContent =
+      if (
         typeof window.uiText ===
         "function"
-          ? window.uiText(
-              "allCollections"
-            )
-          : "← All collections";
+      ) {
+
+        backLink.textContent =
+          window.uiText(
+            "allCollections"
+          );
+
+      } else {
+
+        backLink.textContent =
+          getLanguage() === "zh"
+            ? "← 返回全部合集"
+            : "← All collections";
+      }
     }
 
 
 
-    /* ---------- Content ---------- */
+    /* ---------- Main content ---------- */
 
-    if (collection.textOnly) {
+    if (
+      collection.textOnly ===
+      true
+    ) {
 
       renderTextSections();
 
@@ -318,6 +391,7 @@
     const stories =
       get("photo-stories");
 
+
     if (!stories) {
       return;
     }
@@ -325,6 +399,7 @@
 
     stories.innerHTML =
       "";
+
 
     stories.classList.add(
       "text-stories"
@@ -349,8 +424,8 @@
 
 
         /*
-          Empty sections II / III / IV
-          are simply skipped.
+          Do not render empty
+          sections such as II, III, IV.
         */
         if (!text) {
           return;
@@ -363,6 +438,7 @@
           ).trim();
 
 
+
         const article =
           document.createElement(
             "article"
@@ -371,6 +447,9 @@
         article.className =
           "text-story";
 
+
+
+        /* Section number */
 
         if (label) {
 
@@ -385,26 +464,30 @@
           labelElement.textContent =
             label;
 
+
           article.appendChild(
             labelElement
           );
         }
 
 
-        const paragraph =
+
+        /* Main prose */
+
+        const body =
           document.createElement(
             "p"
           );
 
-        paragraph.className =
+        body.className =
           "text-story-body";
 
-        paragraph.textContent =
+        body.textContent =
           text;
 
 
         article.appendChild(
-          paragraph
+          body
         );
 
 
@@ -426,6 +509,7 @@
     const stories =
       get("photo-stories");
 
+
     if (!stories) {
       return;
     }
@@ -434,18 +518,26 @@
     stories.innerHTML =
       "";
 
+
     stories.classList.remove(
       "text-stories"
     );
 
 
+
     photos.forEach(
       (photo, index) => {
 
-        if (!photo?.src) {
+        if (
+          !photo ||
+          !photo.src
+        ) {
           return;
         }
 
+
+
+        /* ---------- Article ---------- */
 
         const article =
           document.createElement(
@@ -458,10 +550,22 @@
         article.dataset.photoIndex =
           String(index);
 
-        article.hidden =
-          true;
 
 
+        /*
+          IMPORTANT:
+
+          Do NOT set:
+
+          article.hidden = true;
+
+          A hidden parent prevents
+          lazy-loaded images from loading.
+        */
+
+
+
+        /* ---------- Figure ---------- */
 
         const figure =
           document.createElement(
@@ -472,6 +576,8 @@
           "photo-story-figure";
 
 
+
+        /* ---------- Image button ---------- */
 
         const button =
           document.createElement(
@@ -490,6 +596,8 @@
         );
 
 
+
+        /* ---------- Image ---------- */
 
         const img =
           document.createElement(
@@ -523,11 +631,28 @@
           } photograph ${index + 1}`;
 
 
+
+        /*
+          First two images load
+          immediately.
+
+          Remaining images can lazy-load
+          normally because their parent
+          is NOT hidden.
+        */
+
         img.loading =
           index < 2
             ? "eager"
             : "lazy";
 
+
+        img.decoding =
+          "async";
+
+
+
+        /* ---------- Detect orientation ---------- */
 
         img.addEventListener(
           "load",
@@ -536,6 +661,12 @@
             const isPortrait =
               img.naturalHeight >
               img.naturalWidth;
+
+
+            article.classList.remove(
+              "photo-story--portrait",
+              "photo-story--landscape"
+            );
 
 
             article.classList.add(
@@ -553,11 +684,14 @@
               article.classList.add(
                 "photo-story--no-note"
               );
+
+            } else {
+
+              article.classList.remove(
+                "photo-story--no-note"
+              );
             }
 
-
-            article.hidden =
-              false;
           },
           {
             once: true
@@ -565,14 +699,19 @@
         );
 
 
-        /*
-          Broken path:
-          remove that item instead
-          of showing a broken image.
-        */
+
+        /* ---------- Broken image ---------- */
+
         img.addEventListener(
           "error",
           () => {
+
+            /*
+              Wrong filename/path:
+              remove the whole item
+              instead of showing a
+              broken-image icon.
+            */
 
             article.remove();
 
@@ -583,14 +722,19 @@
         );
 
 
+
         img.src =
           photo.src;
+
 
 
         button.appendChild(
           img
         );
 
+
+
+        /* ---------- Lightbox ---------- */
 
         button.addEventListener(
           "click",
@@ -599,9 +743,9 @@
             openLightbox(
               index
             );
-
           }
         );
+
 
 
         figure.appendChild(
@@ -615,7 +759,9 @@
 
 
 
-        /* Caption + camera / film */
+        /* ==================================================
+           CAPTION + CAMERA / FILM NOTE
+           ================================================== */
 
         if (
           caption ||
@@ -631,6 +777,7 @@
             "photo-note";
 
 
+
           if (caption) {
 
             const captionElement =
@@ -644,10 +791,12 @@
             captionElement.textContent =
               caption;
 
+
             comment.appendChild(
               captionElement
             );
           }
+
 
 
           if (note) {
@@ -663,16 +812,19 @@
             techElement.textContent =
               note;
 
+
             comment.appendChild(
               techElement
             );
           }
 
 
+
           article.appendChild(
             comment
           );
         }
+
 
 
         stories.appendChild(
@@ -685,13 +837,14 @@
 
 
   /* ======================================================
-     LIGHTBOX
+     AVAILABLE LIGHTBOX PHOTOS
      ====================================================== */
 
   function availableIndices() {
 
     const stories =
       get("photo-stories");
+
 
     if (!stories) {
       return [];
@@ -700,7 +853,7 @@
 
     return Array.from(
       stories.querySelectorAll(
-        ".photo-story:not([hidden])"
+        ".photo-story"
       )
     )
       .map(
@@ -717,11 +870,16 @@
 
 
 
+  /* ======================================================
+     OPEN LIGHTBOX
+     ====================================================== */
+
   function openLightbox(index) {
 
     if (
       collection.textOnly ||
-      !photos[index]
+      !photos[index] ||
+      !lightbox
     ) {
       return;
     }
@@ -734,53 +892,56 @@
     renderLightbox();
 
 
-    lightbox
-      ?.classList
-      .add(
-        "is-open"
-      );
+    lightbox.classList.add(
+      "is-open"
+    );
 
 
-    lightbox
-      ?.setAttribute(
-        "aria-hidden",
-        "false"
-      );
+    lightbox.setAttribute(
+      "aria-hidden",
+      "false"
+    );
 
 
-    document.body
-      .classList
-      .add(
-        "no-scroll"
-      );
+    document.body.classList.add(
+      "no-scroll"
+    );
   }
 
 
+
+  /* ======================================================
+     CLOSE LIGHTBOX
+     ====================================================== */
 
   function closeLightbox() {
 
-    lightbox
-      ?.classList
-      .remove(
-        "is-open"
-      );
+    if (!lightbox) {
+      return;
+    }
 
 
-    lightbox
-      ?.setAttribute(
-        "aria-hidden",
-        "true"
-      );
+    lightbox.classList.remove(
+      "is-open"
+    );
 
 
-    document.body
-      .classList
-      .remove(
-        "no-scroll"
-      );
+    lightbox.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+    document.body.classList.remove(
+      "no-scroll"
+    );
   }
 
 
+
+  /* ======================================================
+     LIGHTBOX NAVIGATION
+     ====================================================== */
 
   function move(step) {
 
@@ -804,22 +965,28 @@
     }
 
 
-    currentIndex =
-      available[
-        (
-          position +
-          step +
-          available.length
-        )
-        %
+    position =
+      (
+        position +
+        step +
         available.length
-      ];
+      )
+      %
+      available.length;
+
+
+    currentIndex =
+      available[position];
 
 
     renderLightbox();
   }
 
 
+
+  /* ======================================================
+     RENDER LIGHTBOX
+     ====================================================== */
 
   function renderLightbox() {
 
@@ -848,17 +1015,19 @@
       );
 
 
+    const alt =
+      localized(
+        photo.alt || ""
+      );
+
+
     lightboxImage.src =
       photo.src;
 
 
     lightboxImage.alt =
-      localized(
-        photo.alt || ""
-      )
-      ||
-      caption
-      ||
+      alt ||
+      caption ||
       `${
         collectionTitles().primary
       } photograph ${
@@ -878,7 +1047,7 @@
 
 
   /* ======================================================
-     LIGHTBOX EVENTS
+     LIGHTBOX BUTTON EVENTS
      ====================================================== */
 
   get("lightbox-close")
@@ -891,18 +1060,27 @@
   get("lightbox-prev")
     ?.addEventListener(
       "click",
-      () =>
-        move(-1)
+      () => {
+
+        move(-1);
+
+      }
     );
 
 
   get("lightbox-next")
     ?.addEventListener(
       "click",
-      () =>
-        move(1)
+      () => {
+
+        move(1);
+
+      }
     );
 
+
+
+  /* Click background to close */
 
   lightbox
     ?.addEventListener(
@@ -920,16 +1098,18 @@
     );
 
 
+
+  /* Keyboard */
+
   document.addEventListener(
     "keydown",
     event => {
 
       if (
-        !lightbox
-          ?.classList
-          .contains(
-            "is-open"
-          )
+        !lightbox ||
+        !lightbox.classList.contains(
+          "is-open"
+        )
       ) {
         return;
       }
@@ -939,6 +1119,7 @@
         event.key ===
         "Escape"
       ) {
+
         closeLightbox();
       }
 
@@ -947,6 +1128,7 @@
         event.key ===
         "ArrowLeft"
       ) {
+
         move(-1);
       }
 
@@ -955,6 +1137,7 @@
         event.key ===
         "ArrowRight"
       ) {
+
         move(1);
       }
     }
@@ -963,7 +1146,7 @@
 
 
   /* ======================================================
-     LANGUAGE CHANGE
+     LANGUAGE SWITCH
      ====================================================== */
 
   window.addEventListener(
