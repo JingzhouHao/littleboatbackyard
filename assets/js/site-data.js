@@ -654,8 +654,8 @@ window.SITE = {
           },
 
           "text": {
-            "en": "",
-            "zh": ""
+            "en": "Once, I was walking along the Charles River and I came across a stretch of abandoned railroad tracks beneath the Boston University Bridge. The tracks were built on concrete piers and extended across the river, and they were covered in graffiti. It happened to be sunset. I saw three young people climb out from the abandoned tracks and sit together on one of the concrete piers to watch the sun go down. At that moment, I felt that this was something that could never be recreated. That particular sunset, the railroad tracks, and this group of friends were all necessary parts of the image.Unfortunately, all I had with me was a Kodak disposable camera, and from that distance it could not capture the people clearly. But every time I close my eyes, I can still picture that scene and remember the happiness of having friends beside you to watch the sunset together.",
+            "zh": "有一次沿着查尔斯河边从东向西走的时候，走到Boston university bridge下面的一段废弃的铁轨，铁轨建在混凝土桩子上，横跨查尔斯河。铁轨上画满了涂鸦。那时刚好是日落，我看到三个年轻人从废弃的铁轨里翻出来，一起坐在一个混凝土桩子上看日落。那时我觉得这绝对是一个不可复制的时刻，此时此刻的日落，铁轨和这群好友共同组成了照片的必要因素。可惜我那时只有一台柯达的一次性相机，在那个距离下是无法拍清楚那些人的。但是每次闭上眼睛还能回想起这一幕，感受到有朋友陪伴一起去看日落的幸福。"
           }
         },
 
