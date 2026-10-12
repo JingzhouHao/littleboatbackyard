@@ -313,7 +313,7 @@ window.SITE = {
           "src": "assets/images/secret_train_station/秘境车站1.jpg",
           "caption": {
             "en": "The wasted train track beneath the boston university bridge, covered by street art",
-            "zh": ""
+            "zh": "波士顿大学桥下的废弃铁轨，已经被涂鸦覆盖"
           },
           "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
         }
@@ -343,32 +343,32 @@ window.SITE = {
         {
           "src": "assets/images/A prefect day for bananafish/放风筝的人.jpg",
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "The second after I pressed the shutter, the kite fell off to the ground......This is one of the decisive moments I encountered",
+            "zh": "我按下快门后风筝就落下了，某种意义上说这是真正的决定性时刻"
           },
           "note": "Shot with Pentax espio 928 and Film is Fiji 40"
         },
         {
           "src": "assets/images/A prefect day for bananafish/救生塔.JPG",
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "Get overexposed for 4 stops......but somehow I like the bleached color and the lonesome vibe",
+            "zh": "过曝了4档，但是我还挺喜欢这种像被漂白一样的色调和落寞的氛围"
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is lomochrome color92 sunkissed"
         },
         {
           "src": "assets/images/A prefect day for bananafish/池核.jpg",
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "pool core 1",
+            "zh": "池核1"
           },
           "note": "Shot with fujifilm quicksnap800 waterproof"
         },
         {
           "src": "assets/images/A prefect day for bananafish/池核2.jpg",
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "pool core 2",
+            "zh": "池核2"
           },
           "note": "Shot with fujifilm quicksnap800 waterproof"
         },
@@ -383,24 +383,32 @@ window.SITE = {
         {
           "src": "assets/images/A prefect day for bananafish/游戏厅.jpg",
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "The arcade",
+            "zh": "游戏厅"
           },
           "note": "Shot with Pentax espio 928 and Film is Fiji 400"
         },
         {
           "src": "assets/images/A prefect day for bananafish/美式假期.jpg",
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "Old fashion American Vacation",
+            "zh": "古早美式假期"
           },
           "note": "Shot with Pentax espio 928 and Film is Fiji 400"
         },
         {
           "src": "assets/images/A prefect day for bananafish/过山车.JPG",
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "The rollcoaster",
+            "zh": "过山车，想要拍出那种在天上漂浮的感觉但是失败了"
+          },
+          "note": "Shot with Pentax espio 928 and Film is Fiji 400"
+        }
+        {
+          "src": "assets/images/A prefect day for bananafish/冲浪板.JPG",
+          "caption": {
+            "en": "The surfboard lying on the beach, and the girls are dashing in the ocean.....They were doing cartwheels before but I missed that shot.",
+            "zh": "海滩上的冲浪板，和冲向大海的小女孩......她们之前在海滩上做侧手翻，可惜我没拍到那一幕"
           },
           "note": "Shot with Pentax espio 928 and Film is Fiji 400"
         }
@@ -451,7 +459,7 @@ window.SITE = {
       "titleZh": "不存在的照片",
       "title": "Non-existing Photos",
       "meta": "",
-      "cover": "assets/images/cover.jpeg",
+      "cover": "assets/images/404notfound.png",
       "coverPosition": "50% 50%",
       "intro": {
         "en": "",
