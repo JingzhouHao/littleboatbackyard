@@ -3685,3 +3685,346 @@ html[lang="en"]
   }
 
 }
+/* =========================================================
+   TYPOGRAPHY REFINEMENT
+   Photography / Bio / Album intro / Text-only collection
+   ========================================================= */
+
+
+/* ---------- 0. Font stacks ---------- */
+
+:root {
+  --graphik-stack:
+    "Graphik Web",
+    "Graphik",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  --nyt-serif-stack:
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+
+/* =========================================================
+   1) TOP NAVIGATION: make Photography / Bio / EN / 中文
+      larger and more visible
+   ========================================================= */
+
+.topnav a,
+.lang-toggle,
+.language-toggle,
+.topbar .topnav a,
+.topbar .lang-switch,
+.topbar .language-switch {
+  font-family:
+    Optima,
+    "Optima Nova",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size:
+    1.05rem;
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    0.02em;
+
+  line-height:
+    1.2;
+}
+
+@media (min-width: 900px) {
+  .topnav a,
+  .lang-toggle,
+  .language-toggle,
+  .topbar .topnav a,
+  .topbar .lang-switch,
+  .topbar .language-switch {
+    font-size:
+      1.12rem;
+  }
+}
+
+
+/* =========================================================
+   2) PHOTOGRAPHY PAGE: make collection titles larger
+   ========================================================= */
+
+/* 尽量兼容你之前不同版本可能用过的类名 */
+.collection-card-title,
+.collection-title,
+.album-card-title,
+.card-title,
+.collection-card h2,
+.collection-card h3,
+.album-card h2,
+.album-card h3,
+.photography-grid h2,
+.photography-grid h3 {
+  font-family:
+    Optima,
+    "Optima Nova",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size:
+    1.42rem;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.14;
+
+  letter-spacing:
+    0;
+}
+
+@media (max-width: 768px) {
+  .collection-card-title,
+  .collection-title,
+  .album-card-title,
+  .card-title,
+  .collection-card h2,
+  .collection-card h3,
+  .album-card h2,
+  .album-card h3,
+  .photography-grid h2,
+  .photography-grid h3 {
+    font-size:
+      1.18rem;
+  }
+}
+
+
+/* 如果中英文标题同时在 DOM 里，压低副标题存在感 */
+.collection-card .secondary-title,
+.collection-card .title-secondary,
+.album-card .secondary-title,
+.album-card .title-secondary {
+  font-size:
+    0.92rem;
+
+  opacity:
+    0.72;
+}
+
+
+/* =========================================================
+   3) ALBUM INTRO:
+      English intro = Graphik + NYT-style drop cap
+   ========================================================= */
+
+/* intro 本体 */
+.album-intro {
+  max-width:
+    44rem;
+}
+
+/* 英文模式 */
+html[lang="en"] .album-intro,
+body.lang-en .album-intro {
+  font-family:
+    var(--graphik-stack);
+
+  font-size:
+    1.02rem;
+
+  line-height:
+    1.9;
+
+  letter-spacing:
+    0;
+}
+
+/* 英文 drop cap */
+html[lang="en"] .album-intro::first-letter,
+body.lang-en .album-intro::first-letter {
+  float:
+    left;
+
+  font-family:
+    var(--nyt-serif-stack);
+
+  font-size:
+    4.1rem;
+
+  line-height:
+    0.84;
+
+  padding-top:
+    0.08em;
+
+  padding-right:
+    0.12em;
+
+  padding-left:
+    0;
+
+  font-weight:
+    400;
+}
+
+/* 中文模式：不要首字母放大 */
+html[lang="zh-CN"] .album-intro,
+body.lang-zh .album-intro {
+  font-size:
+    1.02rem;
+
+  line-height:
+    1.95;
+}
+
+html[lang="zh-CN"] .album-intro::first-letter,
+body.lang-zh .album-intro::first-letter {
+  float: none;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0;
+}
+
+
+/* =========================================================
+   4) TEXT-ONLY COLLECTION
+      “不存在的照片” 也做 editorial / NYT 风格
+   ========================================================= */
+
+/* 纯文字合集正文 */
+.text-story-body {
+  max-width:
+    42rem;
+}
+
+/* 英文版正文 */
+html[lang="en"] .text-story-body,
+body.lang-en .text-story-body {
+  font-family:
+    var(--graphik-stack);
+
+  font-size:
+    1.02rem;
+
+  line-height:
+    1.92;
+}
+
+/* 英文版 drop cap */
+html[lang="en"] .text-story-body::first-letter,
+body.lang-en .text-story-body::first-letter {
+  float:
+    left;
+
+  font-family:
+    var(--nyt-serif-stack);
+
+  font-size:
+    4.2rem;
+
+  line-height:
+    0.84;
+
+  padding-top:
+    0.08em;
+
+  padding-right:
+    0.12em;
+
+  font-weight:
+    400;
+}
+
+/* 中文版：保持正常 */
+html[lang="zh-CN"] .text-story-body,
+body.lang-zh .text-story-body {
+  font-size:
+    1.04rem;
+
+  line-height:
+    2;
+}
+
+html[lang="zh-CN"] .text-story-body::first-letter,
+body.lang-zh .text-story-body::first-letter {
+  float: none;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0;
+}
+
+
+/* 小节编号（如果你还保留一、二、三、四这种） */
+.text-story-label {
+  font-family:
+    Optima,
+    "Optima Nova",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size:
+    0.88rem;
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    0.04em;
+
+  opacity:
+    0.68;
+
+  margin-bottom:
+    1rem;
+}
+
+
+/* =========================================================
+   5) MOBILE TUNING
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .topnav a,
+  .lang-toggle,
+  .language-toggle,
+  .topbar .topnav a,
+  .topbar .lang-switch,
+  .topbar .language-switch {
+    font-size:
+      1rem;
+
+    font-weight:
+      500;
+  }
+
+  html[lang="en"] .album-intro,
+  body.lang-en .album-intro,
+  html[lang="en"] .text-story-body,
+  body.lang-en .text-story-body {
+    font-size:
+      0.98rem;
+
+    line-height:
+      1.88;
+  }
+
+  html[lang="en"] .album-intro::first-letter,
+  body.lang-en .album-intro::first-letter,
+  html[lang="en"] .text-story-body::first-letter,
+  body.lang-en .text-story-body::first-letter {
+    font-size:
+      3.4rem;
+
+    line-height:
+      0.86;
+
+    padding-right:
+      0.1em;
+  }
+}
