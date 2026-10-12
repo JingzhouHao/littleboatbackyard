@@ -100,7 +100,7 @@ window.SITE = {
       "coverPosition": "50% 50%",
 
       "intro": {
-        "en": "The name of this collection was inspired by Amy Winehouse's album Back to Black. Its Chinese title is 《黑色会》, though I think 《回到黑暗》—Back to Darkness—would be a more fitting translation. I don't know why, but Amy's voice always makes me want to care about people, to get close to human desire and emotion. Honestly, I'm already tired of so-called AI art. Just this once, can we turn our attention back to people—and be human again?",
+        "en": "The name of this collection was inspired by Amy Winehouse's album Back to Black. Its Chinese title is 《黑色会》, though I think 《回到黑暗》—Back to Darkness—would be a more fitting translation. I don't know why, but Amy's voice always makes me want to care about people, to get close to human desire and emotion. Honestly, I'm tired of so-called AI art. Just this once, can we turn our attention back to people—and be human again?",
         "zh": "这个合集的名字灵感来源于Amy Winehouse 的专辑<Back to Black>。中文名是《黑色会》，我觉得更恰当的名字是《回到黑暗》。不知为什么，Amy的歌声总是让我想关爱人类，接触人类的欲望和情绪。老实说我已经厌倦所谓的AI艺术了，就这次，把注意力重新聚焦在人类身上，做回人类，可以吗？"
       },
 
@@ -221,7 +221,7 @@ window.SITE = {
 
           "caption": {
             "en": "Musicians playing on Newbury Street — probably students from Berklee College of Music.",
-            "zh": "Newbury st上演奏的音乐家，他们那么年轻，看起来是Berklee音乐学院的学生"
+            "zh": "Newbury st上演奏的音乐家，看起来是Berklee音乐学院的学生"
           },
 
           "note": "Shot with Kodak Funsaver"
@@ -243,7 +243,7 @@ window.SITE = {
 
           "caption": {
             "en": "Outfit of the day",
-            "zh": "Outfit of the day"
+            "zh": "OOTD"
           },
 
           "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
@@ -264,8 +264,8 @@ window.SITE = {
           "src": "assets/images/Carnival/fruit.jpg",
 
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "Fruits y Mango",
+            "zh": "水果摊"
           },
 
           "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
@@ -275,7 +275,7 @@ window.SITE = {
           "src": "assets/images/Carnival/saxophone_player.jpg",
 
           "caption": {
-            "en": "A lonesome saxphone player",
+            "en": "A lonesome saxophone player",
             "zh": "一位落寞的萨克斯手"
           },
 
@@ -287,7 +287,7 @@ window.SITE = {
 
           "caption": {
             "en": "A woman sitting on the boston university bridge，looking at the sunset",
-            "zh": "一位坐在波士顿大学桥上的女子，观赏着日落。"
+            "zh": "一位坐在波士顿大学桥上的女子在观赏日落。"
           },
 
           "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
@@ -398,7 +398,7 @@ window.SITE = {
 
       "intro": {
         "en": "I don't know why, but deserted train stations always make me want to take pictures. There is something about them that feels forgotten in some corner of the world—or maybe it's that they make me imagine all the unknown places I could reach if I boarded a train there. Stations always seem tied to possibility.",
-        "zh": "不知道为啥荒凉的车站总是能唤起我拍照的冲动，有一种在世界的角落里被遗忘的感觉，或者怎么说呢......会让我肖想从这个车站出发能够到达的未知的地方，车站常常和可能性联系在一起。"
+        "zh": "荒凉的车站总是能唤起我拍照的冲动，有一种在世界的角落里被遗忘的感觉，或者怎么说呢......会让我肖想从这个车站出发能够到达的未知的地方，车站常常和可能性联系在一起。"
       },
 
       "photos": [
@@ -452,7 +452,7 @@ window.SITE = {
       "coverPosition": "50% 50%",
 
       "intro": {
-        "en": "",
+        "en": "<A Perfect Day for Bananafish> is a novel written by J. D. Salinger. If you haven't read it, it's about a man committed suicide in a vacation at the beach. ",
         "zh": ""
       },
 
@@ -462,8 +462,8 @@ window.SITE = {
           "src": "assets/images/A prefect day for bananafish/摩天轮.jpg",
 
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "The ferris wheel ",
+            "zh": "摩天轮"
           },
 
           "note": "Shot with Pentax espio 928 and Film is Fuji 400"
@@ -584,8 +584,8 @@ window.SITE = {
       "coverPosition": "50% 50%",
 
       "intro": {
-        "en": "",
-        "zh": ""
+        "en": "Some nightshots......that's it.",
+        "zh": "一些夜景照片......仅此而已"
       },
 
       "photos": [
@@ -594,8 +594,8 @@ window.SITE = {
           "src": "assets/images/夜间飞行/ATM.jpg",
 
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "The red ATM and the pub in the basement.I imagine a man will make a call next to that ATM and started a movie plot",
+            "zh": "红色ATM和地下酒吧，让我肖想某个硬汉角色会在这个地方开始一段犯罪电影剧情"
           },
 
           "note": "Shot with Pentax espio 928 and Film is Cinestill 800T"
@@ -605,8 +605,8 @@ window.SITE = {
           "src": "assets/images/夜间飞行/tatoo shop.JPG",
 
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "I like the contrast between the greenish light and the red neon. It looks gloomy but also has some kind of tension in the scene.",
+            "zh": "喜欢绿莹莹的灯光和红色霓虹的对比，有一种阴沉但有张力的氛围"
           },
 
           "note": "Shot with Pentax espio 928 and Film is Cinestill 800T"
@@ -616,8 +616,8 @@ window.SITE = {
           "src": "assets/images/夜间飞行/幽灵旅店 2.jpg",
 
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "Haunted hotel",
+            "zh": "幽灵旅店"
           },
 
           "note": "Shot with Pentax espio 928 and Film is Cinestill 800T"
@@ -640,7 +640,7 @@ window.SITE = {
 
       "intro": {
         "en": "",
-        "zh": ""
+        "zh": "最好的照片都是不存在的照片：那些很想拍下来，但是要么因为相机没带，要么带了但是处于硬件或者技术的限制没能拍下好照片的场景。往往这种场景最令我印象深刻。已经完成的照片反而容易被遗忘。"
       },
 
       "textOnly": true,
