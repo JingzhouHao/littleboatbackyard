@@ -132,7 +132,7 @@ window.SITE = {
           "src": "assets/images/Back_to_human/000020140009-1.jpg",
 
           "caption": {
-            "en": "A person sitting on the park stairs, and geese looking for food.",
+            "en": "Someone sitting on the park stairs, and geese looking for food.",
             "zh": "公园阶梯上沉思的人和揾食的鹅"
           },
 
@@ -144,7 +144,7 @@ window.SITE = {
 
           "caption": {
             "en": "The Green Line C train passing through the trees.",
-            "zh": "greenline C线从林中穿过"
+            "zh": "greenline C 线从林中穿过"
           },
 
           "note": "Shot with kodak h35, film is gold 200"
@@ -320,8 +320,8 @@ window.SITE = {
       "coverPosition": "50% 50%",
 
       "intro": {
-        "en": "Summer always gives me a bittersweet feeling. Everything is growing, people are playing, and even the sun seems to shine with an energy it never has at any other time. But at the same time, I know it will all eventually be washed over by rain. Every summer in a life happens only once.",
-        "zh": "夏天总是给我一种苦甜参半的感觉，一边是万物在生长，人类在玩耍，连太阳都用前所未有的活力照耀大地，但是又知道这些总会被雨水覆盖，生命里的每一个夏天都是唯一的。"
+        "en": "Summer always feels bittersweet to me. Everything is growing, the grass lush and green, yet I know that one day it will all be buried beneath rain and snow. So even before summer is over, I already find myself missing it.",
+        "zh": "夏天总是给我一种苦甜参半的感觉，万物生长，芳草萋萋，但是又知道这些终将被雨雪覆盖。于是夏天还没过去，我就已经开始怀念它了。"
       },
 
       "photos": [
@@ -330,7 +330,7 @@ window.SITE = {
           "src": "assets/images/Moments_of_summer/000020140008-1.jpg",
 
           "caption": {
-            "en": "An open-air bar on game day. Seriously, how many games do the Red Sox play in one summer? It feels like there are barely any days in the week when I can get through the Fenway Park area normally.",
+            "en": "A beer garden on game day. Seriously, how many games do the Red Sox play in one summer? It feels like there are barely any days in the week when I can get through the Fenway Park without traffic.",
             "zh": "比赛日的露天酒吧。请问一个夏天Red Sox到底要打几场比赛？感觉一周里没几天我可以正常从Fenway park附近通过的。"
           },
 
@@ -397,7 +397,7 @@ window.SITE = {
       "coverPosition": "50% 50%",
 
       "intro": {
-        "en": "I don't know why, but deserted train stations always make me want to take pictures. There is something about them that feels forgotten in some corner of the world—or maybe it's that they make me imagine all the unknown places I could reach if I boarded a train there. Stations always seem tied to possibility.",
+        "en": "I don't know why, but deserted train stations always make me want to take pictures. There is something about them that feels forgotten in some corner of the world—or maybe it's that they make me imagine all the unknown places I could reach if I board a train there. Stations always seem tied to possibility.",
         "zh": "荒凉的车站总是能唤起我拍照的冲动，有一种在世界的角落里被遗忘的感觉，或者怎么说呢......会让我肖想从这个车站出发能够到达的未知的地方，车站常常和可能性联系在一起。"
       },
 
@@ -452,8 +452,8 @@ window.SITE = {
       "coverPosition": "50% 50%",
 
       "intro": {
-        "en": "<A Perfect Day for Bananafish> is a novel written by J. D. Salinger. If you haven't read it, it's about a man committed suicide in a vacation at the beach. ",
-        "zh": ""
+        "en": "A Perfect Day for Bananafish> is a novel written by J. D. Salinger. If you haven't read it, it's about a man committed suicide in a vacation at the beach. When I took a vacation on the beach in this small town, it reminded me of the plot in this novel. Everything here had an almost unreal perfection to it: the warm sunlight, the calm water, families strolling slowly from their hotels to the beach, people swimming, eating, sunbathing, and idly passing away an afternoon. It was almost the very image of a perfect middle-class summer vacation. And yet, in Salinger’s story, it is on just such a day that a man returns to his room and pulls the trigger—a deeply restless soul hidden beneath an almost perfect stillness.",
+        "zh": "《逮香蕉鱼的最佳日子》是 J. D. 塞林格的一篇短篇小说。如果你没有读过，它写的是一个与妻子在海滨度假的年轻男人结束了自己的生命。我在这个安静的海边小镇度假的那几天，总是不由自主地想到这个故事。这里的一切都有一种近乎不真实的完美：温暖的阳光，平静的海水，一家人从旅馆慢悠悠地走向沙滩，人们游泳、吃饭、晒太阳，漫无目的地消磨一个下午，就是人们想象中最标准的中产阶级夏日假期。可是在塞林格的故事里，也正是在这样的一天里，一个人回到自己的房间，扣下了扳机——极致的平静下隐藏着极度躁动的灵魂。"
       },
 
       "photos": [
@@ -462,8 +462,8 @@ window.SITE = {
           "src": "assets/images/A prefect day for bananafish/摩天轮.jpg",
 
           "caption": {
-            "en": "The ferris wheel ",
-            "zh": "摩天轮"
+            "en": "Cells in the middle of the sky",
+            "zh": "空中楼阁"
           },
 
           "note": "Shot with Pentax espio 928 and Film is Fuji 400"
@@ -517,8 +517,8 @@ window.SITE = {
           "src": "assets/images/A prefect day for bananafish/海鸥.jpg",
 
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "‘Take some fries on the beach’",
+            "zh": "‘在海滩整点薯条’"
           },
 
           "note": "Shot with Pentax espio 928 and Film is Fuji 400"
