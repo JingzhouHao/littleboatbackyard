@@ -403,7 +403,7 @@ window.SITE = {
             "zh": "过山车，想要拍出那种在天上漂浮的感觉但是失败了"
           },
           "note": "Shot with Pentax espio 928 and Film is Fiji 400"
-        }
+        }，
         {
           "src": "assets/images/A prefect day for bananafish/冲浪板.JPG",
           "caption": {
