@@ -210,8 +210,8 @@ window.SITE = {
       "coverPosition": "50% 50%",
 
       "intro": {
-        "en": "Ce jour-là is a photobook by the French photographer Willy Ronis, translated into Chinese as 《那一天》—That Day. The book brings together some of Ronis's finest humanist photographs. His images capture the warmth and playfulness of everyday life, with an almost Voltairean affection for the ordinary world. He once said, “If I wait, everything will disappear without a trace.” The soul of photography lies in holding on to a moment, allowing us to remember that day forever—one day unlike every other.",
-        "zh": "《Ce jour-là》是法国摄影师Willy Ronis的摄影集，中文译名叫《那一天》。这本书集和Ronis人文摄影的佳作，他的照片捕捉了了生活中的人情味和俏皮，透露出一种伏尔泰式的对世俗生活的热爱。他说过，“如果我等待的话，一切都将消失无踪”。摄影的灵魂在于定格某个瞬间，从而让我们永远记住那一天，和每一天都不一样。"
+        "en": "Ce jour-là is a photobook by the French photographer Willy Ronis, translated into English as 'That Day'. The book brings together some of Ronis's finest humanist photographs, captured the warmth and playfulness of everyday life, with an almost Voltairean affection for the earthly world around him. He once said, “If I wait, everything will disappear without a trace.” The soul of photography lies in holding on to a moment, allowing us to remember that particular day forever—one day unlike every other.",
+        "zh": "《Ce jour-là》是法国摄影师Willy Ronis的摄影集，中文译名叫《那一天》。该书汇集了罗尼最出色的一些人文主义摄影作品，捕捉了日常生活中的温情与妙趣，展现了他对身边尘世生活怀有的那种近乎伏尔泰式的情感与关怀。他曾说，“如果我迟疑等待，一切都将消失无踪”。摄影的精髓在于留住瞬间，让我们得以永远铭记那特别的一天——那不同于其他任何日子的一天。"
       },
 
       "photos": [
@@ -666,8 +666,8 @@ window.SITE = {
           },
 
           "text": {
-            "en": "",
-            "zh": ""
+            "en": "When I was vacationing in a small seaside town in Maine, I saw a homeless man by the roadside playing a guitar. Next to him was another man who looked like a hippie, singing and dancing along to the music. Maybe I just haven’t met enough people, but whenever I see a man with lots of tattoos, a beard, casual clothes, and a dirty travel backpack, I tend to associate him with a modern-day hippie. The homeless guitarist was actually pretty good, while the man dancing beside him was much more carefree and random. His dancing somehow reminded me of Crayon Shin-chan—or maybe some other cartoon character—just moving however he felt like moving in the moment.Most people in the seaside town were tourists, coming and going, and hardly anyone gave the two of them a second glance. When the song ended, the dancing man sat down beside the guitarist and started talking to him. From their conversation, it sounded as they don't know each other. One line in particular stayed with me. The dancing man said, “I used to have a job too…”Two unemployed strangers, a spontaneous dance brought together by a single song, as if it didn’t matter that they had never met before, followed by a conversation that was somehow a little comical. Unfortunately, I didn’t manage to take a picture of them.",
+            "zh": "我在缅因州一个海边小镇度假的时候，看到路边有一个流浪汉抱着一把吉他在弹奏，旁边一个看着像嬉皮士的男人随着音乐载歌载舞。也不知道是不是我识人不多，但是我看到那种纹身很多，留着胡子，穿得很随便，背着很脏的旅行包的男人总是会和当代嬉皮士联系起来。流浪吉他手弹得不错，而街头舞男跳得就很随意了，我想到了蜡笔小新？或者其他卡通人物那种兴之所至的舞蹈动作。海滨小镇大多数都是游客，来来往往地没人多看他们一眼。一曲结束舞男坐在吉他手身边和他攀谈了起来，听上去他们素不相识，我印象很深刻的是舞男说了一句：‘I used to have a job too......'两个陌生的无业游民，一曲相逢何必曾相识的舞蹈，和一段有点喜剧效果的对话，可惜我没来得及拍下来。"
           }
         },
 
