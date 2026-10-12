@@ -4079,3 +4079,83 @@ body.lang-en .text-story-body::first-letter {
   font-weight:
     400;
 }
+/* =========================================================
+   FORCE EDITORIAL JUSTIFICATION
+   ========================================================= */
+
+.text-story-body {
+  width: 100% !important;
+  max-width: 42rem !important;
+
+  margin: 0 !important;
+
+  text-align: justify !important;
+  text-align-last: left !important;
+
+  text-justify: inter-word !important;
+
+  hyphens: auto !important;
+  -webkit-hyphens: auto !important;
+
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+
+  font-family:
+    "Graphik Web",
+    "Graphik",
+    "Helvetica Neue",
+    Arial,
+    sans-serif !important;
+
+  font-size: 1.02rem !important;
+  line-height: 1.9 !important;
+}
+
+
+/* Drop cap */
+
+.text-story-body::first-letter {
+  float: left;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 3.7rem;
+  line-height: 0.82;
+
+  padding-top: 0.08em;
+  padding-right: 0.11em;
+
+  font-weight: 400;
+}
+
+
+/* Chinese does not use justification / drop cap */
+
+html[lang="zh-CN"] .text-story-body,
+body.lang-zh .text-story-body {
+  text-align: left !important;
+
+  font-family:
+    "Songti SC",
+    STSong,
+    "PingFang SC",
+    serif !important;
+
+  font-size: 1.04rem !important;
+  line-height: 2 !important;
+}
+
+
+html[lang="zh-CN"] .text-story-body::first-letter,
+body.lang-zh .text-story-body::first-letter {
+  float: none;
+
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+
+  padding: 0;
+}
