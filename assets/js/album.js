@@ -2,199 +2,18 @@
 
   const site = window.SITE;
 
-
   if (
     !site ||
     !Array.isArray(site.collections)
   ) {
-
-    console.error(
-      "SITE data or collections are missing."
-    );
-
+    console.error("SITE data is missing.");
     return;
   }
 
 
-
-  /* =========================================================
-     HELPERS
-     ========================================================= */
-
-  const get = (id) =>
+  const get = id =>
     document.getElementById(id);
 
-
-
-  function currentLanguage() {
-
-    if (
-      typeof window.getLang === "function"
-    ) {
-
-      return window.getLang();
-    }
-
-
-    return (
-      site.defaultLang === "zh"
-        ? "zh"
-        : "en"
-    );
-  }
-
-
-
-  function localizedNonEmpty(value) {
-
-    /*
-      This version intentionally treats
-      an empty translation as missing.
-
-      Example:
-
-      intro: {
-        en: "",
-        zh: "中文介绍"
-      }
-
-      Even if the page happens to be in
-      English mode, the Chinese intro is
-      still shown instead of disappearing.
-    */
-
-
-    if (value == null) {
-
-      return "";
-    }
-
-
-    if (
-      typeof value === "string"
-    ) {
-
-      return value.trim()
-        ? value
-        : "";
-    }
-
-
-    const lang =
-      currentLanguage();
-
-
-    const preferred =
-      value[lang];
-
-
-    if (
-      typeof preferred === "string" &&
-      preferred.trim()
-    ) {
-
-      return preferred;
-    }
-
-
-    /*
-      Try English next.
-    */
-
-    if (
-      typeof value.en === "string" &&
-      value.en.trim()
-    ) {
-
-      return value.en;
-    }
-
-
-    /*
-      Then Chinese.
-    */
-
-    if (
-      typeof value.zh === "string" &&
-      value.zh.trim()
-    ) {
-
-      return value.zh;
-    }
-
-
-    return "";
-  }
-
-
-
-  function safeSiteTitle() {
-
-    if (
-      typeof window.siteTitle === "function"
-    ) {
-
-      return window.siteTitle();
-    }
-
-
-    return (
-      localizedNonEmpty(
-        site.siteTitle
-      )
-      ||
-      "Little Boat's Backyard"
-    );
-  }
-
-
-
-  function uiText(
-    key,
-    fallback
-  ) {
-
-    if (
-      typeof window.uiText === "function"
-    ) {
-
-      return window.uiText(key);
-    }
-
-
-    return fallback;
-  }
-
-
-
-  function escapeHTML(value) {
-
-    if (
-      typeof window.escapeHTML === "function"
-    ) {
-
-      return window.escapeHTML(
-        value
-      );
-    }
-
-
-    const div =
-      document.createElement("div");
-
-
-    div.textContent =
-      value ?? "";
-
-
-    return div.innerHTML;
-  }
-
-
-
-  /* =========================================================
-     FIND CURRENT COLLECTION
-     ========================================================= */
 
   const params =
     new URLSearchParams(
@@ -208,114 +27,124 @@
 
   const collection =
     site.collections.find(
-      (item) =>
+      item =>
         item.id === requestedId
     )
-
     ||
-
     site.collections[0];
 
 
   if (!collection) {
-
-    console.error(
-      "No collection was found."
-    );
-
     return;
   }
 
 
-
-  /* =========================================================
-     NORMALIZE PHOTOS
-     ========================================================= */
-
   const photos =
     (collection.photos || []).map(
-      (photo) => {
-
-
-        if (
-          typeof photo === "string"
-        ) {
-
-          return {
-
-            src: photo,
-
-            caption: "",
-
-            note: "",
-
-            alt: ""
-          };
-        }
-
-
-        return {
-
-          src:
-            photo.src || "",
-
-          caption:
-            photo.caption || "",
-
-          note:
-            photo.note || "",
-
-          alt:
-            photo.alt || ""
-        };
-      }
+      photo =>
+        typeof photo === "string"
+          ? {
+              src: photo,
+              caption: "",
+              note: "",
+              alt: ""
+            }
+          : photo
     );
 
 
+  const lightbox =
+    get("lightbox");
 
-  /*
-    Only actual failed image URLs
-    enter this Set.
+  const lightboxImage =
+    get("lightbox-image");
 
-    Nothing is hidden merely because
-    it hasn't loaded yet.
-  */
+  const lightboxCaption =
+    get("lightbox-caption");
 
-  const failedPhotoIndices =
-    new Set();
-
+  let currentIndex = 0;
 
 
-  /* =========================================================
-     BILINGUAL TITLES
-     ========================================================= */
 
-  function collectionTitles() {
+  /* ======================================================
+     HELPERS
+     ====================================================== */
 
-    /*
-      Chinese mode:
+  function localized(value) {
 
-      Back to Human      <- secondary
-      回到人类            <- primary
-
-      English mode:
-
-      回到人类            <- secondary
-      Back to Human      <- primary
-    */
+    if (
+      typeof window.localized ===
+      "function"
+    ) {
+      return window.localized(value);
+    }
 
 
     if (
-      currentLanguage() === "zh"
+      value &&
+      typeof value === "object"
     ) {
 
-      return {
+      const lang =
+        typeof window.getLang ===
+        "function"
+          ? window.getLang()
+          : "en";
 
+      return (
+        value[lang] ||
+        value.en ||
+        value.zh ||
+        ""
+      );
+    }
+
+
+    return value || "";
+  }
+
+
+  function escapeHTML(value) {
+
+    if (
+      typeof window.escapeHTML ===
+      "function"
+    ) {
+      return window.escapeHTML(value);
+    }
+
+
+    const div =
+      document.createElement("div");
+
+    div.textContent =
+      value ?? "";
+
+    return div.innerHTML;
+  }
+
+
+
+  /* ======================================================
+     COLLECTION TITLE
+     ====================================================== */
+
+  function collectionTitles() {
+
+    const lang =
+      typeof window.getLang ===
+      "function"
+        ? window.getLang()
+        : "en";
+
+
+    if (lang === "zh") {
+
+      return {
         primary:
           collection.titleZh ||
           collection.title ||
           "",
-
 
         secondary:
           collection.title ||
@@ -325,12 +154,10 @@
 
 
     return {
-
       primary:
         collection.title ||
         collection.titleZh ||
         "",
-
 
       secondary:
         collection.titleZh ||
@@ -340,29 +167,9 @@
 
 
 
-  /* =========================================================
-     LIGHTBOX REFERENCES
-     ========================================================= */
-
-  const lightbox =
-    get("lightbox");
-
-
-  const lightboxImage =
-    get("lightbox-image");
-
-
-  const lightboxCaption =
-    get("lightbox-caption");
-
-
-  let currentIndex = 0;
-
-
-
-  /* =========================================================
-     PAGE
-     ========================================================= */
+  /* ======================================================
+     MAIN PAGE
+     ====================================================== */
 
   function renderPage() {
 
@@ -370,84 +177,63 @@
       collectionTitles();
 
 
-
-    /* ---------------------------------------------------------
-       Browser title
-       --------------------------------------------------------- */
-
     document.title =
-      `${titles.primary} — ${safeSiteTitle()}`;
+      `${titles.primary} — ${
+        typeof window.siteTitle === "function"
+          ? window.siteTitle()
+          : "Little Boat's Backyard"
+      }`;
 
-
-
-    /* ---------------------------------------------------------
-       Header brand
-       --------------------------------------------------------- */
 
     const brand =
       get("album-brand");
 
-
     if (brand) {
 
       brand.textContent =
-        safeSiteTitle();
+        typeof window.siteTitle ===
+        "function"
+          ? window.siteTitle()
+          : "Little Boat's Backyard";
     }
 
 
-
-    /* ---------------------------------------------------------
-       Collection titles
-       --------------------------------------------------------- */
-
-    const albumTitle =
+    const title =
       get("album-title");
 
-
-    const albumMeta =
-      get("album-meta");
-
-
-    if (albumTitle) {
-
-      albumTitle.textContent =
+    if (title) {
+      title.textContent =
         titles.primary;
     }
 
 
-    if (albumMeta) {
+    const meta =
+      get("album-meta");
 
-      albumMeta.textContent =
+    if (meta) {
+
+      meta.textContent =
         titles.secondary;
 
-
-      albumMeta.hidden =
+      meta.hidden =
         !titles.secondary;
     }
 
 
 
-    /* ---------------------------------------------------------
-       Cover
-       --------------------------------------------------------- */
+    /* ---------- Cover ---------- */
 
     const cover =
       get("album-cover");
 
-
     if (cover) {
 
       cover.src =
-        collection.cover || "";
-
+        collection.cover ||
+        "assets/images/cover.jpeg";
 
       cover.alt =
-        titles.primary
-
-          ? `${titles.primary} collection cover`
-
-          : "Collection cover";
-
+        `${titles.primary} collection cover`;
 
       cover.style.objectPosition =
         collection.coverPosition ||
@@ -456,21 +242,17 @@
 
 
 
-    /* ---------------------------------------------------------
-       INTRO ONLY
-       --------------------------------------------------------- */
+    /* ---------- Intro ---------- */
 
     const intro =
       get("album-intro");
 
-
     if (intro) {
 
       intro.textContent =
-        localizedNonEmpty(
+        localized(
           collection.intro
         );
-
 
       intro.hidden =
         !intro.textContent.trim();
@@ -478,38 +260,40 @@
 
 
 
-    /* ---------------------------------------------------------
-       Back link
-       --------------------------------------------------------- */
+    /* ---------- Back link ---------- */
 
     const backLink =
       document.querySelector(
         ".back-link"
       );
 
-
     if (backLink) {
 
       backLink.textContent =
-        uiText(
-          "allCollections",
-          "← All collections"
-        );
+        typeof window.uiText ===
+        "function"
+          ? window.uiText(
+              "allCollections"
+            )
+          : "← All collections";
     }
 
 
 
-    /* ---------------------------------------------------------
-       Photos
-       --------------------------------------------------------- */
+    /* ---------- Content ---------- */
 
-    renderPhotos();
+    if (collection.textOnly) {
+
+      renderTextSections();
+
+    } else {
+
+      renderPhotos();
+    }
 
 
 
-    /* ---------------------------------------------------------
-       Footer
-       --------------------------------------------------------- */
+    /* ---------- Footer ---------- */
 
     if (
       typeof window.renderFooter ===
@@ -525,142 +309,180 @@
 
 
 
-  /* =========================================================
-     RENDER ALL PHOTOS
+  /* ======================================================
+     TEXT-ONLY COLLECTION
+     ====================================================== */
 
-     IMPORTANT:
-
-     No hidden state.
-     No lazy-loading dependency.
-     No "first two only" behavior.
-     ========================================================= */
-
-  function renderPhotos() {
+  function renderTextSections() {
 
     const stories =
       get("photo-stories");
 
-
     if (!stories) {
-
-      console.error(
-        'Element with id="photo-stories" was not found.'
-      );
-
       return;
     }
 
 
-    /*
-      Language switching rebuilds
-      the photo text cleanly.
-    */
+    stories.innerHTML =
+      "";
 
-    stories.innerHTML = "";
-
-
-    failedPhotoIndices.clear();
+    stories.classList.add(
+      "text-stories"
+    );
 
 
+    const sections =
+      Array.isArray(
+        collection.sections
+      )
+        ? collection.sections
+        : [];
 
-    photos.forEach(
-      (photo, index) => {
+
+    sections.forEach(
+      section => {
+
+        const text =
+          localized(
+            section.text || ""
+          ).trim();
 
 
-        if (!photo.src) {
-
-          failedPhotoIndices.add(
-            index
-          );
-
+        /*
+          Empty sections II / III / IV
+          are simply skipped.
+        */
+        if (!text) {
           return;
         }
 
 
+        const label =
+          localized(
+            section.label || ""
+          ).trim();
 
-        const caption =
-          localizedNonEmpty(
-            photo.caption
-          );
-
-
-        const note =
-          localizedNonEmpty(
-            photo.note
-          );
-
-
-
-        /* -----------------------------------------------------
-           ARTICLE
-
-           Default to landscape initially.
-
-           If the image loads and is
-           portrait, we swap the class.
-
-           The article itself is NEVER hidden.
-           ----------------------------------------------------- */
 
         const article =
           document.createElement(
             "article"
           );
 
-
         article.className =
-          "photo-story photo-story--landscape";
+          "text-story";
 
 
-        article.dataset.photoIndex =
-          String(index);
+        if (label) {
 
+          const labelElement =
+            document.createElement(
+              "div"
+            );
 
+          labelElement.className =
+            "text-story-label";
 
-        if (
-          !caption &&
-          !note
-        ) {
+          labelElement.textContent =
+            label;
 
-          article.classList.add(
-            "photo-story--no-note"
+          article.appendChild(
+            labelElement
           );
         }
 
 
+        const paragraph =
+          document.createElement(
+            "p"
+          );
 
-        /* -----------------------------------------------------
-           FIGURE
-           ----------------------------------------------------- */
+        paragraph.className =
+          "text-story-body";
+
+        paragraph.textContent =
+          text;
+
+
+        article.appendChild(
+          paragraph
+        );
+
+
+        stories.appendChild(
+          article
+        );
+      }
+    );
+  }
+
+
+
+  /* ======================================================
+     PHOTO COLLECTION
+     ====================================================== */
+
+  function renderPhotos() {
+
+    const stories =
+      get("photo-stories");
+
+    if (!stories) {
+      return;
+    }
+
+
+    stories.innerHTML =
+      "";
+
+    stories.classList.remove(
+      "text-stories"
+    );
+
+
+    photos.forEach(
+      (photo, index) => {
+
+        if (!photo?.src) {
+          return;
+        }
+
+
+        const article =
+          document.createElement(
+            "article"
+          );
+
+        article.className =
+          "photo-story";
+
+        article.dataset.photoIndex =
+          String(index);
+
+        article.hidden =
+          true;
+
+
 
         const figure =
           document.createElement(
             "figure"
           );
 
-
         figure.className =
           "photo-story-figure";
 
 
-
-        /* -----------------------------------------------------
-           BUTTON
-           ----------------------------------------------------- */
 
         const button =
           document.createElement(
             "button"
           );
 
-
         button.className =
           "photo-open";
 
-
         button.type =
           "button";
-
 
         button.setAttribute(
           "aria-label",
@@ -669,145 +491,100 @@
 
 
 
-        /* -----------------------------------------------------
-           IMAGE
-           ----------------------------------------------------- */
-
         const img =
           document.createElement(
             "img"
           );
 
 
-        /*
-          Critical bug fix:
-
-          ALL photographs are loaded.
-
-          We do not use browser lazy-loading
-          for the collection body because
-          different desktop/mobile browsers
-          handled the previous hidden/lazy
-          combination differently.
-        */
-
-        img.loading =
-          "eager";
+        const caption =
+          localized(
+            photo.caption || ""
+          );
 
 
-        /*
-          Browser may decode asynchronously,
-          which keeps the page responsive.
-        */
+        const note =
+          localized(
+            photo.note || ""
+          );
 
-        img.decoding =
-          "async";
 
+        const alt =
+          localized(
+            photo.alt || ""
+          );
 
 
         img.alt =
-
-          localizedNonEmpty(
-            photo.alt
-          )
-
-          ||
-
-          caption
-
-          ||
-
-          `${collectionTitles().primary} photograph ${index + 1}`;
+          alt ||
+          caption ||
+          `${
+            collectionTitles().primary
+          } photograph ${index + 1}`;
 
 
+        img.loading =
+          index < 2
+            ? "eager"
+            : "lazy";
 
-        /* -----------------------------------------------------
-           ORIENTATION DETECTION
-           ----------------------------------------------------- */
 
         img.addEventListener(
           "load",
-
           () => {
 
             const isPortrait =
-
               img.naturalHeight >
-
               img.naturalWidth;
 
 
-
-            article.classList.remove(
-              "photo-story--portrait",
-              "photo-story--landscape"
-            );
-
-
-
             article.classList.add(
-
               isPortrait
-
                 ? "photo-story--portrait"
-
                 : "photo-story--landscape"
             );
 
-          },
 
+            if (
+              !caption &&
+              !note
+            ) {
+
+              article.classList.add(
+                "photo-story--no-note"
+              );
+            }
+
+
+            article.hidden =
+              false;
+          },
           {
             once: true
           }
         );
-
-
-
-        /* -----------------------------------------------------
-           REAL IMAGE ERROR
-
-           Only a genuinely invalid path
-           removes a photo.
-
-           Failure of one photo does not
-           affect later photographs.
-           ----------------------------------------------------- */
-
-        img.addEventListener(
-          "error",
-
-          () => {
-
-            failedPhotoIndices.add(
-              index
-            );
-
-
-            article.remove();
-
-
-            console.warn(
-              "Could not load photograph:",
-              photo.src
-            );
-
-          },
-
-          {
-            once: true
-          }
-        );
-
 
 
         /*
-          Event handlers are registered
-          BEFORE setting src.
+          Broken path:
+          remove that item instead
+          of showing a broken image.
         */
+        img.addEventListener(
+          "error",
+          () => {
+
+            article.remove();
+
+          },
+          {
+            once: true
+          }
+        );
+
 
         img.src =
           photo.src;
-
 
 
         button.appendChild(
@@ -815,18 +592,16 @@
         );
 
 
-
         button.addEventListener(
           "click",
-
           () => {
 
             openLightbox(
               index
             );
+
           }
         );
-
 
 
         figure.appendChild(
@@ -840,18 +615,7 @@
 
 
 
-        /* -----------------------------------------------------
-           PHOTO COMMENT
-
-           Landscape:
-           displayed below photo by CSS.
-
-           Portrait desktop:
-           displayed right of photo by CSS.
-
-           Portrait mobile:
-           displayed below photo by CSS.
-           ----------------------------------------------------- */
+        /* Caption + camera / film */
 
         if (
           caption ||
@@ -863,39 +627,46 @@
               "div"
             );
 
-
           comment.className =
             "photo-note";
 
 
-          comment.innerHTML = `
+          if (caption) {
 
-            ${
-              caption
+            const captionElement =
+              document.createElement(
+                "p"
+              );
 
-                ? `
-                  <p class="photo-caption">
-                    ${escapeHTML(caption)}
-                  </p>
-                `
+            captionElement.className =
+              "photo-caption";
 
-                : ""
-            }
+            captionElement.textContent =
+              caption;
+
+            comment.appendChild(
+              captionElement
+            );
+          }
 
 
-            ${
-              note
+          if (note) {
 
-                ? `
-                  <p class="photo-tech">
-                    ${escapeHTML(note)}
-                  </p>
-                `
+            const techElement =
+              document.createElement(
+                "p"
+              );
 
-                : ""
-            }
+            techElement.className =
+              "photo-tech";
 
-          `;
+            techElement.textContent =
+              note;
+
+            comment.appendChild(
+              techElement
+            );
+          }
 
 
           article.appendChild(
@@ -904,66 +675,54 @@
         }
 
 
-
-        /*
-          Append immediately.
-
-          We do NOT wait for the image
-          load event before putting the
-          photograph into the document.
-        */
-
         stories.appendChild(
           article
         );
-
       }
     );
   }
 
 
 
-  /* =========================================================
-     VALID LIGHTBOX PHOTOS
-     ========================================================= */
+  /* ======================================================
+     LIGHTBOX
+     ====================================================== */
 
-  function validPhotoIndices() {
+  function availableIndices() {
 
-    return photos
+    const stories =
+      get("photo-stories");
 
-      .map(
-        (_, index) =>
-          index
+    if (!stories) {
+      return [];
+    }
+
+
+    return Array.from(
+      stories.querySelectorAll(
+        ".photo-story:not([hidden])"
       )
-
+    )
+      .map(
+        element =>
+          Number(
+            element.dataset
+              .photoIndex
+          )
+      )
       .filter(
-        (index) =>
-
-          !failedPhotoIndices.has(
-            index
-          )
-
-          &&
-
-          Boolean(
-            photos[index]?.src
-          )
+        Number.isFinite
       );
   }
 
 
 
-  /* =========================================================
-     OPEN LIGHTBOX
-     ========================================================= */
-
   function openLightbox(index) {
 
     if (
-      !lightbox ||
-      failedPhotoIndices.has(index)
+      collection.textOnly ||
+      !photos[index]
     ) {
-
       return;
     }
 
@@ -975,106 +734,92 @@
     renderLightbox();
 
 
-    lightbox.classList.add(
-      "is-open"
-    );
+    lightbox
+      ?.classList
+      .add(
+        "is-open"
+      );
 
 
-    lightbox.setAttribute(
-      "aria-hidden",
-      "false"
-    );
+    lightbox
+      ?.setAttribute(
+        "aria-hidden",
+        "false"
+      );
 
 
-    document.body.classList.add(
-      "no-scroll"
-    );
+    document.body
+      .classList
+      .add(
+        "no-scroll"
+      );
   }
 
 
-
-  /* =========================================================
-     CLOSE LIGHTBOX
-     ========================================================= */
 
   function closeLightbox() {
 
-    if (!lightbox) {
-
-      return;
-    }
-
-
-    lightbox.classList.remove(
-      "is-open"
-    );
+    lightbox
+      ?.classList
+      .remove(
+        "is-open"
+      );
 
 
-    lightbox.setAttribute(
-      "aria-hidden",
-      "true"
-    );
+    lightbox
+      ?.setAttribute(
+        "aria-hidden",
+        "true"
+      );
 
 
-    document.body.classList.remove(
-      "no-scroll"
-    );
+    document.body
+      .classList
+      .remove(
+        "no-scroll"
+      );
   }
 
 
 
-  /* =========================================================
-     NEXT / PREVIOUS
-     ========================================================= */
-
   function move(step) {
 
-    const valid =
-      validPhotoIndices();
+    const available =
+      availableIndices();
 
 
-    if (!valid.length) {
-
+    if (!available.length) {
       return;
     }
 
 
     let position =
-      valid.indexOf(
+      available.indexOf(
         currentIndex
       );
 
 
-    if (
-      position === -1
-    ) {
-
+    if (position < 0) {
       position = 0;
     }
 
 
-    position =
-      (
-        position +
-        step +
-        valid.length
-      )
-      %
-      valid.length;
-
-
     currentIndex =
-      valid[position];
+      available[
+        (
+          position +
+          step +
+          available.length
+        )
+        %
+        available.length
+      ];
 
 
     renderLightbox();
   }
 
 
-
-  /* =========================================================
-     LIGHTBOX CONTENT
-     ========================================================= */
 
   function renderLightbox() {
 
@@ -1087,63 +832,54 @@
       !lightboxImage ||
       !lightboxCaption
     ) {
-
       return;
     }
 
 
-
     const caption =
-      localizedNonEmpty(
-        photo.caption
+      localized(
+        photo.caption || ""
       );
 
 
     const note =
-      localizedNonEmpty(
-        photo.note
+      localized(
+        photo.note || ""
       );
-
 
 
     lightboxImage.src =
       photo.src;
 
 
-
     lightboxImage.alt =
-
-      localizedNonEmpty(
-        photo.alt
+      localized(
+        photo.alt || ""
       )
-
       ||
-
       caption
-
       ||
-
-      `${collectionTitles().primary} photograph ${currentIndex + 1}`;
-
+      `${
+        collectionTitles().primary
+      } photograph ${
+        currentIndex + 1
+      }`;
 
 
     lightboxCaption.textContent =
-
       [
         caption,
         note
       ]
-
-      .filter(Boolean)
-
-      .join(" · ");
+        .filter(Boolean)
+        .join(" · ");
   }
 
 
 
-  /* =========================================================
+  /* ======================================================
      LIGHTBOX EVENTS
-     ========================================================= */
+     ====================================================== */
 
   get("lightbox-close")
     ?.addEventListener(
@@ -1155,23 +891,23 @@
   get("lightbox-prev")
     ?.addEventListener(
       "click",
-      () => move(-1)
+      () =>
+        move(-1)
     );
 
 
   get("lightbox-next")
     ?.addEventListener(
       "click",
-      () => move(1)
+      () =>
+        move(1)
     );
-
 
 
   lightbox
     ?.addEventListener(
       "click",
-
-      (event) => {
+      event => {
 
         if (
           event.target ===
@@ -1184,11 +920,9 @@
     );
 
 
-
   document.addEventListener(
     "keydown",
-
-    (event) => {
+    event => {
 
       if (
         !lightbox
@@ -1197,7 +931,6 @@
             "is-open"
           )
       ) {
-
         return;
       }
 
@@ -1206,25 +939,22 @@
         event.key ===
         "Escape"
       ) {
-
         closeLightbox();
       }
 
 
-      else if (
+      if (
         event.key ===
         "ArrowLeft"
       ) {
-
         move(-1);
       }
 
 
-      else if (
+      if (
         event.key ===
         "ArrowRight"
       ) {
-
         move(1);
       }
     }
@@ -1232,23 +962,15 @@
 
 
 
-  /* =========================================================
-     LANGUAGE SWITCH
-     ========================================================= */
+  /* ======================================================
+     LANGUAGE CHANGE
+     ====================================================== */
 
   window.addEventListener(
     "languagechange",
-
     () => {
 
       closeLightbox();
-
-
-      /*
-        Rebuild both intro and photo
-        text in the newly selected
-        language.
-      */
 
       renderPage();
     }
@@ -1256,9 +978,9 @@
 
 
 
-  /* =========================================================
+  /* ======================================================
      START
-     ========================================================= */
+     ====================================================== */
 
   renderPage();
 
