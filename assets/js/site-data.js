@@ -91,7 +91,7 @@ window.SITE = {
         {
           "src": "assets/images/Back_to_human/000017-2.jpg",
           "caption": {
-            "en": "A cyclist caught in passing. The light and shadow in this moment felt just right.",
+            "en": "A biker caught in passing. The light and shadow in this moment felt just right.",
             "zh": "抓拍骑自行车的人，这一刻的光影很妙"
           },
           "note": "Shot with Kodak Funsaver"
@@ -99,7 +99,7 @@ window.SITE = {
         {
           "src": "assets/images/Back_to_human/000020140009-1.jpg",
           "caption": {
-            "en": "A pensive figure on the park steps, and geese looking for food.",
+            "en": "A person sitting on the park stairs, and geese looking for food.",
             "zh": "公园阶梯上沉思的人和揾食的鹅"
           },
           "note": "Shot with Kodak h35, film is gold 200"
@@ -142,7 +142,7 @@ window.SITE = {
             "en": "Irish pub near the berklee college of music called The bebop. It has live music performance every day. I like this view, especially the accordion on top of the mirror.",
             "zh": "伯克利音乐学院附近有一家名叫“The Bebop”的爱尔兰酒吧，那里每天都有现场音乐表演。我很喜欢这个视角，尤其是镜子上方的那架手风琴。"
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
         }
       ]
     },
@@ -162,7 +162,7 @@ window.SITE = {
         {
           "src": "assets/images/Carnival/000018.jpg",
           "caption": {
-            "en": "Musicians playing on Newbury Street. They looked so young—probably students from Berklee College of Music.",
+            "en": "Musicians playing on Newbury Street — probably students from Berklee College of Music.",
             "zh": "Newbury st上演奏的音乐家，他们那么年轻，看起来是Berklee音乐学院的学生"
           },
           "note": "Shot with Kodak Funsaver"
@@ -170,7 +170,7 @@ window.SITE = {
         {
           "src": "assets/images/Carnival/000407460027-2.jpg",
           "caption": {
-            "en": "A ceramics stall at the street market. I was trying to take a candid shot, but the vendor noticed me. Feeling guilty, I almost wanted to run away, but she told me I could photograph as much as I liked. She has such a beautiful smile. She looks so healthy, so full of life.",
+            "en": "A ceramics stand at the street market. I was trying to take a candid shot, but she noticed me. Feeling guilty, I almost wanted to run away, but she told me I could take pictures as much as I liked. She has such a beautiful, so full of life.",
             "zh": "街头集市上的陶艺摊子，本来想偷拍结果被摊主发现了。心虚的我有点想跑掉，但是她说我可以随便拍。她笑地真美，她看着真健康"
           },
           "note": "Shot with Pentax espio 928, Film is ektar100"
@@ -181,15 +181,15 @@ window.SITE = {
             "en": "Outfit of the day",
             "zh": "Outfit of the day"
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
         },
         {
           "src": "assets/images/Carnival/firestation.jpg",
           "caption": {
-            "en": "",
-            "zh": "就是很喜欢这个光影。光线把消防站的墙面照得明暗分明，莫名有点电影感？"
+            "en": "The harsh light creates a sharp contrast between light and shadow on the fire station wall, giving it a cinematic vibe.",
+            "zh": "很喜欢这个光影。硬光把消防站的墙面照得明暗分明，莫名有点电影感。"
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
         },
         {
           "src": "assets/images/Carnival/fruit.jpg",
@@ -197,31 +197,31 @@ window.SITE = {
             "en": "",
             "zh": "一个街头水果摊。我只用一秒钟就想要"
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
         },
         {
           "src": "assets/images/Carnival/saxophone_player.jpg",
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "A lonesome saxphone player",
+            "zh": "一位落寞的萨克斯手"
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
         },
         {
           "src": "assets/images/Carnival/那一天1.jpg",
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "A woman sitting on the boston university bridge，looking at the sunset",
+            "zh": "一位坐在波士顿大学桥上的女子，观赏着日落。"
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
         },
         {
           "src": "assets/images/Carnival/那一天2.jpg",
           "caption": {
-            "en": "",
-            "zh": ""
+            "en": "Saturday afternoon was gypsy jazz brunch in the bepop, and people danced when the band played 'minor swing'.",
+            "zh": "当乐队演奏《Minor Swing》时，人们纷纷起舞"
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
         }
       ]
     },
@@ -312,10 +312,10 @@ window.SITE = {
         {
           "src": "assets/images/secret_train_station/秘境车站1.jpg",
           "caption": {
-            "en": "",
+            "en": "The wasted train track beneath the boston university bridge, covered by street art",
             "zh": ""
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
         }
       ]
     },
@@ -338,7 +338,7 @@ window.SITE = {
             "en": "",
             "zh": ""
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Fiji 400"
         },
         {
           "src": "assets/images/A prefect day for bananafish/放风筝的人.jpg",
@@ -346,7 +346,7 @@ window.SITE = {
             "en": "",
             "zh": ""
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Fiji 40"
         },
         {
           "src": "assets/images/A prefect day for bananafish/救生塔.JPG",
@@ -362,7 +362,7 @@ window.SITE = {
             "en": "",
             "zh": ""
           },
-          "note": ""
+          "note": "Shot with fujifilm quicksnap800 waterproof"
         },
         {
           "src": "assets/images/A prefect day for bananafish/池核2.jpg",
@@ -370,7 +370,7 @@ window.SITE = {
             "en": "",
             "zh": ""
           },
-          "note": ""
+          "note": "Shot with fujifilm quicksnap800 waterproof"
         },
         {
           "src": "assets/images/A prefect day for bananafish/海鸥.jpg",
@@ -378,7 +378,7 @@ window.SITE = {
             "en": "",
             "zh": ""
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Fiji 400"
         },
         {
           "src": "assets/images/A prefect day for bananafish/游戏厅.jpg",
@@ -386,7 +386,7 @@ window.SITE = {
             "en": "",
             "zh": ""
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Fiji 400"
         },
         {
           "src": "assets/images/A prefect day for bananafish/美式假期.jpg",
@@ -394,7 +394,7 @@ window.SITE = {
             "en": "",
             "zh": ""
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Fiji 400"
         },
         {
           "src": "assets/images/A prefect day for bananafish/过山车.JPG",
@@ -402,7 +402,7 @@ window.SITE = {
             "en": "",
             "zh": ""
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Fiji 400"
         }
       ]
     },
@@ -425,7 +425,7 @@ window.SITE = {
             "en": "",
             "zh": ""
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Cinestill 800T"
         },
         {
           "src": "assets/images/夜间飞行/tatoo shop.JPG",
@@ -433,7 +433,7 @@ window.SITE = {
             "en": "",
             "zh": ""
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Cinestill 800T"
         },
         {
           "src": "assets/images/夜间飞行/幽灵旅店 2.jpg",
@@ -441,7 +441,7 @@ window.SITE = {
             "en": "",
             "zh": ""
           },
-          "note": ""
+          "note": "Shot with Pentax espio 928 and Film is Cinestill 800T"
         }
       ]
     },
