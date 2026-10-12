@@ -558,14 +558,14 @@ window.SITE = {
         },
 
         {
-          "src": "assets/images/A prefect day for bananafish/冲浪板.JPG",
+          "src": "assets/images/A prefect day for bananafish/冲浪板.jpg",
 
           "caption": {
             "en": "The surfboard lying on the beach, and the girls are dashing in the ocean.....They were doing cartwheels before but I missed that shot.",
             "zh": "海滩上的冲浪板，和冲向大海的小女孩......她们之前在海滩上做侧手翻，可惜我没拍到那一幕"
           },
 
-          "note": "Shot with Pentax espio 928 and Film is Fiji 400"
+          "note": "Shot with Pentax espio 928 and Film is Fuji 400"
         }
 
       ]
@@ -594,7 +594,7 @@ window.SITE = {
           "src": "assets/images/夜间飞行/ATM.jpg",
 
           "caption": {
-            "en": "The red ATM and the pub in the basement.I imagine a man will make a call next to that ATM and started a movie plot",
+            "en": "The red ATM and the pub in the basement.I imagine a man will make a call next to that ATM and started a crime movie plot",
             "zh": "红色ATM和地下酒吧，让我肖想某个硬汉角色会在这个地方开始一段犯罪电影剧情"
           },
 
@@ -640,7 +640,7 @@ window.SITE = {
 
       "intro": {
         "en": "",
-        "zh": "最好的照片都是不存在的照片：那些很想拍下来，但是要么因为相机没带，要么带了但是处于硬件或者技术的限制没能拍下好照片的场景。往往这种场景最令我印象深刻。已经完成的照片反而容易被遗忘。"
+        "zh": "最好的照片都是不存在的照片：比如那些很想拍下来，但是因为相机没带，或者带了但是出于硬件或者技术的限制没能拍下好照片的场景。往往这种场景最令我印象深刻。已经完成的照片反而容易被遗忘。只能在这里用语言固定下来，对抗记忆的流逝。"
       },
 
       "textOnly": true,
