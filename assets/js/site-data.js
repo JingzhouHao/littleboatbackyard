@@ -678,8 +678,8 @@ window.SITE = {
           },
 
           "text": {
-            "en": "",
-            "zh": ""
+            "en": "When I was traveling in Austin, I was wandering around Sixth Street downtown when I came across a very strange-looking vehicle. It had no walls on any side, and in the middle was something shaped like a bar, surrounded by high stools. In front of every seat is a bag of beer.The strange part was that beneath each stool was a pedal mechanism, almost like a bicycle. If everyone sitting there pedaled at the same time, the whole vehicle would start moving down the street. I watched this bizarre contraption roll proudly down the middle of the street, then I checked the time. It was only 1pm. People were already drinking at this hour? I was stunned. I grabbed my camera and started chasing after it. Unfortunately, the beer bike was quite a bit faster than I was. In the end I could only watch, disappointed, as it disappeared from my view.",
+            "zh": "去奥斯汀旅游的时候，在downtown第六街闲逛的时候，看到有一辆奇怪的车，车四面没有墙，中间是一个吧台的形状，围着吧台是一圈高脚凳，每个座位面前放着一袋啤酒。神奇的是高脚凳的下面是类似脚踏车一样的装置，如果坐在上面的人同时踩脚踏车，整辆车就会以人力在大街上开动起来。我就看到这辆车在大街上大摇大摆地开过，然后看了下表，才下午一点，大家这个点就开始喝起来了？我整个大跌眼镜，拿着相机就开始追这辆车，可惜车速比我的奔跑速度快上不少，我追出了二里地最后还是遗憾地目送啤酒车消失在了视野里。"
           }
         },
 
