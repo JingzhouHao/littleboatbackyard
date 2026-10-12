@@ -639,7 +639,7 @@ window.SITE = {
       "coverPosition": "50% 50%",
 
       "intro": {
-        "en": "",
+        "en": "The best photographs are often the ones that do not exist: scenes I desperately wanted to capture, but couldn’t because I didn’t have a camera with me, or because I did, but failed to make the photograph I wanted due to limitations of the equipment or my own technique. Those are often the scenes that stay with me the longest. Finished photographs, strangely enough, are much easier to forget. So all I can do is pin these moments down here in words, as a way of resisting the gradual erosion of memory.",
         "zh": "最好的照片都是不存在的照片：比如那些很想拍下来，但是因为相机没带，或者带了但是出于硬件或者技术的限制没能拍下好照片的场景。往往这种场景最令我印象深刻。已经完成的照片反而容易被遗忘。只能在这里用语言固定下来，对抗记忆的流逝。"
       },
 
