@@ -3236,7 +3236,7 @@ body.lang-zh .topbar .brand::before {
   }
 
   html[lang="en"] body:not(.lang-zh) .topbar .brand::before {
-    width: 185px !important;
+    width: 195px !important;
   }
 
   /* Smaller English navigation so it fits */
