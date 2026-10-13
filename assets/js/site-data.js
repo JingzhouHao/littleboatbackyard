@@ -192,6 +192,39 @@ window.SITE = {
           },
 
           "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
+        },
+
+        {
+          "src": "assets/images/Back_to_human/后来进去吃了.jpg",
+
+          "caption": {
+            "en": "They did dine in there later",
+            "zh": "他们后来进去吃了"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is Ultramax400"
+        },
+
+        {
+          "src": "assets/images/Back_to_human/灯笼蛛网.jpg",
+
+          "caption": {
+            "en": "The way lanterns are organized reminded me of a spider net, and the boy is proudly sitting at the top of the tower.",
+            "zh": "灯笼交错宛如蛛网，而小男孩骄傲地坐在顶端"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is Ultramax400"
+        },
+
+        {
+          "src": "assets/images/Back_to_human/dogwalk.jpg",
+
+          "caption": {
+            "en": "A dogwalk",
+            "zh": "遛狗"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is Ultramax400"
         }
 
       ]
@@ -302,6 +335,17 @@ window.SITE = {
           },
 
           "note": "Shot with Pentax espio 928 and Film is Kodak TriX400"
+        },
+
+        {
+          "src": "assets/images/Carnival/残年.jpg",
+
+          "caption": {
+            "en": "'In the twilight of life'",
+            "zh": "'风烛残年'"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is Ultramax400"
         }
 
       ]
