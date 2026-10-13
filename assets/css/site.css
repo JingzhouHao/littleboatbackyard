@@ -3296,3 +3296,100 @@ body.lang-zh .topbar .brand::before {
     font-size: 0.72rem !important;
   }
 }
+/* =========================================================
+   RESTORE MOBILE HERO TITLE SIZES
+   Only affects titles displayed ON hero images.
+   ========================================================= */
+
+@media (max-width: 680px) {
+
+  /* Photography / Bio hero title */
+
+  html[lang="en"]
+  .page-hero-title h1 {
+    font-size: 1.72rem !important;
+    line-height: 1.08 !important;
+  }
+
+  html[lang="zh-CN"]
+  .page-hero-title h1,
+  body.lang-zh
+  .page-hero-title h1 {
+    font-size: 1.60rem !important;
+    line-height: 1.15 !important;
+  }
+
+
+  /* Individual photography collection title */
+
+  html[lang="en"]
+  .album-hero
+  .page-hero-title h1 {
+    font-size: 1.82rem !important;
+    line-height: 1.08 !important;
+  }
+
+  html[lang="zh-CN"]
+  .album-hero
+  .page-hero-title h1,
+  body.lang-zh
+  .album-hero
+  .page-hero-title h1 {
+    font-size: 1.68rem !important;
+    line-height: 1.15 !important;
+  }
+
+}
+/* =========================================================
+   TEXT-ONLY COLLECTION
+   01 / 02 / 03 / 04 section markers
+   ========================================================= */
+
+.text-stories {
+  counter-reset: text-section;
+}
+
+.text-story {
+  counter-increment: text-section;
+}
+
+.text-story-label {
+  /* Hide the original I / II / III / IV text */
+  font-size: 0 !important;
+
+  margin: 0 0 20px !important;
+
+  color: rgba(20, 42, 43, 0.70) !important;
+}
+
+.text-story-label::before {
+  content: counter(text-section, decimal-leading-zero);
+
+  font-family:
+    Optima,
+    "Optima Nova",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size: 0.88rem;
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: 0.10em;
+}
+
+
+@media (max-width: 680px) {
+
+  .text-story-label {
+    margin-bottom: 18px !important;
+  }
+
+  .text-story-label::before {
+    font-size: 0.84rem;
+  }
+
+}
