@@ -346,7 +346,19 @@ window.SITE = {
           },
 
           "note": "Shot with Pentax espio 928 and Film is Ultramax400"
+        },
+
+        {
+          "src": "assets/images/Carnival/跳跃图案.jpg",
+
+          "caption": {
+            "en": "Strong contrast and highly saturated color",
+            "zh": "'好强的明暗对比，好跳跃的颜色'"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is Ultramax400"
         }
+
 
       ]
     },
