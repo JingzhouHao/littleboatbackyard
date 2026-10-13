@@ -4384,3 +4384,169 @@ body.lang-zh
   }
 
 }
+/* =========================================================
+   FINAL MOBILE HEADER FIX
+   Custom handwritten logo + no overflow
+   ========================================================= */
+
+@media (max-width: 680px) {
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+
+  /* -----------------------------------------
+     HEADER LAYOUT
+     ----------------------------------------- */
+
+  .topbar {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+
+    gap: 14px !important;
+  }
+
+
+  /* -----------------------------------------
+     BRAND
+     IMPORTANT:
+     completely hide the real text
+     ----------------------------------------- */
+
+  html[lang="en"] .topbar .brand,
+  body.lang-en .topbar .brand,
+  html[lang="zh-CN"] .topbar .brand,
+  body.lang-zh .topbar .brand,
+  .topbar .brand {
+
+    font-size: 0 !important;
+    line-height: 0 !important;
+
+    letter-spacing: 0 !important;
+
+    display: inline-flex !important;
+    align-items: center;
+
+    flex: 0 0 auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible;
+  }
+
+
+  /* -----------------------------------------
+     YOUR ORIGINAL HANDWRITTEN LOGO IMAGE
+     ----------------------------------------- */
+
+  .topbar .brand::before {
+    content: "" !important;
+
+    display: block !important;
+
+    flex: none;
+
+    background:
+      currentColor;
+
+    aspect-ratio:
+      var(--site-logo-ratio);
+
+    -webkit-mask-image:
+      var(--site-logo);
+
+    mask-image:
+      var(--site-logo);
+
+    -webkit-mask-repeat:
+      no-repeat;
+
+    mask-repeat:
+      no-repeat;
+
+    -webkit-mask-size:
+      contain;
+
+    mask-size:
+      contain;
+
+    -webkit-mask-position:
+      left center;
+
+    mask-position:
+      left center;
+  }
+
+
+  /* English custom logo */
+
+  html[lang="en"] .topbar .brand::before,
+  body.lang-en .topbar .brand::before,
+  body:not(.lang-zh) .topbar .brand::before {
+    width: 150px !important;
+  }
+
+
+  /* Chinese custom logo */
+
+  html[lang="zh-CN"] .topbar .brand::before,
+  body.lang-zh .topbar .brand::before {
+    width: 125px !important;
+  }
+
+
+  /* -----------------------------------------
+     NAVIGATION
+     ----------------------------------------- */
+
+  .topbar .topnav {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 17px !important;
+
+    margin: 0 !important;
+
+    white-space: nowrap;
+  }
+
+
+  html[lang="en"] .topbar .topnav a,
+  body.lang-en .topbar .topnav a {
+    font-size: 0.98rem !important;
+  }
+
+
+  html[lang="zh-CN"] .topbar .topnav a,
+  body.lang-zh .topbar .topnav a {
+    font-size: 1rem !important;
+  }
+
+
+  .topbar .lang-toggle,
+  .topbar .language-toggle,
+  .topbar .lang-switch,
+  .topbar .language-switch {
+    font-size: 0.82rem !important;
+
+    margin-left: 0 !important;
+
+    white-space: nowrap;
+  }
+
+}
