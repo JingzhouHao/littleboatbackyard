@@ -198,8 +198,8 @@ window.SITE = {
           "src": "assets/images/Back_to_human/后来进去吃了.jpg",
 
           "caption": {
-            "en": "They did dine in there later",
-            "zh": "他们后来进去吃了"
+            "en": "They did dine in there after",
+            "zh": "后续：进去吃了"
           },
 
           "note": "Shot with Pentax espio 928 and Film is Ultramax400"
@@ -210,7 +210,7 @@ window.SITE = {
 
           "caption": {
             "en": "The way lanterns are organized reminded me of a spider net, and the boy is proudly sitting at the top of the tower.",
-            "zh": "灯笼交错宛如蛛网，而小男孩骄傲地坐在顶端"
+            "zh": "灯笼交错宛如蛛网，而男孩骄傲地坐在顶端"
           },
 
           "note": "Shot with Pentax espio 928 and Film is Ultramax400"
@@ -441,8 +441,8 @@ window.SITE = {
           "src": "assets/images/Moments_of_summer/小径分叉的花园.jpg",
 
           "caption": {
-            "en": "El jardín de senderos que se bifurcan",
-            "zh": "小径分岔的花园"
+            "en": "<The Garden of Forking Paths>",
+            "zh": "‘小径分岔的花园’"
           },
 
           "note": "Shot with pentax espio 928, film is ultramax400"
@@ -452,7 +452,7 @@ window.SITE = {
           "src": "assets/images/Moments_of_summer/autumn is creeping at you.jpg",
 
           "caption": {
-            "en": "Autumn is creeping at you",
+            "en": "Autumn is creeping over you",
             "zh": "秋意渐浓"
           },
 
