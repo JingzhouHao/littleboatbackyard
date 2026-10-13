@@ -4264,48 +4264,123 @@ body.lang-zh .text-story-body::first-letter {
 
 }
 /* =========================================================
-   RESTORE HANDWRITTEN BRAND
+   RESTORE ORIGINAL CUSTOM HANDWRITTEN LOGO
    ========================================================= */
 
-.topbar .brand {
-  font-family:
-    "Caveat Local",
-    "Ma Shan Zheng Local",
-    cursive !important;
+body {
+  --site-logo:
+    url("../images/branding/title-en.png");
 
-  font-weight:
-    600 !important;
+  --site-logo-ratio:
+    1446 / 299;
+}
 
-  letter-spacing:
-    0 !important;
+body.lang-zh {
+  --site-logo:
+    url("../images/branding/title-zh.png");
+
+  --site-logo-ratio:
+    1300 / 242;
 }
 
 
-/* English handwritten logo text */
-html[lang="en"] .topbar .brand,
-body.lang-en .topbar .brand {
-  font-family:
-    "Caveat Local",
-    cursive !important;
+/* Hide normal text — use your own handwritten image instead */
 
-  font-weight:
-    600 !important;
+.brand {
+  font-size: 0 !important;
+  line-height: 0 !important;
 
-  font-size:
-    1.18rem !important;
+  display: inline-flex !important;
+  align-items: center;
+
+  flex: 0 1 auto;
+
+  min-width: 0;
+
+  color: var(--ink);
 }
 
 
-/* Chinese handwritten logo text */
-html[lang="zh-CN"] .topbar .brand,
-body.lang-zh .topbar .brand {
-  font-family:
-    "Ma Shan Zheng Local",
-    cursive !important;
+.brand::before {
+  content: "";
 
-  font-weight:
-    400 !important;
+  display: block;
 
-  font-size:
-    1.2rem !important;
+  flex: none;
+
+  aspect-ratio:
+    var(--site-logo-ratio);
+
+  background:
+    currentColor;
+
+  -webkit-mask-image:
+    var(--site-logo);
+
+  mask-image:
+    var(--site-logo);
+
+  -webkit-mask-repeat:
+    no-repeat;
+
+  mask-repeat:
+    no-repeat;
+
+  -webkit-mask-size:
+    contain;
+
+  mask-size:
+    contain;
+
+  -webkit-mask-position:
+    left center;
+
+  mask-position:
+    left center;
+}
+
+
+/* =========================================================
+   DESKTOP ORIGINAL LOGO SIZE
+   ========================================================= */
+
+body:not(.lang-zh)
+.brand::before {
+  width:
+    360px;
+}
+
+body.lang-zh
+.brand::before {
+  width:
+    315px;
+}
+
+
+/* =========================================================
+   MOBILE
+   Keep your own logo but fit it beside navigation
+   ========================================================= */
+
+@media (max-width: 680px) {
+
+  body:not(.lang-zh)
+  .brand::before {
+    width:
+      min(37vw, 158px);
+  }
+
+
+  body.lang-zh
+  .brand::before {
+    width:
+      min(30vw, 126px);
+  }
+
+
+  .brand {
+    max-width:
+      38vw;
+  }
+
 }
