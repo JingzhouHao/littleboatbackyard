@@ -379,8 +379,29 @@ window.SITE = {
           },
 
           "note": "Shot with Kodak Daylight single use camera"
-        }
+        },
 
+        {
+          "src": "assets/images/Moments_of_summer/小径分叉的花园.jpg",
+
+          "caption": {
+            "en": "El jardín de senderos que se bifurcan",
+            "zh": "小径分岔的花园"
+          },
+
+          "note": "Shot with pentax espio 928, film is ultramax400"
+        },
+
+        {
+          "src": "assets/images/Moments_of_summer/autumn is creeping at you.jpg",
+
+          "caption": {
+            "en": "Autumn is creeping at you",
+            "zh": "秋意渐浓"
+          },
+
+          "note": "Shot with pentax espio 928, film is ultramax400"
+        }
       ]
     },
 
