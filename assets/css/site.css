@@ -4263,3 +4263,49 @@ body.lang-zh .text-story-body::first-letter {
   }
 
 }
+/* =========================================================
+   RESTORE HANDWRITTEN BRAND
+   ========================================================= */
+
+.topbar .brand {
+  font-family:
+    "Caveat Local",
+    "Ma Shan Zheng Local",
+    cursive !important;
+
+  font-weight:
+    600 !important;
+
+  letter-spacing:
+    0 !important;
+}
+
+
+/* English handwritten logo text */
+html[lang="en"] .topbar .brand,
+body.lang-en .topbar .brand {
+  font-family:
+    "Caveat Local",
+    cursive !important;
+
+  font-weight:
+    600 !important;
+
+  font-size:
+    1.18rem !important;
+}
+
+
+/* Chinese handwritten logo text */
+html[lang="zh-CN"] .topbar .brand,
+body.lang-zh .topbar .brand {
+  font-family:
+    "Ma Shan Zheng Local",
+    cursive !important;
+
+  font-weight:
+    400 !important;
+
+  font-size:
+    1.2rem !important;
+}
