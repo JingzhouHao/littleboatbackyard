@@ -3207,3 +3207,92 @@ body.lang-zh .topbar .brand::before {
     font-size: 0.72rem !important;
   }
 }
+/* =========================================================
+   MOBILE HEADER — ENGLISH OVERFLOW FIX ONLY
+   Chinese mobile header is intentionally left unchanged.
+   Nothing outside the header is modified here.
+   ========================================================= */
+
+@media (max-width: 680px) {
+
+  html[lang="en"],
+  html[lang="en"] body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  html[lang="en"] .topbar {
+    width: calc(100% - 22px);
+    max-width: 100%;
+    gap: 6px !important;
+  }
+
+  /* Keep your own handwritten English logo, just size it properly */
+  html[lang="en"] body:not(.lang-zh) .topbar .brand {
+    flex: 0 0 auto;
+    min-width: 0;
+    max-width: none;
+    margin-left: 0;
+  }
+
+  html[lang="en"] body:not(.lang-zh) .topbar .brand::before {
+    width: 175px !important;
+  }
+
+  /* Smaller English navigation so it fits */
+  html[lang="en"] .topbar .topnav {
+    flex: 0 0 auto;
+    min-width: 0;
+    gap: 8px !important;
+    white-space: nowrap;
+  }
+
+  html[lang="en"] .topbar .topnav a {
+    font-family:
+      Optima,
+      "Optima Nova",
+      "Segoe UI",
+      sans-serif !important;
+
+    font-size: 0.78rem !important;
+    font-weight: 400 !important;
+    white-space: nowrap;
+  }
+
+  /* 中文 button in English mode: normal weight, not bold */
+  html[lang="en"] .topbar .topnav .lang-toggle {
+    margin-left: 0 !important;
+
+    font-family:
+      "PingFang SC",
+      "Hiragino Sans GB",
+      "Microsoft YaHei",
+      sans-serif !important;
+
+    font-size: 0.76rem !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap;
+  }
+}
+
+
+/* Slightly tighter only on very narrow phones */
+@media (max-width: 390px) {
+
+  html[lang="en"] body:not(.lang-zh) .topbar .brand::before {
+    width: 164px !important;
+  }
+
+  html[lang="en"] .topbar .topnav {
+    gap: 6px !important;
+  }
+
+  html[lang="en"] .topbar .topnav a {
+    font-size: 0.74rem !important;
+  }
+
+  html[lang="en"] .topbar .topnav .lang-toggle {
+    font-size: 0.72rem !important;
+  }
+}
