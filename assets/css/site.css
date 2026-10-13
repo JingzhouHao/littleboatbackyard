@@ -2813,16 +2813,17 @@ body.lang-zh .tagline {
 }
 
 /* =========================================================
-   FINE ART TYPOGRAPHY OVERRIDE
-   Keep layout intact; simplify language + typography only.
+   CLEAN FINAL OVERRIDES
+   One consolidated layer only.
    ========================================================= */
 
 :root {
-  --fine-en: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --fine-zh: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+  --graphik-stack: "Graphik Web", "Graphik", "Helvetica Neue", Arial, sans-serif;
+  --nyt-serif-stack: Georgia, "Times New Roman", serif;
 }
 
-/* One language at a time */
+/* ---------- One language at a time ---------- */
+
 .collection-secondary-title,
 .album-hero .kicker,
 #album-meta,
@@ -2834,22 +2835,16 @@ body.lang-zh .tagline {
   display: none !important;
 }
 
-/* Base language fonts */
-html[lang="en"] body {
-  font-family: var(--fine-en);
-}
+/* ---------- Display typography ---------- */
 
-html[lang="zh-CN"] body,
-body.lang-zh {
-  font-family: var(--fine-zh);
-}
-
-/* Navigation */
 html[lang="en"] .topnav,
 html[lang="en"] .home-nav,
-html[lang="en"] .lang-toggle {
-  font-family: var(--fine-en) !important;
-  font-weight: 400 !important;
+html[lang="en"] .lang-toggle,
+html[lang="en"] .page-hero-title h1,
+html[lang="en"] .collection-card-copy h3,
+html[lang="en"] #bio-name,
+html[lang="en"] .cv-section h2 {
+  font-family: Optima, "Optima Nova", "Segoe UI", sans-serif !important;
 }
 
 html[lang="zh-CN"] .topnav,
@@ -2858,1695 +2853,357 @@ html[lang="zh-CN"] .lang-toggle,
 body.lang-zh .topnav,
 body.lang-zh .home-nav,
 body.lang-zh .lang-toggle {
-  font-family: var(--fine-zh) !important;
-  font-weight: 400 !important;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
 }
 
+/* ---------- Navigation ---------- */
+
 .topnav {
-  gap: 26px !important;
-  font-size: 0.84rem !important;
-  letter-spacing: 0 !important;
+  gap: 26px;
+}
+
+.topnav a {
+  font-size: 1.05rem;
+  font-weight: 500;
 }
 
 .topnav .lang-toggle {
-  margin-left: 5px !important;
-  font-size: 0.78rem !important;
-  letter-spacing: 0.02em !important;
+  margin-left: 2px;
+  font-size: 0.90rem;
+  font-weight: 500;
 }
 
-/* Homepage tagline — restrained, not handwritten */
-html[lang="en"] .tagline {
-  max-width: 580px !important;
-  margin-top: 30px !important;
-  font-family: var(--fine-en) !important;
-  font-style: normal !important;
-  font-weight: 300 !important;
-  font-size: clamp(0.92rem, 1.1vw, 1.02rem) !important;
-  line-height: 1.65 !important;
-  letter-spacing: 0.015em !important;
+/* ---------- Photography page collection titles ---------- */
+
+.collection-card-copy h3 {
+  font-size: clamp(1.25rem, 1.65vw, 1.55rem) !important;
+  line-height: 1.22 !important;
 }
 
-html[lang="zh-CN"] .tagline,
-body.lang-zh .tagline {
-  max-width: 580px !important;
-  margin-top: 30px !important;
-  font-family: var(--fine-zh) !important;
-  font-style: normal !important;
-  font-weight: 400 !important;
-  font-size: clamp(0.90rem, 1.05vw, 1rem) !important;
-  line-height: 1.75 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.home-nav {
-  margin-top: 52px !important;
-  gap: clamp(38px, 5vw, 62px) !important;
-  font-size: clamp(0.96rem, 1.25vw, 1.08rem) !important;
-}
-
-.home-nav a {
-  padding: 7px 2px !important;
-}
-
-/* Page hero titles */
-html[lang="en"] .page-hero-title h1 {
-  font-family: var(--fine-en) !important;
-  font-weight: 300 !important;
-  font-size: clamp(2rem, 3.4vw, 3.1rem) !important;
-  line-height: 1.06 !important;
-  letter-spacing: -0.025em !important;
-}
-
-html[lang="zh-CN"] .page-hero-title h1,
-body.lang-zh .page-hero-title h1 {
-  font-family: var(--fine-zh) !important;
-  font-weight: 400 !important;
-  font-size: clamp(1.8rem, 3vw, 2.7rem) !important;
-  line-height: 1.15 !important;
-  letter-spacing: 0.01em !important;
-}
-
-html[lang="en"] .album-hero .page-hero-title h1 {
-  font-size: clamp(2.05rem, 3.6vw, 3.2rem) !important;
-}
-
-html[lang="zh-CN"] .album-hero .page-hero-title h1,
-body.lang-zh .album-hero .page-hero-title h1 {
-  font-size: clamp(1.9rem, 3.2vw, 2.8rem) !important;
-}
-
-/* Photography index */
-.collections-wrap {
-  padding-top: 70px !important;
-  padding-bottom: 108px !important;
-}
-
-.collections-heading {
-  margin-bottom: 40px !important;
-  padding-bottom: 26px !important;
-}
-
-html[lang="en"] .collections-heading h2 {
-  font-family: var(--fine-en) !important;
-  font-weight: 300 !important;
-  font-size: clamp(1.5rem, 2.35vw, 2.1rem) !important;
-  line-height: 1.2 !important;
-  letter-spacing: -0.018em !important;
-}
-
-html[lang="zh-CN"] .collections-heading h2,
-body.lang-zh .collections-heading h2 {
-  font-family: var(--fine-zh) !important;
-  font-weight: 400 !important;
-  font-size: clamp(1.45rem, 2.2vw, 2rem) !important;
-  line-height: 1.32 !important;
-  letter-spacing: 0.01em !important;
-}
-
-.collections-note {
-  font-family: inherit !important;
-  font-size: 0.91rem !important;
-  line-height: 1.75 !important;
-}
-
-.collection-grid {
-  gap: 46px 24px !important;
-}
-
-.collection-card-copy {
-  padding-top: 11px !important;
-}
-
-/* Collection titles: small gallery-label scale */
 html[lang="en"] .collection-card-copy h3 {
-  margin: 0 !important;
-  font-family: var(--fine-en) !important;
-  font-weight: 300 !important;
-  font-size: clamp(1rem, 1.2vw, 1.14rem) !important;
-  line-height: 1.3 !important;
-  letter-spacing: -0.012em !important;
-}
-
-html[lang="zh-CN"] .collection-card-copy h3,
-body.lang-zh .collection-card-copy h3 {
-  margin: 0 !important;
-  font-family: var(--fine-zh) !important;
   font-weight: 400 !important;
-  font-size: clamp(0.98rem, 1.15vw, 1.10rem) !important;
-  line-height: 1.45 !important;
-  letter-spacing: 0.01em !important;
-}
-
-/* Album text */
-.album-intro-section {
-  padding-top: 62px !important;
-  padding-bottom: 72px !important;
-}
-
-.back-link {
-  font-family: inherit !important;
-  font-size: 0.82rem !important;
-  font-weight: 400 !important;
-}
-
-.album-intro,
-.album-reflection {
-  font-family: inherit !important;
-  font-weight: 400 !important;
-  font-size: clamp(0.96rem, 1.15vw, 1.05rem) !important;
-  line-height: 1.82 !important;
   letter-spacing: 0 !important;
 }
 
-/* Captions */
-.photo-note,
-.photo-caption,
-.photo-tech {
-  font-family: inherit !important;
-  font-weight: 400 !important;
-}
+/* ---------- Album intro ---------- */
 
-.photo-note,
-.photo-caption {
-  font-size: 0.94rem !important;
-  line-height: 1.72 !important;
-}
-
-.photo-tech {
-  font-size: 0.76rem !important;
-  line-height: 1.55 !important;
-}
-
-/* Bio */
-html[lang="en"] #bio-name {
-  font-family: var(--fine-en) !important;
-  font-weight: 300 !important;
-  font-size: clamp(2rem, 3.2vw, 2.9rem) !important;
-  line-height: 1.08 !important;
-  letter-spacing: -0.025em !important;
-}
-
-html[lang="zh-CN"] #bio-name,
-body.lang-zh #bio-name {
-  font-family: var(--fine-zh) !important;
-  font-weight: 400 !important;
-  font-size: clamp(1.85rem, 3vw, 2.65rem) !important;
-  line-height: 1.15 !important;
-  letter-spacing: 0.01em !important;
-}
-
-.bio-text,
-.bio-text p,
-.cv-copy,
-.cv-copy p {
-  font-family: inherit !important;
-}
-
-.bio-text,
-.bio-text p {
-  font-size: 0.94rem !important;
-  line-height: 1.82 !important;
-  font-weight: 400 !important;
-}
-
-/* CV */
-html[lang="en"] .cv-section h2 {
-  font-family: var(--fine-en) !important;
-  font-weight: 300 !important;
-  font-size: clamp(1.45rem, 2vw, 1.9rem) !important;
-  letter-spacing: -0.015em !important;
-}
-
-html[lang="zh-CN"] .cv-section h2,
-body.lang-zh .cv-section h2 {
-  font-family: var(--fine-zh) !important;
-  font-weight: 400 !important;
-  font-size: clamp(1.4rem, 1.9vw, 1.8rem) !important;
-  letter-spacing: 0.01em !important;
-}
-
-.cv-copy,
-.cv-copy p {
-  font-size: 0.90rem !important;
-  line-height: 1.7 !important;
-}
-
-/* Footer */
-.site-footer,
-.site-footer--overlay {
-  font-family: inherit !important;
-  font-size: 0.76rem !important;
-  letter-spacing: 0 !important;
-}
-
-/* Tablet */
-@media (max-width: 1024px) and (min-width: 681px) {
-  .topnav {
-    gap: 18px !important;
-    font-size: 0.80rem !important;
-  }
-
-  .home-nav {
-    font-size: 0.94rem !important;
-  }
-
-  .collections-wrap {
-    padding-top: 58px !important;
-    padding-bottom: 88px !important;
-  }
-
-  .collection-grid {
-    gap: 38px 20px !important;
-  }
-}
-
-/* Mobile */
-@media (max-width: 680px) {
-  .topnav {
-    gap: 14px !important;
-    font-size: 0.76rem !important;
-  }
-
-  .topnav .lang-toggle {
-    font-size: 0.72rem !important;
-  }
-
-  .home-nav {
-    margin-top: 44px !important;
-    gap: 32px !important;
-    font-size: 0.94rem !important;
-  }
-
-  html[lang="en"] .tagline {
-    max-width: 78vw !important;
-    font-size: 0.88rem !important;
-    line-height: 1.62 !important;
-  }
-
-  html[lang="zh-CN"] .tagline,
-  body.lang-zh .tagline {
-    max-width: 82vw !important;
-    font-size: 0.86rem !important;
-    line-height: 1.72 !important;
-  }
-
-  html[lang="en"] .page-hero-title h1 {
-    font-size: 1.72rem !important;
-  }
-
-  html[lang="zh-CN"] .page-hero-title h1,
-  body.lang-zh .page-hero-title h1 {
-    font-size: 1.60rem !important;
-  }
-
-  html[lang="en"] .album-hero .page-hero-title h1 {
-    font-size: 1.82rem !important;
-  }
-
-  html[lang="zh-CN"] .album-hero .page-hero-title h1,
-  body.lang-zh .album-hero .page-hero-title h1 {
-    font-size: 1.68rem !important;
-  }
-
-  .collections-wrap {
-    padding-top: 54px !important;
-    padding-bottom: 82px !important;
-  }
-
-  .collections-heading {
-    margin-bottom: 30px !important;
-  }
-
-  .collections-heading h2 {
-    font-size: 1.4rem !important;
-  }
-
-  .collections-note {
-    font-size: 0.86rem !important;
-  }
-
-  .collection-grid {
-    gap: 38px !important;
-  }
-
-  .collection-card-copy {
-    padding-top: 9px !important;
-  }
-
-  .collection-card-copy h3 {
-    font-size: 1rem !important;
-  }
-
-  .album-intro-section {
-    padding-top: 46px !important;
-    padding-bottom: 56px !important;
-  }
-
-  .album-intro,
-  .album-reflection {
-    font-size: 0.92rem !important;
-    line-height: 1.78 !important;
-  }
-
-  .photo-note,
-  .photo-caption {
-    font-size: 0.90rem !important;
-  }
-
-  .photo-tech {
-    font-size: 0.73rem !important;
-  }
-
-  html[lang="en"] #bio-name {
-    font-size: 1.85rem !important;
-  }
-
-  html[lang="zh-CN"] #bio-name,
-  body.lang-zh #bio-name {
-    font-size: 1.72rem !important;
-  }
-
-  .bio-text,
-  .bio-text p {
-    font-size: 0.91rem !important;
-    line-height: 1.78 !important;
-  }
-}
-/* =========================================================
-   OPTIMA ENGLISH + STRONGER NAV
-   ========================================================= */
-
-/* English overall display type */
-html[lang="en"] .topnav,
-html[lang="en"] .home-nav,
-html[lang="en"] .lang-toggle,
-html[lang="en"] .page-hero-title h1,
-html[lang="en"] .collections-heading h2,
-html[lang="en"] .collection-card-copy h3,
-html[lang="en"] #bio-name,
-html[lang="en"] .cv-section h2,
-html[lang="en"] .tagline {
-  font-family:
-    Optima,
-    "Optima Nova",
-    "Segoe UI",
-    sans-serif !important;
-}
-
-
-/* ---------- Main navigation ---------- */
-
-.topnav {
-  font-size:
-    0.92rem !important;
-
-  font-weight:
-    600 !important;
-}
-
-
-/* Chinese nav */
-
-html[lang="zh-CN"] .topnav,
-body.lang-zh .topnav {
-  font-family:
-    "PingFang SC",
-    "Hiragino Sans GB",
-    "Microsoft YaHei",
-    sans-serif !important;
-
-  font-weight:
-    600 !important;
-}
-
-
-/* ---------- Homepage Photography / Bio ---------- */
-
-.home-nav {
-  font-size:
-    clamp(
-      1.08rem,
-      1.5vw,
-      1.22rem
-    ) !important;
-
-  font-weight:
-    600 !important;
-}
-
-
-.home-nav a {
-  font-weight:
-    600 !important;
-}
-
-
-/* Chinese homepage nav */
-
-html[lang="zh-CN"] .home-nav,
-body.lang-zh .home-nav {
-  font-family:
-    "PingFang SC",
-    "Hiragino Sans GB",
-    "Microsoft YaHei",
-    sans-serif !important;
-
-  font-weight:
-    600 !important;
-}
-
-
-/* ---------- Language toggle stays slightly quieter ---------- */
-
-.lang-toggle {
-  font-weight:
-    500 !important;
-}
-
-
-/* ---------- English collection titles ---------- */
-
-html[lang="en"] .collection-card-copy h3 {
-  font-family:
-    Optima,
-    "Optima Nova",
-    "Segoe UI",
-    sans-serif !important;
-
-  font-weight:
-    400 !important;
-
-  letter-spacing:
-    0.005em !important;
-}
-
-
-/* ---------- English large titles ---------- */
-
-html[lang="en"] .page-hero-title h1,
-html[lang="en"] .collections-heading h2,
-html[lang="en"] #bio-name,
-html[lang="en"] .cv-section h2 {
-  font-weight:
-    400 !important;
-
-  letter-spacing:
-    -0.01em !important;
-}
-
-
-/* ---------- Mobile ---------- */
-
-@media (max-width: 680px) {
-
-  .topnav {
-    font-size:
-      0.84rem !important;
-
-    font-weight:
-      600 !important;
-  }
-
-  .home-nav {
-    font-size:
-      1.08rem !important;
-
-    font-weight:
-      600 !important;
-  }
-
-}
-/* =========================================================
-   TEXT-ONLY COLLECTION
-   Editorial / newspaper style
-   ========================================================= */
-
-
-/* ---------- Overall reading column ---------- */
-
-.text-stories {
-  width: min(720px, calc(100% - 48px));
-
-  margin:
-    0 auto;
-
-  padding:
-    26px 0
-    140px;
-}
-
-
-/* ---------- Individual section ---------- */
-
-.text-story {
-  display: block;
-
-  margin:
-    0 0
-    92px;
-
-  padding:
-    0;
-
-  border:
-    0 !important;
-}
-
-
-.text-story:last-child {
-  margin-bottom:
-    0;
-
-  border:
-    0 !important;
-}
-
-
-/* ---------- Section number ---------- */
-
-.text-story-label {
-  margin:
-    0 0
-    24px;
-
-  font-family:
-    Optima,
-    "Optima Nova",
-    "Helvetica Neue",
-    sans-serif;
-
-  font-size:
-    0.82rem;
-
-  font-weight:
-    500;
-
-  line-height:
-    1;
-
-  letter-spacing:
-    0.08em;
-
-  color:
-    rgba(20, 42, 43, 0.62);
-}
-
-
-/* ---------- Main prose ---------- */
-
-.text-story-body {
-  margin:
-    0;
-
-  max-width:
-    680px;
-
-  font-size:
-    1.08rem;
-
-  line-height:
-    1.95;
-
-  font-weight:
-    400;
-
-  letter-spacing:
-    0;
-
-  color:
-    var(--ink);
-}
-
-
-/* English: editorial serif */
-
-html[lang="en"]
-.text-story-body {
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:
-    1.08rem;
-
-  line-height:
-    1.85;
-}
-
-
-/* Chinese: newspaper / literary feel */
-
-html[lang="zh-CN"]
-.text-story-body,
-body.lang-zh
-.text-story-body {
-  font-family:
-    "Songti SC",
-    "STSong",
-    "Noto Serif CJK SC",
-    "PingFang SC",
-    serif;
-
-  font-size:
-    1.06rem;
-
-  line-height:
-    2;
-}
-
-
-/* =========================================================
-   TEXT-ONLY INTRO
-   ========================================================= */
-
-/*
-   Only change the intro
-   when this is a text collection.
-*/
-
-.album-page
 .album-intro-section {
-  border:
-    0 !important;
+  padding-top: 62px;
+  padding-bottom: 72px;
 }
 
-
-/* Back link quieter */
-
-.album-page
-.back-link {
-  font-size:
-    0.82rem;
-
-  font-weight:
-    400;
-
-  opacity:
-    0.72;
-}
-
-
-/* Intro becomes an editorial "standfirst" */
-
-.album-page
 .album-intro {
-  max-width:
-    760px;
-
-  font-size:
-    1.18rem;
-
-  line-height:
-    1.8;
-
-  font-weight:
-    400;
-
-  letter-spacing:
-    0;
+  max-width: 42rem;
 }
 
-
-/* Chinese intro */
-
-html[lang="zh-CN"]
-.album-page
-.album-intro,
-body.lang-zh
-.album-page
-.album-intro {
-  font-family:
-    "Songti SC",
-    "STSong",
-    "Noto Serif CJK SC",
-    "PingFang SC",
-    serif;
-
-  font-size:
-    1.12rem;
-
-  line-height:
-    1.95;
+html[lang="en"] .album-intro {
+  font-family: var(--graphik-stack) !important;
+  font-size: 1.02rem !important;
+  line-height: 1.90 !important;
 }
 
-
-/* English intro */
-
-html[lang="en"]
-.album-page
-.album-intro {
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:
-    1.16rem;
-
-  line-height:
-    1.82;
+html[lang="en"] .album-intro::first-letter {
+  float: left;
+  font-family: var(--nyt-serif-stack);
+  font-size: 3.75rem;
+  line-height: 0.84;
+  padding-top: 0.08em;
+  padding-right: 0.10em;
+  font-weight: 400;
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 680px) {
-
-  .text-stories {
-    width:
-      calc(100% - 40px);
-
-    padding:
-      12px 0
-      88px;
-  }
-
-
-  .text-story {
-    margin-bottom:
-      66px;
-  }
-
-
-  .text-story-label {
-    margin-bottom:
-      18px;
-
-    font-size:
-      0.76rem;
-  }
-
-
-  .text-story-body {
-    font-size:
-      0.98rem;
-
-    line-height:
-      1.9;
-  }
-
-
-  html[lang="zh-CN"]
-  .text-story-body,
-  body.lang-zh
-  .text-story-body {
-    font-size:
-      0.98rem;
-
-    line-height:
-      1.95;
-  }
-
-
-  .album-page
-  .album-intro {
-    font-size:
-      1.02rem;
-
-    line-height:
-      1.85;
-  }
-
-
-  html[lang="zh-CN"]
-  .album-page
-  .album-intro,
-  body.lang-zh
-  .album-page
-  .album-intro {
-    font-size:
-      1rem;
-
-    line-height:
-      1.92;
-  }
-
-}
-/* =========================================================
-   TYPOGRAPHY REFINEMENT
-   Photography / Bio / Album intro / Text-only collection
-   ========================================================= */
-
-
-/* ---------- 0. Font stacks ---------- */
-
-:root {
-  --graphik-stack:
-    "Graphik Web",
-    "Graphik",
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
-
-  --nyt-serif-stack:
-    Georgia,
-    "Times New Roman",
-    serif;
-}
-
-
-/* =========================================================
-   1) TOP NAVIGATION: make Photography / Bio / EN / 中文
-      larger and more visible
-   ========================================================= */
-
-.topnav a,
-.lang-toggle,
-.language-toggle,
-.topbar .topnav a,
-.topbar .lang-switch,
-.topbar .language-switch {
-  font-family:
-    Optima,
-    "Optima Nova",
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
-
-  font-size:
-    1.05rem;
-
-  font-weight:
-    500;
-
-  letter-spacing:
-    0.02em;
-
-  line-height:
-    1.2;
-}
-
-@media (min-width: 900px) {
-  .topnav a,
-  .lang-toggle,
-  .language-toggle,
-  .topbar .topnav a,
-  .topbar .lang-switch,
-  .topbar .language-switch {
-    font-size:
-      1.12rem;
-  }
-}
-
-
-/* =========================================================
-   2) PHOTOGRAPHY PAGE: make collection titles larger
-   ========================================================= */
-
-/* 尽量兼容你之前不同版本可能用过的类名 */
-.collection-card-title,
-.collection-title,
-.album-card-title,
-.card-title,
-.collection-card h2,
-.collection-card h3,
-.album-card h2,
-.album-card h3,
-.photography-grid h2,
-.photography-grid h3 {
-  font-family:
-    Optima,
-    "Optima Nova",
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
-
-  font-size:
-    1.42rem;
-
-  font-weight:
-    400;
-
-  line-height:
-    1.14;
-
-  letter-spacing:
-    0;
-}
-
-@media (max-width: 768px) {
-  .collection-card-title,
-  .collection-title,
-  .album-card-title,
-  .card-title,
-  .collection-card h2,
-  .collection-card h3,
-  .album-card h2,
-  .album-card h3,
-  .photography-grid h2,
-  .photography-grid h3 {
-    font-size:
-      1.18rem;
-  }
-}
-
-
-/* 如果中英文标题同时在 DOM 里，压低副标题存在感 */
-.collection-card .secondary-title,
-.collection-card .title-secondary,
-.album-card .secondary-title,
-.album-card .title-secondary {
-  font-size:
-    0.92rem;
-
-  opacity:
-    0.72;
-}
-
-
-/* =========================================================
-   3) ALBUM INTRO:
-      English intro = Graphik + NYT-style drop cap
-   ========================================================= */
-
-/* intro 本体 */
-.album-intro {
-  max-width:
-    44rem;
-}
-
-/* 英文模式 */
-html[lang="en"] .album-intro,
-body.lang-en .album-intro {
-  font-family:
-    var(--graphik-stack);
-
-  font-size:
-    1.02rem;
-
-  line-height:
-    1.9;
-
-  letter-spacing:
-    0;
-}
-
-/* 英文 drop cap */
-html[lang="en"] .album-intro::first-letter,
-body.lang-en .album-intro::first-letter {
-  float:
-    left;
-
-  font-family:
-    var(--nyt-serif-stack);
-
-  font-size:
-    4.1rem;
-
-  line-height:
-    0.84;
-
-  padding-top:
-    0.08em;
-
-  padding-right:
-    0.12em;
-
-  padding-left:
-    0;
-
-  font-weight:
-    400;
-}
-
-/* 中文模式：不要首字母放大 */
 html[lang="zh-CN"] .album-intro,
 body.lang-zh .album-intro {
-  font-size:
-    1.02rem;
-
-  line-height:
-    1.95;
+  font-family: "Songti SC", STSong, "PingFang SC", serif !important;
+  font-size: 1.02rem !important;
+  line-height: 1.95 !important;
 }
 
 html[lang="zh-CN"] .album-intro::first-letter,
 body.lang-zh .album-intro::first-letter {
   float: none;
-  font-size: inherit;
-  line-height: inherit;
-  padding: 0;
-}
-
-
-/* =========================================================
-   4) TEXT-ONLY COLLECTION
-      “不存在的照片” 也做 editorial / NYT 风格
-   ========================================================= */
-
-/* 纯文字合集正文 */
-.text-story-body {
-  max-width:
-    42rem;
-}
-
-/* 英文版正文 */
-html[lang="en"] .text-story-body,
-body.lang-en .text-story-body {
-  font-family:
-    var(--graphik-stack);
-
-  font-size:
-    1.02rem;
-
-  line-height:
-    1.92;
-}
-
-/* 英文版 drop cap */
-html[lang="en"] .text-story-body::first-letter,
-body.lang-en .text-story-body::first-letter {
-  float:
-    left;
-
-  font-family:
-    var(--nyt-serif-stack);
-
-  font-size:
-    4.2rem;
-
-  line-height:
-    0.84;
-
-  padding-top:
-    0.08em;
-
-  padding-right:
-    0.12em;
-
-  font-weight:
-    400;
-}
-
-/* 中文版：保持正常 */
-html[lang="zh-CN"] .text-story-body,
-body.lang-zh .text-story-body {
-  font-size:
-    1.04rem;
-
-  line-height:
-    2;
-}
-
-html[lang="zh-CN"] .text-story-body::first-letter,
-body.lang-zh .text-story-body::first-letter {
-  float: none;
-  font-size: inherit;
-  line-height: inherit;
-  padding: 0;
-}
-
-
-/* 小节编号（如果你还保留一、二、三、四这种） */
-.text-story-label {
-  font-family:
-    Optima,
-    "Optima Nova",
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
-
-  font-size:
-    0.88rem;
-
-  font-weight:
-    500;
-
-  letter-spacing:
-    0.04em;
-
-  opacity:
-    0.68;
-
-  margin-bottom:
-    1rem;
-}
-
-
-/* =========================================================
-   5) MOBILE TUNING
-   ========================================================= */
-
-@media (max-width: 768px) {
-  .topnav a,
-  .lang-toggle,
-  .language-toggle,
-  .topbar .topnav a,
-  .topbar .lang-switch,
-  .topbar .language-switch {
-    font-size:
-      1rem;
-
-    font-weight:
-      500;
-  }
-
-  html[lang="en"] .album-intro,
-  body.lang-en .album-intro,
-  html[lang="en"] .text-story-body,
-  body.lang-en .text-story-body {
-    font-size:
-      0.98rem;
-
-    line-height:
-      1.88;
-  }
-
-  html[lang="en"] .album-intro::first-letter,
-  body.lang-en .album-intro::first-letter,
-  html[lang="en"] .text-story-body::first-letter,
-  body.lang-en .text-story-body::first-letter {
-    font-size:
-      3.4rem;
-
-    line-height:
-      0.86;
-
-    padding-right:
-      0.1em;
-  }
-}
-html[lang="en"] .text-story-body,
-body.lang-en .text-story-body {
-  font-family:
-    var(--graphik-stack);
-
-  font-size:
-    1.02rem;
-
-  line-height:
-    1.92;
-
-  max-width:
-    38rem;
-
-  text-align:
-    justify;
-
-  text-justify:
-    inter-word;
-
-  hyphens:
-    auto;
-
-  -webkit-hyphens:
-    auto;
-}
-
-
-html[lang="en"] .text-story-body::first-letter,
-body.lang-en .text-story-body::first-letter {
-  float:
-    left;
-
-  font-family:
-    var(--nyt-serif-stack);
-
-  font-size:
-    3.7rem;
-
-  line-height:
-    0.84;
-
-  padding-top:
-    0.08em;
-
-  padding-right:
-    0.10em;
-
-  font-weight:
-    400;
-}
-/* =========================================================
-   FORCE EDITORIAL JUSTIFICATION
-   ========================================================= */
-
-.text-story-body {
-  width: 100% !important;
-  max-width: 42rem !important;
-
-  margin: 0 !important;
-
-  text-align: justify !important;
-  text-align-last: left !important;
-
-  text-justify: inter-word !important;
-
-  hyphens: auto !important;
-  -webkit-hyphens: auto !important;
-
-  word-break: normal !important;
-  overflow-wrap: normal !important;
-
-  font-family:
-    "Graphik Web",
-    "Graphik",
-    "Helvetica Neue",
-    Arial,
-    sans-serif !important;
-
-  font-size: 1.02rem !important;
-  line-height: 1.9 !important;
-}
-
-
-/* Drop cap */
-
-.text-story-body::first-letter {
-  float: left;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: 3.7rem;
-  line-height: 0.82;
-
-  padding-top: 0.08em;
-  padding-right: 0.11em;
-
-  font-weight: 400;
-}
-
-
-/* Chinese does not use justification / drop cap */
-
-html[lang="zh-CN"] .text-story-body,
-body.lang-zh .text-story-body {
-  text-align: left !important;
-
-  font-family:
-    "Songti SC",
-    STSong,
-    "PingFang SC",
-    serif !important;
-
-  font-size: 1.04rem !important;
-  line-height: 2 !important;
-}
-
-
-html[lang="zh-CN"] .text-story-body::first-letter,
-body.lang-zh .text-story-body::first-letter {
-  float: none;
-
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-
   padding: 0;
 }
+
 /* =========================================================
-   MOBILE HEADER OVERFLOW FIX
-   English navigation
+   TEXT-ONLY COLLECTION
    ========================================================= */
 
-@media (max-width: 680px) {
-
-  /* Prevent the whole page from being pushed wider */
-  html,
-  body {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
-
-  /* Header must stay inside viewport */
-  .topbar {
-    width: 100%;
-    max-width: 100%;
-
-    box-sizing: border-box;
-
-    display: flex;
-    align-items: center;
-
-    padding-left: 20px;
-    padding-right: 20px;
-
-    gap: 14px;
-  }
-
-
-  /* Brand is allowed to shrink */
-  .topbar .brand {
-    flex: 1 1 auto;
-
-    min-width: 0;
-
-    white-space: nowrap;
-  }
-
-
-  /* Navigation itself must not grow unnecessarily */
-  .topbar .topnav {
-    flex: 0 0 auto;
-
-    display: flex;
-    align-items: center;
-
-    gap: 18px;
-
-    min-width: 0;
-
-    white-space: nowrap;
-  }
-
-
-  /* ---------- English only ---------- */
-
-  html[lang="en"] .topbar .brand,
-  body.lang-en .topbar .brand {
-    font-size: 0.88rem !important;
-
-    max-width: 36vw;
-  }
-
-
-  html[lang="en"] .topbar .topnav,
-  body.lang-en .topbar .topnav {
-    gap: 16px !important;
-  }
-
-
-  html[lang="en"] .topbar .topnav a,
-  body.lang-en .topbar .topnav a {
-    font-size: 0.98rem !important;
-
-    white-space: nowrap;
-  }
-
-
-  html[lang="en"] .lang-toggle,
-  body.lang-en .lang-toggle,
-  html[lang="en"] .language-toggle,
-  body.lang-en .language-toggle {
-    font-size: 0.82rem !important;
-
-    margin-left: 0 !important;
-
-    white-space: nowrap;
-  }
-
-
-  /* If your handwritten brand is an image */
-  .topbar .brand img {
-    display: block;
-
-    width: 100%;
-    max-width: 100%;
-
-    height: auto;
-  }
-
+.album-page .album-intro-section {
+  border-bottom: 0 !important;
 }
+
+.text-stories {
+  width: min(720px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 24px 0 130px;
+}
+
+.text-story {
+  display: block;
+  margin: 0 0 82px;
+  padding: 0;
+  border: 0 !important;
+}
+
+.text-story:last-child {
+  margin-bottom: 0;
+}
+
+.text-story-label {
+  margin: 0 0 16px;
+  font-family: Optima, "Optima Nova", "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: rgba(20, 42, 43, 0.50);
+}
+
+.text-story-body {
+  width: 100%;
+  max-width: 38rem;
+  margin: 0;
+}
+
+html[lang="en"] .text-story-body {
+  font-family: var(--graphik-stack) !important;
+  font-size: 1.02rem !important;
+  line-height: 1.90 !important;
+  text-align: justify !important;
+  text-align-last: left !important;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+html[lang="en"] .text-story-body::first-letter {
+  float: left;
+  font-family: var(--nyt-serif-stack);
+  font-size: 3.70rem;
+  line-height: 0.82;
+  padding-top: 0.08em;
+  padding-right: 0.10em;
+  font-weight: 400;
+}
+
+html[lang="zh-CN"] .text-story-body,
+body.lang-zh .text-story-body {
+  font-family: "Songti SC", STSong, "PingFang SC", serif !important;
+  font-size: 1.04rem !important;
+  line-height: 2 !important;
+  text-align: left !important;
+}
+
+html[lang="zh-CN"] .text-story-body::first-letter,
+body.lang-zh .text-story-body::first-letter {
+  float: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0;
+}
+
 /* =========================================================
-   RESTORE ORIGINAL CUSTOM HANDWRITTEN LOGO
+   ORIGINAL CUSTOM LOGO
+   Never substitute it with a font.
    ========================================================= */
 
 body {
-  --site-logo:
-    url("../images/branding/title-en.png");
-
-  --site-logo-ratio:
-    1446 / 299;
+  --site-logo: url("../images/branding/title-en.png");
+  --site-logo-ratio: 1446 / 299;
 }
 
 body.lang-zh {
-  --site-logo:
-    url("../images/branding/title-zh.png");
-
-  --site-logo-ratio:
-    1300 / 242;
+  --site-logo: url("../images/branding/title-zh.png");
+  --site-logo-ratio: 1300 / 242;
 }
 
-
-/* Hide normal text — use your own handwritten image instead */
-
-.brand {
+#site-title,
+.topbar .brand {
   font-size: 0 !important;
   line-height: 0 !important;
+  letter-spacing: 0 !important;
+}
 
+#site-title::before,
+.topbar .brand::before {
+  content: "" !important;
+  display: block !important;
+  aspect-ratio: var(--site-logo-ratio);
+  background: currentColor;
+  -webkit-mask-image: var(--site-logo);
+  mask-image: var(--site-logo);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.topbar .brand {
   display: inline-flex !important;
   align-items: center;
-
-  flex: 0 1 auto;
-
+  flex: 0 0 auto;
   min-width: 0;
-
+  margin: 0 !important;
+  padding: 0 !important;
   color: var(--ink);
 }
 
-
-.brand::before {
-  content: "";
-
-  display: block;
-
-  flex: none;
-
-  aspect-ratio:
-    var(--site-logo-ratio);
-
-  background:
-    currentColor;
-
-  -webkit-mask-image:
-    var(--site-logo);
-
-  mask-image:
-    var(--site-logo);
-
-  -webkit-mask-repeat:
-    no-repeat;
-
-  mask-repeat:
-    no-repeat;
-
-  -webkit-mask-size:
-    contain;
-
-  mask-size:
-    contain;
-
-  -webkit-mask-position:
-    left center;
-
-  mask-position:
-    left center;
+.topbar .brand::before {
+  -webkit-mask-position: left center;
+  mask-position: left center;
 }
 
-
-/* =========================================================
-   DESKTOP ORIGINAL LOGO SIZE
-   ========================================================= */
-
-body:not(.lang-zh)
-.brand::before {
-  width:
-    360px;
+body:not(.lang-zh) .topbar .brand::before {
+  width: 360px;
 }
 
-body.lang-zh
-.brand::before {
-  width:
-    315px;
+body.lang-zh .topbar .brand::before {
+  width: 315px;
 }
-
 
 /* =========================================================
    MOBILE
-   Keep your own logo but fit it beside navigation
-   ========================================================= */
-
-@media (max-width: 680px) {
-
-  body:not(.lang-zh)
-  .brand::before {
-    width:
-      min(37vw, 158px);
-  }
-
-
-  body.lang-zh
-  .brand::before {
-    width:
-      min(30vw, 126px);
-  }
-
-
-  .brand {
-    max-width:
-      38vw;
-  }
-
-}
-/* =========================================================
-   FINAL MOBILE HEADER FIX
-   Custom handwritten logo + no overflow
    ========================================================= */
 
 @media (max-width: 680px) {
 
   html,
   body {
-    width: 100%;
     max-width: 100%;
     overflow-x: hidden;
   }
 
-
-  /* -----------------------------------------
-     HEADER LAYOUT
-     ----------------------------------------- */
-
   .topbar {
-    width: 100%;
+    width: calc(100% - 22px) !important;
     max-width: 100%;
-    box-sizing: border-box;
-
+    min-height: 74px;
+    margin: 0 auto;
+    padding: 0 !important;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    padding-left: 24px !important;
-    padding-right: 24px !important;
-
-    gap: 14px !important;
+    gap: 6px !important;
+    box-sizing: border-box;
   }
 
-
-  /* -----------------------------------------
-     BRAND
-     IMPORTANT:
-     completely hide the real text
-     ----------------------------------------- */
-
+  /* Custom logo only; underlying text remains fully hidden. */
   html[lang="en"] .topbar .brand,
-  body.lang-en .topbar .brand,
   html[lang="zh-CN"] .topbar .brand,
   body.lang-zh .topbar .brand,
   .topbar .brand {
-
     font-size: 0 !important;
     line-height: 0 !important;
-
-    letter-spacing: 0 !important;
-
-    display: inline-flex !important;
-    align-items: center;
-
     flex: 0 0 auto !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    overflow: visible;
+    max-width: none !important;
+    min-width: 0 !important;
   }
 
-
-  /* -----------------------------------------
-     YOUR ORIGINAL HANDWRITTEN LOGO IMAGE
-     ----------------------------------------- */
-
-  .topbar .brand::before {
-    content: "" !important;
-
-    display: block !important;
-
-    flex: none;
-
-    background:
-      currentColor;
-
-    aspect-ratio:
-      var(--site-logo-ratio);
-
-    -webkit-mask-image:
-      var(--site-logo);
-
-    mask-image:
-      var(--site-logo);
-
-    -webkit-mask-repeat:
-      no-repeat;
-
-    mask-repeat:
-      no-repeat;
-
-    -webkit-mask-size:
-      contain;
-
-    mask-size:
-      contain;
-
-    -webkit-mask-position:
-      left center;
-
-    mask-position:
-      left center;
-  }
-
-
-  /* English custom logo */
-
-  html[lang="en"] .topbar .brand::before,
-  body.lang-en .topbar .brand::before,
   body:not(.lang-zh) .topbar .brand::before {
-    width: 150px !important;
+    width: 192px !important;
   }
 
-
-  /* Chinese custom logo */
-
-  html[lang="zh-CN"] .topbar .brand::before,
   body.lang-zh .topbar .brand::before {
-    width: 125px !important;
+    width: 205px !important;
   }
-
-
-  /* -----------------------------------------
-     NAVIGATION
-     ----------------------------------------- */
 
   .topbar .topnav {
     flex: 0 0 auto;
-
+    min-width: 0;
+    margin: 0 !important;
     display: flex;
     align-items: center;
-
-    gap: 17px !important;
-
-    margin: 0 !important;
-
+    gap: 7px !important;
     white-space: nowrap;
   }
 
-
-  html[lang="en"] .topbar .topnav a,
-  body.lang-en .topbar .topnav a {
-    font-size: 0.98rem !important;
+  html[lang="en"] .topbar .topnav a {
+    font-size: 0.79rem !important;
   }
-
 
   html[lang="zh-CN"] .topbar .topnav a,
   body.lang-zh .topbar .topnav a {
-    font-size: 1rem !important;
+    font-size: 0.79rem !important;
   }
 
-
-  .topbar .lang-toggle,
-  .topbar .language-toggle,
-  .topbar .lang-switch,
-  .topbar .language-switch {
-    font-size: 0.82rem !important;
-
+  .topbar .topnav .lang-toggle {
     margin-left: 0 !important;
-
-    white-space: nowrap;
+    font-size: 0.77rem !important;
   }
 
+  .collection-card-copy h3 {
+    font-size: 1.14rem !important;
+  }
+
+  .album-intro-section {
+    padding-top: 46px;
+    padding-bottom: 56px;
+  }
+
+  html[lang="en"] .album-intro {
+    font-size: 0.96rem !important;
+    line-height: 1.84 !important;
+  }
+
+  html[lang="en"] .album-intro::first-letter {
+    font-size: 3.25rem;
+  }
+
+  .text-stories {
+    width: calc(100% - 40px);
+    padding: 12px 0 84px;
+  }
+
+  .text-story {
+    margin-bottom: 60px;
+  }
+
+  html[lang="en"] .text-story-body {
+    max-width: none;
+    font-size: 0.96rem !important;
+    line-height: 1.86 !important;
+  }
+
+  html[lang="en"] .text-story-body::first-letter {
+    font-size: 3.20rem;
+  }
+
+  html[lang="zh-CN"] .text-story-body,
+  body.lang-zh .text-story-body {
+    font-size: 0.98rem !important;
+    line-height: 1.95 !important;
+  }
+}
+
+@media (max-width: 390px) {
+  body:not(.lang-zh) .topbar .brand::before {
+    width: 178px !important;
+  }
+
+  body.lang-zh .topbar .brand::before {
+    width: 188px !important;
+  }
+
+  .topbar .topnav {
+    gap: 6px !important;
+  }
+
+  html[lang="en"] .topbar .topnav a {
+    font-size: 0.75rem !important;
+  }
+
+  html[lang="zh-CN"] .topbar .topnav a,
+  body.lang-zh .topbar .topnav a {
+    font-size: 0.76rem !important;
+  }
+
+  .topbar .topnav .lang-toggle {
+    font-size: 0.72rem !important;
+  }
 }
