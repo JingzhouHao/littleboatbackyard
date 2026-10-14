@@ -225,6 +225,39 @@ window.SITE = {
           },
 
           "note": "Shot with Pentax espio 928 and Film is Ultramax400"
+        },
+
+        {
+          "src": "assets/images/Back_to_human/服务生.jpg",
+
+          "caption": {
+            "en": "cute human being",
+            "zh": "可爱人类"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is Flic film Aurora 400"
+        },
+
+        {
+          "src": "assets/images/Back_to_human/艺术.jpg",
+
+          "caption": {
+            "en": "‘ART'",
+            "zh": "‘艺术’"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is Flic film Aurora 400"
+        },
+
+        {
+          "src": "assets/images/Back_to_human/检票员.jpg",
+
+          "caption": {
+            "en": "‘ART'",
+            "zh": "‘艺术’"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is Flic film Aurora 400"
         }
 
       ]
@@ -363,19 +396,30 @@ window.SITE = {
           "src": "assets/images/Carnival/bartonspring.jpg",
 
           "caption": {
-            "en": "Strong contrast and highly saturated color",
-            "zh": "'好强的明暗对比，好跳跃的颜色'"
+            "en": "Barton spring pool",
+            "zh": "Barton spring pool的泉水"
           },
 
           "note": "Shot with Pentax espio 928 and Film is ilfocolor 400 vintage tone"
         },
 
         {
+          "src": "assets/images/Carnival/剪影.jpg",
+
+          "caption": {
+            "en": "Silhoutte Romance",
+            "zh": "剪影浪漫"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is ilfocolor 400 vintage tone"
+        },
+        
+        {
           "src": "assets/images/Carnival/tatoo.jpg",
 
           "caption": {
-            "en": "Strong contrast and highly saturated color",
-            "zh": "'好强的明暗对比，好跳跃的颜色'"
+            "en": "Just like the color of this tatoo shop",
+            "zh": "很酷的纹身店面"
           },
 
           "note": "Shot with Pentax espio 928 and Film is ilfocolor 400 vintage tone"
