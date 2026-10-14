@@ -253,8 +253,8 @@ window.SITE = {
           "src": "assets/images/Back_to_human/检票员.jpg",
 
           "caption": {
-            "en": "‘ART'",
-            "zh": "‘艺术’"
+            "en": "Shimmering shadows of trees",
+            "zh": "‘树影婆娑’"
           },
 
           "note": "Shot with Pentax espio 928 and Film is Flic film Aurora 400"
