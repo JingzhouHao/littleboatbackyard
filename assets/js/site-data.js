@@ -235,7 +235,7 @@ window.SITE = {
             "zh": "可爱人类"
           },
 
-          "note": "Shot with Pentax espio 928 and Film is Flic film Aurora 400"
+          "note": "Shot with Pentax espio 928 and Film is ilfocolor 400 vintage tone"
         },
 
         {
@@ -246,7 +246,7 @@ window.SITE = {
             "zh": "‘艺术’"
           },
 
-          "note": "Shot with Pentax espio 928 and Film is Flic film Aurora 400"
+          "note": "Shot with Pentax espio 928 and Film is ilfocolor 400 vintage tone"
         },
 
         {
@@ -411,7 +411,7 @@ window.SITE = {
             "zh": "剪影浪漫"
           },
 
-          "note": "Shot with Pentax espio 928 and Film is ilfocolor 400 vintage tone"
+          "note": "Shot with Pentax espio 928 and Film is Flic film Aurora 400"
         },
         
         {
