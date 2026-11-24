@@ -426,22 +426,22 @@ window.SITE = {
         },
 
         {
-          "src": "assets/images/Carnival/2 2.jpg",
+          "src": "assets/images/Carnival/orientalcandy1.jpg",
 
           "caption": {
-            "en": "Oriental Candy",
-            "zh": "很酷的纹身店面"
+            "en": "Oriental Candy 1",
+            "zh": "糖果 1"
           },
 
           "note": "Shot with Pentax espio 928 and Film is street savvy"
         },
 
         {
-          "src": "assets/images/Carnival/3 2.jpg",
+          "src": "assets/images/Carnival/oriental candy2.jpg",
 
           "caption": {
-            "en": "Oriental Candy",
-            "zh": "很酷的纹身店面"
+            "en": "Oriental Candy 2",
+            "zh": "糖果 2"
           },
 
           "note": "Shot with Pentax espio 928 and Film is street savvy"
