@@ -423,6 +423,28 @@ window.SITE = {
           },
 
           "note": "Shot with Pentax espio 928 and Film is ilfocolor 400 vintage tone"
+        },
+
+        {
+          "src": "assets/images/Carnival/2 2.jpg",
+
+          "caption": {
+            "en": "Oriental Candy",
+            "zh": "很酷的纹身店面"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is street savvy"
+        },
+
+        {
+          "src": "assets/images/Carnival/3 2.jpg",
+
+          "caption": {
+            "en": "Oriental Candy",
+            "zh": "很酷的纹身店面"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is street savvy"
         }
 
 
