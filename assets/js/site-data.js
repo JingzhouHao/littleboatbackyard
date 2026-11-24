@@ -250,6 +250,39 @@ window.SITE = {
         },
 
         {
+          "src": "assets/images/Back_to_human/1.JPG",
+
+          "caption": {
+            "en": "Shimmering shadows of trees",
+            "zh": "棋王 1"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is Kodak TriX 400"
+        },
+
+        {
+          "src": "assets/images/Back_to_human/2.JPG",
+
+          "caption": {
+            "en": "Shimmering shadows of trees",
+            "zh": "棋王 2"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is Kodak TriX 400"
+        },
+
+        {
+          "src": "assets/images/Back_to_human/3.JPG",
+
+          "caption": {
+            "en": "Shimmering shadows of trees",
+            "zh": "棋王 3"
+          },
+
+          "note": "Shot with Pentax espio 928 and Film is Kodak TriX 400"
+        },
+
+        {
           "src": "assets/images/Back_to_human/检票员.jpg",
 
           "caption": {
