@@ -253,33 +253,33 @@ window.SITE = {
           "src": "assets/images/Back_to_human/1.JPG",
 
           "caption": {
-            "en": "Shimmering shadows of trees",
+            "en": "King of Chess 1",
             "zh": "棋王 1"
           },
 
-          "note": "Shot with Pentax espio 928 and Film is Kodak TriX 400"
+          "note": "Shot with Pentax espio 928 and Film is Kentmere 400"
         },
 
         {
           "src": "assets/images/Back_to_human/2.JPG",
 
           "caption": {
-            "en": "Shimmering shadows of trees",
+            "en": "King of Chess 2",
             "zh": "棋王 2"
           },
 
-          "note": "Shot with Pentax espio 928 and Film is Kodak TriX 400"
+          "note": "Shot with Pentax espio 928 and Film is Kentmere 400"
         },
 
         {
           "src": "assets/images/Back_to_human/3.JPG",
 
           "caption": {
-            "en": "Shimmering shadows of trees",
-            "zh": "棋王 3"
+            "en": "‘May we all be blessed with longevity, so that we share the moonlight far apart’",
+            "zh": "‘但愿人长久，千里共婵娟’"
           },
 
-          "note": "Shot with Pentax espio 928 and Film is Kodak TriX 400"
+          "note": "Shot with Pentax espio 928 and Film is Kentmere 400"
         },
 
         {
@@ -463,7 +463,7 @@ window.SITE = {
 
           "caption": {
             "en": "Oriental Candy 1",
-            "zh": "糖果 1"
+            "zh": "水果糖 1"
           },
 
           "note": "Shot with Pentax espio 928 and Film is street savvy"
@@ -474,7 +474,7 @@ window.SITE = {
 
           "caption": {
             "en": "Oriental Candy 2",
-            "zh": "糖果 2"
+            "zh": "水果糖 2"
           },
 
           "note": "Shot with Pentax espio 928 and Film is street savvy"
