@@ -459,7 +459,7 @@ window.SITE = {
         },
 
         {
-          "src": "assets/images/Carnival/orientalcandy1.jpg",
+          "src": "assets/images/Carnival/orientalcandy1.JPG",
 
           "caption": {
             "en": "Oriental Candy 1",
@@ -470,7 +470,7 @@ window.SITE = {
         },
 
         {
-          "src": "assets/images/Carnival/oriental candy2.jpg",
+          "src": "assets/images/Carnival/oriental candy2.JPG",
 
           "caption": {
             "en": "Oriental Candy 2",
