@@ -64,7 +64,7 @@ window.SITE = {
       ]
     },
 
-    "cvFile": ""assets/Curriculum_Vitae_JingzhouHao.pdf"",
+    "cvFile": "assets/Curriculum_Vitae_JingzhouHao.pdf",
 
     "cvDescription": {
       "en": "A PDF copy of my CV is available here.",
